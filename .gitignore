@@ -35,3 +35,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Eclipse Specific files #
+##########################
+.classpath
