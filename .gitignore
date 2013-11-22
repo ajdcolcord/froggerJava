@@ -38,4 +38,13 @@ Thumbs.db
 
 # Eclipse Specific files #
 ##########################
+*.iws
+*.war
 .classpath
+.project
+.settings
+/*.launch
+/*.tmproj
+/out/**
+stacktrace.log
+test/reports
