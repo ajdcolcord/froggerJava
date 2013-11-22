@@ -6,7 +6,7 @@ import tester.*;
 
 /** represents the examples, tests, and initial state of the frogger game 
  * 
- * @author Austin
+ * @author Austin Colcord
  *
  */
 public class ExamplesFrogger implements FroggerWorldConstants {
@@ -16,12 +16,17 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     Frog frog;
     
     
-    /** initialize objects */
+    /** initialize objects
+     * 
+     *  @author Austin Colcord
+     *  */
     public void reset() {
         frog = new Frog();
     }
     
-    // test the moveFrogUp
+    /** test the moveFrogUp
+     * @author Austin Colcord
+     */
     public void testMoveFrogUp(Tester t) {
         reset();
         t.checkExpect(this.frog.posn.y, (canvasHeight / 20));
@@ -32,7 +37,9 @@ public class ExamplesFrogger implements FroggerWorldConstants {
                 ((canvasHeight / 20) + (canvasHeight / 10)));
     }
     
-    // test the moveFrogDown
+    /** test the moveFrogDown
+     * @author Austin Colcord
+     */
     public void testMoveFrogDown(Tester t) {
         reset();
         t.checkExpect(this.frog.posn.y, (canvasHeight / 20));
@@ -47,22 +54,33 @@ public class ExamplesFrogger implements FroggerWorldConstants {
         t.checkExpect(this.frog.posn.y, (canvasHeight - (canvasHeight / 10)));
     }
     
-    // test the moveFrogLeft
+    /** test the moveFrogLeft
+     * @author Austin Colcord
+     */
     public void testMoveFrogLeft(Tester t) {
         reset();
         t.checkExpect(this.frog.posn.x, (canvasWidth / 2));
         this.frog.moveFrogLeft();
         t.checkExpect(this.frog.posn.x, 
                 ((canvasWidth / 2) - (canvasWidth / 5)));
+        this.frog.posn.x = (canvasWidth / 20);
+        this.frog.moveFrogLeft();
+        t.checkExpect(this.frog.posn.x, (canvasWidth / 20));
     }
     
-    // test the moveFrogRight
+    /** test the moveFrogRight
+     * @author Austin Colcord
+     */
     public void testMoveFrogRight(Tester t) {
         reset();
         t.checkExpect(this.frog.posn.x, (canvasWidth / 2));
         this.frog.moveFrogRight();
         t.checkExpect(this.frog.posn.x, 
                 ((canvasWidth / 2) + (canvasWidth / 5)));
+        this.frog.posn.x = ((canvasWidth / 20) * 19);
+        this.frog.moveFrogRight();
+        t.checkExpect(this.frog.posn.x, ((canvasWidth / 20) * 19));
+        
     }
     
    

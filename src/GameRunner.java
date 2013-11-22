@@ -1,7 +1,6 @@
-/** the class that runs the Frogger Game
+/** represents the class that will run the game
  * 
- * @author Austin
- *
+ * @author Austin Colcord
  */
 public class GameRunner {
 
