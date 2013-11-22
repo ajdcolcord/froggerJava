@@ -7,10 +7,9 @@
  *     2.2 METHODS
  *       2.2.1 onTick()             -- void
  *       2.2.2 onKeyEvent(String)   -- void
- *       2.2.3 onMouseClicked(Posn) -- void
- *       2.2.4 worldEnds()          -- WorldEnd
- *       2.2.5 makeImage()          -- WorldImage
- *       2.2.6 lastImage(String)    -- WorldImage
+ *       2.2.3 worldEnds()          -- WorldEnd
+ *       2.2.4 makeImage()          -- WorldImage
+ *       2.2.5 lastImage(String)    -- WorldImage
  * 
  *****************************************************************************/
 
@@ -55,7 +54,7 @@ public class GameRunner {
 
 
     // 2.2.2 - onKeyEvent(String) /////////////////////////////////////////////
-    /** TBD
+    /** Change the direction of the player.
      * @author Nick Alekhine
      * 
      *  */
@@ -64,18 +63,9 @@ public class GameRunner {
     }
 
     
-    // 2.2.3 - onMouseClicked(Posn) ///////////////////////////////////////////
-    /** TBD
-     * @author Nick Alekhine
-     * 
-     *  */
-    public void onMouseClicked(Posn p) {
-
-    }
-
-    
-    // 2.2.4 - worldEnds() ////////////////////////////////////////////////////
-    /** TBD
+    // 2.2.3 - worldEnds() ////////////////////////////////////////////////////
+    /** To end the game if a collision occurs. 
+     * @return WorldEnd
      * @author Nick Alekhine
      * 
      *  */
@@ -84,8 +74,9 @@ public class GameRunner {
     }
 
     
-    // 2.2.5 - makeImage() ////////////////////////////////////////////////////
-    /** TBD
+    // 2.2.4 - makeImage() ////////////////////////////////////////////////////
+    /** To draw the world onto the scene.
+     * @return WorldImage 
      * @author Nick Alekhine
      * 
      *  */
@@ -95,7 +86,8 @@ public class GameRunner {
 
     
     // 2.2.6 - lastImage(String) //////////////////////////////////////////////
-    /** TBD
+    /** To draw the win / lose message at the end of the game. 
+     * @return WorldImage
      * @author Nick Alekhine
      * 
      *  */
