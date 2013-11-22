@@ -10,8 +10,8 @@ import java.awt.Color;
  * @author Austin
  *
  */
-public class Logs extends AWaterObject {
-    Logs(Posn posn, WorldImage image) {
+public class Log extends AWaterObject {
+    Log(Posn posn, WorldImage image) {
         super(posn, image);
     }
 }

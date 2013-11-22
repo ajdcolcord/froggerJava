@@ -3,7 +3,9 @@
  *   1. Libraries
  *   2. GameRunner
  *     2.1 FIELDS
- *       2.1.1 N/A
+ *       2.1.1 player -- Frog
+ *       2.1.2 cars   -- ArrayList<Log>
+ *       2.1.3 logs   -- ArrayList<Car>
  *     2.2 METHODS
  *       2.2.1 onTick()             -- void
  *       2.2.2 onKeyEvent(String)   -- void
@@ -19,6 +21,7 @@
 
 // 1 - Libraries //////////////////////////////////////////////////////////////
 import java.awt.Color;
+import java.util.ArrayList;
 import javalib.colors.Red;
 import javalib.tunes.Note;
 import javalib.worldimages.Posn;
@@ -39,6 +42,9 @@ import javalib.worldimages.WorldImage;
  *
  */
 public class GameRunner {
+    Frog player;
+    ArrayList<Car> cars;
+    ArrayList<Log> logs;
 
     GameRunner() {}
 
@@ -85,7 +91,7 @@ public class GameRunner {
     }
 
     
-    // 2.2.6 - lastImage(String) //////////////////////////////////////////////
+    // 2.2.5 - lastImage(String) //////////////////////////////////////////////
     /** To draw the win / lose message at the end of the game. 
      * @return WorldImage
      * @author Nick Alekhine
