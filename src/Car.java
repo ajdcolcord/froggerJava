@@ -94,6 +94,14 @@ public class Car implements FroggerWorldConstants{
          //if ( (this.posn.x - (this.width / 2)) <= ((f.posn.x + ))
          return false;
      }
+     
+     public void moveLeft() {
+         
+     }
+     
+     public void moveRight() {
+         
+     }
     
 
 

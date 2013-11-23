@@ -231,4 +231,12 @@ public class ExamplesFrogger implements FroggerWorldConstants {
         this.frog.loseLife();
         t.checkExpect(this.frog.lives, 1);
     }
+    
+    
+    ///////////////////////////////////////////////////////////////////////////
+    public static void main(String[] argv) {
+        ExamplesFrogger ef = new ExamplesFrogger();
+
+        Tester.runReport(ef, false, false);
+      }
 }

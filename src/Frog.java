@@ -104,4 +104,9 @@ public class Frog implements FroggerWorldConstants {
     public void loseLife() {
         this.lives = this.lives - 1;
     }
+    
+    // 2.2.6 //////////////////////////////////////////////////////////////////
+    public void move(Boolean facingLeft, int speed) {
+        
+    }
 }

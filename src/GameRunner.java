@@ -3,9 +3,10 @@
  *   1. Libraries
  *   2. GameRunner
  *     2.1 FIELDS
- *       2.1.1 player -- Frog
- *       2.1.2 cars   -- ArrayList<Log>
- *       2.1.3 logs   -- ArrayList<Car>
+ *       2.1.1 player   -- Frog
+ *       2.1.2 cars     -- ArrayList<Log>
+ *       2.1.3 logs     -- ArrayList<Car>
+ *       2.1.4 LilyPads -- ArrayList<LilyPad>
  *     2.2 METHODS
  *       2.2.1 onTick()                     -- void
  *         2.2.1.1 moveWhenOnLilyPadOrLog() -- void
@@ -32,7 +33,7 @@ import javalib.worldimages.RectangleImage;
 import javalib.worldimages.TextImage;
 import javalib.worldimages.WorldEnd;
 import javalib.worldimages.WorldImage;
-
+import javalib.soundworld.World;
 
 
 
@@ -44,13 +45,27 @@ import javalib.worldimages.WorldImage;
  * @author Nick Alekhine
  *
  */
-public class GameRunner implements FroggerWorldConstants {
+public class GameRunner extends World implements FroggerWorldConstants {
     Frog player;
     ArrayList<Car> cars;
     ArrayList<Log> logs;
     ArrayList<LilyPad> lilypads;
 
-    GameRunner() {}
+
+    //    GameRunner(Frog player, ArrayList<Car> cars, 
+    //               ArrayList<Log> logs, ArrayList<LilyPad> lilypads) {
+    //        this.player = player;
+    //        this.cars = cars;
+    //        this.logs = logs;
+    //        this.lilypads = lilypads;
+    //    }
+
+    GameRunner() {
+        this.player = new Frog();
+        this.cars = new ArrayList<Car>();
+        this.logs = new ArrayList<Log>();
+        this.lilypads = new ArrayList<LilyPad>();
+    }
 
 
     // 2.2.1 - onTick() ///////////////////////////////////////////////////////
@@ -155,7 +170,7 @@ public class GameRunner implements FroggerWorldConstants {
      * 
      *  */
     public WorldEnd worldEnds() {
-        return null;
+        return new WorldEnd(false, this.makeImage());
     }
 
 
@@ -167,19 +182,19 @@ public class GameRunner implements FroggerWorldConstants {
      *  */
     public WorldImage makeImage() {
         WorldImage stack = player.image.overlayImages(froggerBackgroundImage);
-        
+
         for (Car c : this.cars) {
             stack = stack.overlayImages(c.image);
         }
-        
+
         for (Log l : this.logs) {
             stack = stack.overlayImages(l.image);
         }
-        
+
         for (LilyPad lp : this.lilypads) {
             stack = stack.overlayImages(lp.image);
         }
-        
+
         return stack;
     }
 
@@ -191,6 +206,13 @@ public class GameRunner implements FroggerWorldConstants {
      * 
      *  */
     public WorldImage lastImage(String s) {
-        return null;
+        return this.makeImage().overlayImages(
+                new TextImage(new Posn(150, 80), s, 
+                        15, 3, new Red()));
     }
+
+
+    // support for the regression tests
+    public static ExamplesFrogger examplesInstance = 
+            new ExamplesFrogger();
 }
