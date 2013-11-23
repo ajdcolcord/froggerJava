@@ -11,7 +11,9 @@ import java.awt.Color;
  *
  */
 public class Log extends AWaterObject {
-    Log(Posn posn, WorldImage image) {
-        super(posn, image);
+    Log(Posn posn, boolean facingLeft, int speed, WorldImage image) {
+        super(posn, facingLeft, speed, image);
+        this.width = 266;
+        this.height = 100;
     }
 }

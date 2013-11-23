@@ -75,6 +75,7 @@ public class ExamplesFrogger implements FroggerWorldConstants {
                 new Posn((canvasWidth / 2), 
                         ((canvasHeight / 20) * 3)),
                         true,
+                        5,
                         new FromFileImage(
                                 new Posn((canvasWidth / 2), 
                                         ((canvasHeight / 20) * 3)), 
@@ -83,6 +84,7 @@ public class ExamplesFrogger implements FroggerWorldConstants {
                 new Posn ((canvasWidth / 2),
                         ((canvasHeight / 20) * 5)),
                         false,
+                        5,
                         new FromFileImage(
                                 new Posn ((canvasWidth / 2),
                                         ((canvasHeight / 20) * 5)),
@@ -229,4 +231,4 @@ public class ExamplesFrogger implements FroggerWorldConstants {
         this.frog.loseLife();
         t.checkExpect(this.frog.lives, 1);
     }
-    }
+}

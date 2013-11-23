@@ -7,7 +7,9 @@ import javalib.worldimages.WorldImage;
  *
  */
 public class LilyPad extends AWaterObject {
-    LilyPad(Posn posn, WorldImage image) {
-        super(posn, image);
+    LilyPad(Posn posn, boolean facingLeft, int speed, WorldImage image) {
+        super(posn, facingLeft, speed, image);
+        this.width = 100;
+        this.height = 100;
     }
 }
