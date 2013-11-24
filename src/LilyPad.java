@@ -6,7 +6,7 @@ import javalib.worldimages.WorldImage;
  * @author Austin
  *
  */
-public class LilyPad extends AWaterObject {
+public class LilyPad extends MovingObject {
     LilyPad(Posn posn, boolean facingLeft, int speed, WorldImage image) {
         super(posn, facingLeft, speed, image);
         this.width = 100;

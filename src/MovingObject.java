@@ -1,7 +1,7 @@
 /******************************************************************************
  * TABLE OF CONTENTS
  *   1. Libraries
- *   2. AWaterObject
+ *   2. MovingObject
  *      2.1 FIELDS
  *          2.1.1 posn          -- Posn
  *          2.1.2 facingLeft    -- boolean
@@ -30,7 +30,7 @@ import java.awt.Color;
  * @author Austin
  *
  */
-public class AWaterObject implements FroggerWorldConstants {
+public abstract class MovingObject implements FroggerWorldConstants {
     Posn posn;          //2.1.1
     boolean facingLeft; //2.1.2
     int speed;          //2.1.3
@@ -38,7 +38,7 @@ public class AWaterObject implements FroggerWorldConstants {
     int width;          //2.1.5
     int height;         //2.1.6
 
-    AWaterObject(Posn posn, boolean facingLeft, int speed, WorldImage image) {
+    MovingObject(Posn posn, boolean facingLeft, int speed, WorldImage image) {
         this.posn = posn;
         this.facingLeft = facingLeft;
         this.speed = speed;
@@ -49,7 +49,47 @@ public class AWaterObject implements FroggerWorldConstants {
 
 
 
-    // 2.2 Methods //////////////////////////////////////////////////////
+    // 2.2 Methods /////////////////////////////////////////////////////
+
+    // 2.2.1 /////////////////////////////////////////////////////
+    /** move the object to the left when called by the 
+     * rate of speed that the object contains. Once the
+     * object has fully passed the left edge of the screen,
+     * place the object at the border of the right edge
+     * of the screen to restart the object
+     * 
+     * @author Austin Colcord
+     */
+    public void moveObjectLeft() {
+        int pastScreen = 100;
+        if (this.posn.x <= -pastScreen) {
+            this.posn.x = canvasWidth + pastScreen;
+        }
+        else {
+            this.posn.x = this.posn.x - this.speed;
+        }
+    }
+
+    // 2.2.2 /////////////////////////////////////////////////////
+    /** move the object to the right when called by the rate
+     * of speed that the object contains. Once the object has
+     * fully passed the right edge of the screen, place the object at
+     * the border of the left edge of the screen to restart the object
+     * 
+     * @author Austin Colcord
+     */
+    public void moveObjectRight() {
+        int pastScreen = canvasWidth + 100;
+        int beforeScreen = -100;
+        if (this.posn.x >= pastScreen) {
+            this.posn.x = beforeScreen;
+        }
+        else {
+            this.posn.x = this.posn.x + this.speed;
+        }
+    }
+
+    // 2.2.3 //////////////////////////////////////////////////////
     /** return a boolean to tell if the frog has collided with this object
      * @param f the frog that is given to test against this
      * @author Austin Colcord
@@ -72,12 +112,6 @@ public class AWaterObject implements FroggerWorldConstants {
         }
     } 
 
-    public void moveLeft() {
 
-    }
-
-    public void moveRight() {
-
-    }
 
 }

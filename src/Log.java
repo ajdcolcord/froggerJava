@@ -10,7 +10,7 @@ import java.awt.Color;
  * @author Austin
  *
  */
-public class Log extends AWaterObject {
+public class Log extends MovingObject {
     Log(Posn posn, boolean facingLeft, int speed, WorldImage image) {
         super(posn, facingLeft, speed, image);
         this.width = 266;

@@ -6,6 +6,7 @@
  *          2.1.1 frog      -- Frog
  *          2.1.2 car1      -- Car
  *          2.1.3 car2      -- Car
+ *          2.1.4
  *          2.1.4 clist1    -- ArrayList<Car>
  *      2.2 METHODS
  *          2.2.1 reset()                           -- void
@@ -33,7 +34,6 @@ import javalib.worldimages.Posn;
 import javalib.worldimages.WorldImage;
 import tester.*;
 
-<<<<<<< HEAD
 import java.awt.Color;
 import java.util.Iterator;
 
@@ -65,7 +65,7 @@ import tester.Tester;
  * @author Austin Colcord
  *
  */
-public class ExamplesFrogger extends World implements FroggerWorldConstants {
+public class ExamplesFrogger implements FroggerWorldConstants {
 
     // 2.1 Examples of Objects ///////////////////////////////////////////////
 
@@ -75,18 +75,23 @@ public class ExamplesFrogger extends World implements FroggerWorldConstants {
 
     // initial instance of a car that is at the bottom row of the road,
     // at the center of the screen, facing left
-    Car car1;  //2.1.2
+    MovingObject car1;  //2.1.2
 
     // initial instance of a car that is at the second to bottom
     // row of the road, at the center of the screen, facing right
-    Car car2;  //2.1.3
+    MovingObject car2;  //2.1.3
 
     // initial instance of a log that is at the middle of the bottom
     // row of water, facing left
-    Log log1;
+    MovingObject log1;
+
+    // initial instance of a lilypad that is at the center of the middle
+    // row of water, facing right
+    MovingObject lily1;
+
 
     // an ArrayList of Cars that will be used to test the functions
-    ArrayList<Car> clist1;
+    ArrayList<MovingObject> molist1;
 
     /////////////////////////////////////////////////////////////////////
 
@@ -100,6 +105,7 @@ public class ExamplesFrogger extends World implements FroggerWorldConstants {
      *  */
     public void reset() {
         frog = new Frog();
+
         car1 = new Car(
                 new Posn((canvasWidth / 2), 
                         ((canvasHeight / 20) * 3)),
@@ -108,7 +114,7 @@ public class ExamplesFrogger extends World implements FroggerWorldConstants {
                         new FromFileImage(
                                 new Posn((canvasWidth / 2), 
                                         ((canvasHeight / 20) * 3)), 
-                                "CarLeft.jpg"));
+                                "CarLeft.jpg")); 
         car2 = new Car(
                 new Posn ((canvasWidth / 2),
                         ((canvasHeight / 20) * 5)),
@@ -120,12 +126,25 @@ public class ExamplesFrogger extends World implements FroggerWorldConstants {
                                 "CarRight.jpg"));
         log1 = new Log(
                 new Posn ((canvasWidth / 2),
-                        ((canvasHeight / 20) * 13)), true, 5, 
+                        ((canvasHeight / 20) * 13)),
+                        true, 
+                        5, 
                         new FromFileImage(
                                 new Posn((canvasWidth / 2),
                                         (((canvasHeight / 20) * 13))), 
                                 "Log.gif"));
-        clist1 = new ArrayList<Car>();
+
+        lily1 = new LilyPad(
+                new Posn ((canvasWidth / 2),
+                        ((canvasHeight / 20) * 15)), 
+                        false, 
+                        5,
+                        new FromFileImage(
+                                new Posn ((canvasWidth / 2),
+                                        ((canvasHeight / 20) * 15)),
+                                "LilyPad.png"));
+
+        molist1 = new ArrayList<MovingObject>();
     }
 
     // 2.2.2 ////////////////////////////////////////////
@@ -136,13 +155,13 @@ public class ExamplesFrogger extends World implements FroggerWorldConstants {
      * @param ArrayList<Car>
      * @author Austin Colcord
      */
-    public void moveAllCars(ArrayList<Car> clist) {
-        for (Car c : clist) {
-            if (c.facingLeft) {
-                c.moveCarLeft();
+    public void moveAllObjects(ArrayList<MovingObject> molist) {
+        for (MovingObject mo : molist) {
+            if (mo.facingLeft) {
+                mo.moveObjectLeft();
             }
             else {
-                c.moveCarRight();
+                mo.moveObjectRight();
             }
         }
     }
@@ -222,44 +241,75 @@ public class ExamplesFrogger extends World implements FroggerWorldConstants {
     /** test the moveCarLeft
      * @author Austin Colcord
      */
-    public void testMoveCarLeft(Tester t) {
+    public void testMoveObjectLeft(Tester t) {
         reset();
         t.checkExpect(this.car1.posn.x, (canvasWidth / 2));
-        this.car1.moveCarLeft();
+        this.car1.moveObjectLeft();
         t.checkExpect(this.car1.posn.x, ((canvasWidth / 2) - 5));
         this.car1.posn.x = -100;
-        this.car1.moveCarLeft();
+        this.car1.moveObjectLeft();
         t.checkExpect(this.car1.posn.x, (canvasWidth + 100));
+        t.checkExpect(this.log1.posn.x, (canvasWidth / 2));
+        this.log1.moveObjectLeft();
+        t.checkExpect(this.log1.posn.x, ((canvasWidth / 2) - 5));
+        this.log1.posn.x = -110;
+        this.log1.moveObjectLeft();
+        t.checkExpect(this.log1.posn.x, (canvasWidth + 100));
+        t.checkExpect(this.lily1.posn.x, (canvasWidth / 2));
+        this.lily1.moveObjectLeft();
+        t.checkExpect(this.lily1.posn.x, ((canvasWidth / 2) - 5));
+        this.lily1.posn.x = -105;
+        this.lily1.moveObjectLeft();
+        t.checkExpect(this.lily1.posn.x, (canvasWidth + 100));
     }
 
     // 2.3.6 ////////////////////////////////////////////
     /** test the moveCarLeft
      * @author Austin Colcord
      */
-    public void testMoveCarRight(Tester t) {
+    public void testMoveObjectRight(Tester t) {
         reset();
         t.checkExpect(this.car1.posn.x, (canvasWidth / 2));
-        this.car1.moveCarRight();
+        this.car1.moveObjectRight();
         t.checkExpect(this.car1.posn.x, ((canvasWidth / 2) + 5));
         this.car1.posn.x = (canvasWidth + 100);
-        this.car1.moveCarRight();
+        this.car1.moveObjectRight();
         t.checkExpect(this.car1.posn.x, -100);
-    }
+        t.checkExpect(this.log1.posn.x, (canvasWidth / 2));
+        this.log1.moveObjectRight();
+        t.checkExpect(this.log1.posn.x, ((canvasWidth / 2) + 5));
+        this.log1.posn.x = (canvasWidth + 120);
+        this.log1.moveObjectRight();
+        t.checkExpect(this.log1.posn.x, -100);
+        t.checkExpect(this.lily1.posn.x, (canvasWidth / 2));
+        this.lily1.moveObjectRight();
+        t.checkExpect(this.lily1.posn.x, ((canvasWidth / 2) + 5));
+        this.lily1.posn.x = (canvasWidth + 120);
+        this.lily1.moveObjectRight();
+        t.checkExpect(this.lily1.posn.x, -100);
+    } 
 
     // 2.3.7 ////////////////////////////////////////////
     /** test the moveAllCars
      * 
      * @author Austin Colcord
      */
-    public void testMoveAllCars(Tester t) {
+    public void testMoveAllObjects(Tester t) {
         reset();
-        this.clist1.add(this.car1);
-        this.clist1.add(this.car2);
+        this.molist1.add(this.car1);
+        this.molist1.add(this.car2);
+        this.molist1.add(this.log1);
+        this.molist1.add(this.lily1);
         t.checkExpect(this.car1.posn.x, (canvasWidth / 2));
         t.checkExpect(this.car2.posn.x, (canvasWidth / 2));
-        this.moveAllCars(this.clist1);
+        t.checkExpect(this.log1.posn.x, (canvasWidth / 2));
+        t.checkExpect(this.lily1.posn.x, (canvasWidth / 2));
+        this.moveAllObjects(this.molist1);
         t.checkExpect(this.car1.posn.x, ((canvasWidth / 2) - 5));
         t.checkExpect(this.car2.posn.x, ((canvasWidth / 2) + 5));
+        t.checkExpect(this.log1.posn.x, ((canvasWidth / 2) - 5));
+        t.checkExpect(this.lily1.posn.x, ((canvasWidth / 2) + 5));
+
     }
 
     // 2.3.8 ////////////////////////////////////////////
@@ -288,19 +338,24 @@ public class ExamplesFrogger extends World implements FroggerWorldConstants {
         t.checkExpect(this.log1.collide(this.frog), false);
         this.frog.posn.y = this.log1.posn.y;
         t.checkExpect(this.log1.collide(this.frog), true);
-        this.frog.posn.x = 0;
+        reset();
         t.checkExpect(this.log1.collide(this.frog), false);
+        t.checkExpect(this.car1.collide(this.frog), false);
+        this.frog.posn.y = this.car1.posn.y;
+        t.checkExpect(this.car1.collide(this.frog), true);
+        this.frog.posn.x = this.frog.posn.x + 100;
+        t.checkExpect(this.car1.collide(this.frog), false);
     }
 
 
 
-    
+
     GameRunner world = new GameRunner();
 
     // 2.3.9 - testWholeWorld /////////////////////////////////////////////////
     // to run the game
     void testWholeWorld(Tester t) {
-        this.world.bigBang(600, 300, 0.2);
+        //this.world.bigBang(600, 300, 0.2);
     }
 
 
@@ -311,4 +366,5 @@ public class ExamplesFrogger extends World implements FroggerWorldConstants {
 
         Tester.runReport(ef, false, false);
     }
+
 }

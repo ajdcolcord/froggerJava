@@ -9,9 +9,6 @@
  *          2.1.4 image         -- WorldImage
  *          2.1.5 width         -- int
  *          2.1.6 height        -- int
- *      2.2 METHODS
- *          2.2.1 moveCarLeft()     -- void
- *          2.2.2 moveCarRight()    -- void
  *      
  *          
  *          
@@ -28,7 +25,7 @@ import javalib.worldimages.WorldImage;
  * 
  * @author Austin Colcord
  * */
-public class Car implements FroggerWorldConstants{
+public class Car extends MovingObject implements FroggerWorldConstants{
     // 2.1 //////////////////////////////////////
     Posn posn;          //2.1.1
     boolean facingLeft; //2.1.2
@@ -38,73 +35,9 @@ public class Car implements FroggerWorldConstants{
     int height;         //2.1.6
 
     Car(Posn posn, boolean facingLeft, int speed, WorldImage image) {
-        this.posn = posn;
-        this.facingLeft = facingLeft;
-        this.speed = speed;
-        this.image = image;
+        super(posn, facingLeft, speed, image);
         this.width = 100;
         this.height = 100;
     }
-
-    ////////////////////////////////////////////////////////////////
-
-    // 2.2 Methods /////////////////////////////////////////////////
-
-    // 2.2.1 /////////////////////////////////////////////////////
-    /** move the car to the left when called by the 
-     * rate of speed that the car contains. Once the
-     * car has fully passed the left edge of the screen,
-     * place the car at the border of the right edge
-     * of the screen to restart the car
-     * 
-     * @author Austin Colcord
-     */
-    public void moveCarLeft() {
-        int pastScreen = 100;
-        if (this.posn.x <= -pastScreen) {
-            this.posn.x = canvasWidth + pastScreen;
-        }
-        else {
-            this.posn.x = this.posn.x - this.speed;
-        }
-    }
-
-    // 2.2.2 /////////////////////////////////////////////////////
-    /** move the car to the right when called by the rate
-     * of speed that the car contains. Once the car has
-     * fully passed the right edge of the screen, place the car at
-     * the border of the left edge of the screen to restart the car
-     * 
-     * @author Austin Colcord
-     */
-    public void moveCarRight() {
-        int pastScreen = canvasWidth + 100;
-        int beforeScreen = -100;
-        if (this.posn.x >= pastScreen) {
-            this.posn.x = beforeScreen;
-        }
-        else {
-            this.posn.x = this.posn.x + this.speed;
-        }
-    }
-    
-    // 2.2.3 /////////////////////////////////////////////////////
-    /** return a boolean to tell if the frog has collided with this object
-     * @author Austin Colcord
-     */
-     public boolean collide(Frog f) {
-         //if ( (this.posn.x - (this.width / 2)) <= ((f.posn.x + ))
-         return false;
-     }
-     
-     public void moveLeft() {
-         
-     }
-     
-     public void moveRight() {
-         
-     }
-    
-
 
 }

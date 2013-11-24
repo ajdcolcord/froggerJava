@@ -142,30 +142,30 @@ public class GameRunner extends World implements FroggerWorldConstants {
         // go through list of cars and move them 
         for (Car c : this.cars) {
             if (c.facingLeft) {
-                c.moveLeft();
+                c.moveObjectLeft();
             }
             else {
-                c.moveRight();
+                c.moveObjectRight();
             }
         }
 
         // go through list of logs and move them
         for (Log l : this.logs) {
             if (l.facingLeft) {
-                l.moveLeft();
+                l.moveObjectLeft();
             }
             else {
-                l.moveRight();
+                l.moveObjectRight();
             }
         }
 
         // go through list of lilypads and move them
         for (LilyPad lp : this.lilypads) {
             if (lp.facingLeft) {
-                lp.moveLeft();
+                lp.moveObjectLeft();
             }
             else {
-                lp.moveRight();
+                lp.moveObjectRight();
             }
         }
     }
