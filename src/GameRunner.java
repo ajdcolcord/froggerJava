@@ -31,6 +31,11 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import javalib.colors.Red;
+
+
+
+
+
 import javalib.tunes.Note;
 import javalib.worldimages.OverlayImagesXY;
 import javalib.worldimages.Posn;
@@ -39,6 +44,28 @@ import javalib.worldimages.TextImage;
 import javalib.worldimages.WorldEnd;
 import javalib.worldimages.WorldImage;
 import javalib.soundworld.World;
+
+
+import java.awt.Color;
+import java.util.Iterator;
+
+import javalib.colors.Red;
+import javalib.soundworld.World;
+import javalib.tunes.Note;
+import javalib.tunes.SoundConstants;
+import javalib.tunes.TuneBucket;
+import javalib.worldimages.CircleImage;
+import javalib.worldimages.DiskImage;
+import javalib.worldimages.FromFileImage;
+import javalib.worldimages.LineImage;
+import javalib.worldimages.OvalImage;
+import javalib.worldimages.Posn;
+import javalib.worldimages.RectangleImage;
+import javalib.worldimages.TextImage;
+import javalib.worldimages.TriangleImage;
+import javalib.worldimages.WorldEnd;
+import javalib.worldimages.WorldImage;
+import tester.Tester;
 
 
 
@@ -182,7 +209,23 @@ public class GameRunner extends World implements FroggerWorldConstants {
      * 
      *  */
     public void onKeyEvent(String ke){
-
+        if (ke.equals("up")) {
+            System.out.println("up " + this.player.posn.y);
+            this.player.moveFrogUp();
+            System.out.println("up2 " + this.player.posn.y);
+        }
+        else if (ke.equals("down")) {
+            System.out.println("down");
+            this.player.moveFrogDown();
+        }
+        else if (ke.equals("left")) {
+            System.out.println("left");
+            this.player.moveFrogLeft();
+        }
+        else if (ke.equals("right")) {
+            System.out.println("right");
+            this.player.moveFrogRight();
+        }
     }
 
 
@@ -213,9 +256,9 @@ public class GameRunner extends World implements FroggerWorldConstants {
      *  */
     public WorldImage makeImage() {
         WorldImage stack = new OverlayImagesXY(froggerBackgroundImage,
-                                               player.image,
-                                               player.posn.x, 
-                                               player.posn.y);
+                                               this.player.image,
+                                               this.player.posn.x, 
+                                               this.player.posn.y);
 
 
         for (Car c : this.cars) {
@@ -231,6 +274,11 @@ public class GameRunner extends World implements FroggerWorldConstants {
         }
 
         return stack;
+    }
+    
+    
+    public WorldImage onDraw() {
+        return this.makeImage();
     }
 
 

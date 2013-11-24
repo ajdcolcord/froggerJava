@@ -52,7 +52,9 @@ public class Frog implements FroggerWorldConstants {
      * @author Austin Colcord
      * */
     public void moveFrogUp() {
-        this.posn.y = this.posn.y + (canvasHeight / 10);
+        if (this.posn.y > 50) {
+            this.posn.y = this.posn.y - (canvasHeight / 10);
+        }
     }
 
     // 2.2.2 ////////////////////////////////////////////////////
@@ -61,12 +63,8 @@ public class Frog implements FroggerWorldConstants {
      * @author Austin Colcord
      */
     public void moveFrogDown() {
-        if (this.posn.y <= (canvasHeight / 10)) {
-            // if the frog is at the bottom row, don't do anything
-            this.posn = this.posn;
-        }
-        else {
-            this.posn.y = this.posn.y - (canvasHeight / 10);
+        if (this.posn.y < (canvasHeight) - 50) {
+            this.posn.y = this.posn.y + (canvasHeight / 10);
         }
     }
 
