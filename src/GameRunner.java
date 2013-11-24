@@ -7,14 +7,18 @@
  *       2.1.2 cars     -- ArrayList<Log>
  *       2.1.3 logs     -- ArrayList<Car>
  *       2.1.4 LilyPads -- ArrayList<LilyPad>
- *     2.2 METHODS
- *       2.2.1 onTick()                     -- void
- *         2.2.1.1 moveWhenOnLilyPadOrLog() -- void
- *         2.2.1.2 moveObjects()            -- void
- *       2.2.2 onKeyEvent(String)           -- void
- *       2.2.3 worldEnds()                  -- WorldEnd
- *       2.2.4 makeImage()                  -- WorldImage
- *       2.2.5 lastImage(String)            -- WorldImage
+ *     2.2 CONSTRUCTORS
+ *       2.2.1 GameRunner()
+ *       2.2.2 GameRunner(Frog, ArrayList<Car>,
+ *                        ArrayList<Log>, ArrayList<LilyPad>)
+ *     2.3 METHODS
+ *       2.3.1 onTick()                     -- void
+ *         2.3.1.1 moveWhenOnLilyPadOrLog() -- void
+ *         2.3.1.2 moveObjects()            -- void
+ *       2.3.2 onKeyEvent(String)           -- void
+ *       2.3.3 worldEnds()                  -- WorldEnd
+ *       2.3.4 makeImage()                  -- WorldImage
+ *       2.3.5 lastImage(String)            -- WorldImage
  * 
  *****************************************************************************/
 
@@ -46,20 +50,20 @@ import javalib.soundworld.World;
  *
  */
 public class GameRunner extends World implements FroggerWorldConstants {
-    Frog player = new Frog();
-    ArrayList<Car> cars = new ArrayList<Car>();
-    ArrayList<Log> logs = new ArrayList<Log>();
-    ArrayList<LilyPad> lilypads = new ArrayList<LilyPad>();
+    ///////////////////////////////////////////////////////////////////////////
+    // 2.1 - Fields ///////////////////////////////////////////////////////////
+    Frog player;
+    ArrayList<Car> cars;
+    ArrayList<Log> logs;
+    ArrayList<LilyPad> lilypads;
 
-
-    //    GameRunner(Frog player, ArrayList<Car> cars, 
-    //               ArrayList<Log> logs, ArrayList<LilyPad> lilypads) {
-    //        this.player = player;
-    //        this.cars = cars;
-    //        this.logs = logs;
-    //        this.lilypads = lilypads;
-    //    }
-
+    
+    
+    
+    
+    ///////////////////////////////////////////////////////////////////////////
+    // 2.2 - Constructors /////////////////////////////////////////////////////
+    // 2.2.1 //////////////////////////////////////////////////////////////////
     GameRunner() {
         this.player = new Frog();
         this.cars = new ArrayList<Car>();
@@ -67,7 +71,21 @@ public class GameRunner extends World implements FroggerWorldConstants {
         this.lilypads = new ArrayList<LilyPad>();
     }
 
+    // 2.2.2 //////////////////////////////////////////////////////////////////
+    GameRunner(Frog player, ArrayList<Car> cars, 
+            ArrayList<Log> logs, ArrayList<LilyPad> lilypads) {
+        this.player = player;
+        this.cars = cars;
+        this.logs = logs;
+        this.lilypads = lilypads;
+    }
 
+    
+
+    
+    
+    ///////////////////////////////////////////////////////////////////////////
+    // 2.3 - Methods //////////////////////////////////////////////////////////
     // 2.2.1 - onTick() ///////////////////////////////////////////////////////
     /** Move the player around the scene. Move logs, lilypads, and cars.
      * @author Nick Alekhine
@@ -153,6 +171,10 @@ public class GameRunner extends World implements FroggerWorldConstants {
     }
 
 
+    
+    
+    
+    ///////////////////////////////////////////////////////////////////////////
     // 2.2.2 - onKeyEvent(String) /////////////////////////////////////////////
     /** Change the direction of the player.
      * @author Nick Alekhine
@@ -163,6 +185,10 @@ public class GameRunner extends World implements FroggerWorldConstants {
     }
 
 
+    
+    
+    
+    ///////////////////////////////////////////////////////////////////////////
     // 2.2.3 - worldEnds() ////////////////////////////////////////////////////
     /** To end the game if a collision occurs. 
      * @return WorldEnd
@@ -174,6 +200,10 @@ public class GameRunner extends World implements FroggerWorldConstants {
     }
 
 
+    
+    
+    
+    ///////////////////////////////////////////////////////////////////////////
     // 2.2.4 - makeImage() ////////////////////////////////////////////////////
     /** To draw the world onto the scene.
      * @return WorldImage 
@@ -199,6 +229,10 @@ public class GameRunner extends World implements FroggerWorldConstants {
     }
 
 
+    
+    
+    
+    ///////////////////////////////////////////////////////////////////////////
     // 2.2.5 - lastImage(String) //////////////////////////////////////////////
     /** To draw the win / lose message at the end of the game. 
      * @return WorldImage
@@ -212,6 +246,10 @@ public class GameRunner extends World implements FroggerWorldConstants {
     }
 
 
+    
+    
+    
+    ///////////////////////////////////////////////////////////////////////////
     // support for the regression tests
     public static ExamplesFrogger examplesInstance = 
             new ExamplesFrogger();
