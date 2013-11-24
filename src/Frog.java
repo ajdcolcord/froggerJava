@@ -107,4 +107,11 @@ public class Frog implements FroggerWorldConstants {
     public void move(Boolean facingLeft, int speed) {
         
     }
+    
+    
+    public WorldImage makeImage() {
+        return new FromFileImage(this.posn, "frogUp.png");
+    }
+    
+    
 }

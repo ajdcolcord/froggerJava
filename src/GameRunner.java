@@ -45,7 +45,6 @@ import javalib.worldimages.WorldEnd;
 import javalib.worldimages.WorldImage;
 import javalib.soundworld.World;
 
-
 import java.awt.Color;
 import java.util.Iterator;
 
@@ -59,6 +58,7 @@ import javalib.worldimages.DiskImage;
 import javalib.worldimages.FromFileImage;
 import javalib.worldimages.LineImage;
 import javalib.worldimages.OvalImage;
+import javalib.worldimages.OverlayImages;
 import javalib.worldimages.Posn;
 import javalib.worldimages.RectangleImage;
 import javalib.worldimages.TextImage;
@@ -255,10 +255,8 @@ public class GameRunner extends World implements FroggerWorldConstants {
      * 
      *  */
     public WorldImage makeImage() {
-        WorldImage stack = new OverlayImagesXY(froggerBackgroundImage,
-                                               this.player.image,
-                                               this.player.posn.x, 
-                                               this.player.posn.y);
+        WorldImage stack = new OverlayImages(froggerBackgroundImage,
+                                             this.player.makeImage());
 
 
         for (Car c : this.cars) {
