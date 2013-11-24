@@ -39,9 +39,9 @@ public class Frog implements FroggerWorldConstants {
     int height;
 
     Frog() {
-        this.posn = new Posn((canvasWidth / 2), (canvasHeight / 20));
+        this.posn = new Posn((canvasWidth / 2), 950);
         this.lives = 3;
-        this.image = new FromFileImage(this.posn, "FrogUp.jpg");
+        this.image = new FromFileImage(this.posn, "frogUp.png");
         this.width = 100;
         this.height = 100;
 
@@ -52,7 +52,9 @@ public class Frog implements FroggerWorldConstants {
      * @author Austin Colcord
      * */
     public void moveFrogUp() {
-        this.posn.y = this.posn.y + (canvasHeight / 10);
+        if (this.posn.y > 50) {
+            this.posn.y = this.posn.y - (canvasHeight / 10);
+        }
     }
 
     // 2.2.2 ////////////////////////////////////////////////////
@@ -61,12 +63,8 @@ public class Frog implements FroggerWorldConstants {
      * @author Austin Colcord
      */
     public void moveFrogDown() {
-        if (this.posn.y <= (canvasHeight / 10)) {
-            // if the frog is at the bottom row, don't do anything
-            this.posn = this.posn;
-        }
-        else {
-            this.posn.y = this.posn.y - (canvasHeight / 10);
+        if (this.posn.y < (canvasHeight) - 50) {
+            this.posn.y = this.posn.y + (canvasHeight / 10);
         }
     }
 
@@ -109,4 +107,11 @@ public class Frog implements FroggerWorldConstants {
     public void move(Boolean facingLeft, int speed) {
         
     }
+    
+    
+    public WorldImage makeImage() {
+        return new FromFileImage(this.posn, "frogUp.png");
+    }
+    
+    
 }

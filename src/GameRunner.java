@@ -31,13 +31,41 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import javalib.colors.Red;
+
+
+
+
+
 import javalib.tunes.Note;
+import javalib.worldimages.OverlayImagesXY;
 import javalib.worldimages.Posn;
 import javalib.worldimages.RectangleImage;
 import javalib.worldimages.TextImage;
 import javalib.worldimages.WorldEnd;
 import javalib.worldimages.WorldImage;
 import javalib.soundworld.World;
+
+import java.awt.Color;
+import java.util.Iterator;
+
+import javalib.colors.Red;
+import javalib.soundworld.World;
+import javalib.tunes.Note;
+import javalib.tunes.SoundConstants;
+import javalib.tunes.TuneBucket;
+import javalib.worldimages.CircleImage;
+import javalib.worldimages.DiskImage;
+import javalib.worldimages.FromFileImage;
+import javalib.worldimages.LineImage;
+import javalib.worldimages.OvalImage;
+import javalib.worldimages.OverlayImages;
+import javalib.worldimages.Posn;
+import javalib.worldimages.RectangleImage;
+import javalib.worldimages.TextImage;
+import javalib.worldimages.TriangleImage;
+import javalib.worldimages.WorldEnd;
+import javalib.worldimages.WorldImage;
+import tester.Tester;
 
 
 
@@ -57,10 +85,10 @@ public class GameRunner extends World implements FroggerWorldConstants {
     ArrayList<Log> logs;
     ArrayList<LilyPad> lilypads;
 
-    
-    
-    
-    
+
+
+
+
     ///////////////////////////////////////////////////////////////////////////
     // 2.2 - Constructors /////////////////////////////////////////////////////
     // 2.2.1 //////////////////////////////////////////////////////////////////
@@ -80,10 +108,10 @@ public class GameRunner extends World implements FroggerWorldConstants {
         this.lilypads = lilypads;
     }
 
-    
 
-    
-    
+
+
+
     ///////////////////////////////////////////////////////////////////////////
     // 2.3 - Methods //////////////////////////////////////////////////////////
     // 2.2.1 - onTick() ///////////////////////////////////////////////////////
@@ -171,9 +199,9 @@ public class GameRunner extends World implements FroggerWorldConstants {
     }
 
 
-    
-    
-    
+
+
+
     ///////////////////////////////////////////////////////////////////////////
     // 2.2.2 - onKeyEvent(String) /////////////////////////////////////////////
     /** Change the direction of the player.
@@ -181,13 +209,29 @@ public class GameRunner extends World implements FroggerWorldConstants {
      * 
      *  */
     public void onKeyEvent(String ke){
-
+        if (ke.equals("up")) {
+            System.out.println("up " + this.player.posn.y);
+            this.player.moveFrogUp();
+            System.out.println("up2 " + this.player.posn.y);
+        }
+        else if (ke.equals("down")) {
+            System.out.println("down");
+            this.player.moveFrogDown();
+        }
+        else if (ke.equals("left")) {
+            System.out.println("left");
+            this.player.moveFrogLeft();
+        }
+        else if (ke.equals("right")) {
+            System.out.println("right");
+            this.player.moveFrogRight();
+        }
     }
 
 
-    
-    
-    
+
+
+
     ///////////////////////////////////////////////////////////////////////////
     // 2.2.3 - worldEnds() ////////////////////////////////////////////////////
     /** To end the game if a collision occurs. 
@@ -200,9 +244,9 @@ public class GameRunner extends World implements FroggerWorldConstants {
     }
 
 
-    
-    
-    
+
+
+
     ///////////////////////////////////////////////////////////////////////////
     // 2.2.4 - makeImage() ////////////////////////////////////////////////////
     /** To draw the world onto the scene.
@@ -211,7 +255,9 @@ public class GameRunner extends World implements FroggerWorldConstants {
      * 
      *  */
     public WorldImage makeImage() {
-        WorldImage stack = froggerBackgroundImage.overlayImages(player.image);
+        WorldImage stack = new OverlayImages(froggerBackgroundImage,
+                                             this.player.makeImage());
+
 
         for (Car c : this.cars) {
             stack = stack.overlayImages(c.image);
@@ -227,11 +273,16 @@ public class GameRunner extends World implements FroggerWorldConstants {
 
         return stack;
     }
+    
+    
+    public WorldImage onDraw() {
+        return this.makeImage();
+    }
 
 
-    
-    
-    
+
+
+
     ///////////////////////////////////////////////////////////////////////////
     // 2.2.5 - lastImage(String) //////////////////////////////////////////////
     /** To draw the win / lose message at the end of the game. 
@@ -246,9 +297,9 @@ public class GameRunner extends World implements FroggerWorldConstants {
     }
 
 
-    
-    
-    
+
+
+
     ///////////////////////////////////////////////////////////////////////////
     // support for the regression tests
     public static ExamplesFrogger examplesInstance = 
