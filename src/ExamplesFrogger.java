@@ -32,7 +32,9 @@ import java.util.ArrayList;
 import javalib.worldimages.FromFileImage;
 import javalib.worldimages.Posn;
 import javalib.worldimages.WorldImage;
-import tester.*;
+
+
+
 
 import java.awt.Color;
 import java.util.Iterator;
@@ -355,7 +357,7 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     // 2.3.9 - testWholeWorld /////////////////////////////////////////////////
     // to run the game
     void testWholeWorld(Tester t) {
-        //this.world.bigBang(600, 300, 0.2);
+        this.world.bigBang(500, 1000, 0.2);
     }
 
 

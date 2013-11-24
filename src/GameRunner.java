@@ -211,7 +211,7 @@ public class GameRunner extends World implements FroggerWorldConstants {
      * 
      *  */
     public WorldImage makeImage() {
-        WorldImage stack = player.image.overlayImages(froggerBackgroundImage);
+        WorldImage stack = froggerBackgroundImage.overlayImages(player.image);
 
         for (Car c : this.cars) {
             stack = stack.overlayImages(c.image);
