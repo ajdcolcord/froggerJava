@@ -116,7 +116,7 @@ public class ExamplesFrogger implements FroggerWorldConstants {
                         new FromFileImage(
                                 new Posn((canvasWidth / 2), 
                                         ((canvasHeight / 20) * 3)), 
-                                "CarLeft.jpg")); 
+                                "carLeft.png")); 
         car2 = new Car(
                 new Posn ((canvasWidth / 2),
                         ((canvasHeight / 20) * 5)),
@@ -125,7 +125,7 @@ public class ExamplesFrogger implements FroggerWorldConstants {
                         new FromFileImage(
                                 new Posn ((canvasWidth / 2),
                                         ((canvasHeight / 20) * 5)),
-                                "CarRight.jpg"));
+                                "carRight.png"));
         log1 = new Log(
                 new Posn ((canvasWidth / 2),
                         ((canvasHeight / 20) * 13)),
@@ -134,7 +134,7 @@ public class ExamplesFrogger implements FroggerWorldConstants {
                         new FromFileImage(
                                 new Posn((canvasWidth / 2),
                                         (((canvasHeight / 20) * 13))), 
-                                "Log.gif"));
+                                "log.png"));
 
         lily1 = new LilyPad(
                 new Posn ((canvasWidth / 2),
@@ -144,7 +144,7 @@ public class ExamplesFrogger implements FroggerWorldConstants {
                         new FromFileImage(
                                 new Posn ((canvasWidth / 2),
                                         ((canvasHeight / 20) * 15)),
-                                "LilyPad.png"));
+                                "lilyPad.png"));
 
         molist1 = new ArrayList<MovingObject>();
     }
