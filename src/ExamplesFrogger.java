@@ -20,6 +20,7 @@
  *          2.3.7 testMoveAllCars()
  *          2.3.8 testLoseLife()
  *          2.3.9 testCollide()
+ *          2.3.9 testWholeWorld()
  *          
  *          
  *****************************************************************************/
@@ -32,6 +33,7 @@ import javalib.worldimages.Posn;
 import javalib.worldimages.WorldImage;
 import tester.*;
 
+<<<<<<< HEAD
 import java.awt.Color;
 import java.util.Iterator;
 
@@ -49,6 +51,10 @@ import javalib.worldimages.TextImage;
 import javalib.worldimages.TriangleImage;
 import javalib.worldimages.WorldEnd;
 import tester.Tester;
+
+
+
+
 ////////////////////////////////////////////////////////////////////////////
 
 
@@ -271,6 +277,7 @@ public class ExamplesFrogger extends World implements FroggerWorldConstants {
     }
 
 
+
     // 2.3.9 ////////////////////////////////////////////
     /** test the collide
      * 
@@ -286,28 +293,22 @@ public class ExamplesFrogger extends World implements FroggerWorldConstants {
     }
 
 
+
+    
+    GameRunner world = new GameRunner();
+
+    // 2.3.9 - testWholeWorld /////////////////////////////////////////////////
+    // to run the game
+    void testWholeWorld(Tester t) {
+        this.world.bigBang(600, 300, 0.2);
+    }
+
+
+
     ///////////////////////////////////////////////////////////////////////////
     public static void main(String[] argv) {
         ExamplesFrogger ef = new ExamplesFrogger();
 
         Tester.runReport(ef, false, false);
-    }
-
-    @Override
-    public WorldImage makeImage() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void onKeyEvent(String arg0) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void onTick() {
-        // TODO Auto-generated method stub
-
     }
 }
