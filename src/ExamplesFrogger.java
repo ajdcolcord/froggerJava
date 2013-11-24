@@ -19,6 +19,7 @@
  *          2.3.6 testMoveCarRight()
  *          2.3.7 testMoveAllCars()
  *          2.3.8 testLoseLife()
+ *          2.3.9 testCollide()
  *          
  *          
  *****************************************************************************/
@@ -30,6 +31,24 @@ import javalib.worldimages.FromFileImage;
 import javalib.worldimages.Posn;
 import javalib.worldimages.WorldImage;
 import tester.*;
+
+import java.awt.Color;
+import java.util.Iterator;
+
+import javalib.colors.Red;
+import javalib.soundworld.World;
+import javalib.tunes.Note;
+import javalib.tunes.SoundConstants;
+import javalib.tunes.TuneBucket;
+import javalib.worldimages.CircleImage;
+import javalib.worldimages.DiskImage;
+import javalib.worldimages.LineImage;
+import javalib.worldimages.OvalImage;
+import javalib.worldimages.RectangleImage;
+import javalib.worldimages.TextImage;
+import javalib.worldimages.TriangleImage;
+import javalib.worldimages.WorldEnd;
+import tester.Tester;
 ////////////////////////////////////////////////////////////////////////////
 
 
@@ -40,7 +59,7 @@ import tester.*;
  * @author Austin Colcord
  *
  */
-public class ExamplesFrogger implements FroggerWorldConstants {
+public class ExamplesFrogger extends World implements FroggerWorldConstants {
 
     // 2.1 Examples of Objects ///////////////////////////////////////////////
 
@@ -55,6 +74,10 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     // initial instance of a car that is at the second to bottom
     // row of the road, at the center of the screen, facing right
     Car car2;  //2.1.3
+
+    // initial instance of a log that is at the middle of the bottom
+    // row of water, facing left
+    Log log1;
 
     // an ArrayList of Cars that will be used to test the functions
     ArrayList<Car> clist1;
@@ -89,6 +112,13 @@ public class ExamplesFrogger implements FroggerWorldConstants {
                                 new Posn ((canvasWidth / 2),
                                         ((canvasHeight / 20) * 5)),
                                 "CarRight.jpg"));
+        log1 = new Log(
+                new Posn ((canvasWidth / 2),
+                        ((canvasHeight / 20) * 13)), true, 5, 
+                        new FromFileImage(
+                                new Posn((canvasWidth / 2),
+                                        (((canvasHeight / 20) * 13))), 
+                                "Log.gif"));
         clist1 = new ArrayList<Car>();
     }
 
@@ -211,6 +241,10 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     }
 
     // 2.3.7 ////////////////////////////////////////////
+    /** test the moveAllCars
+     * 
+     * @author Austin Colcord
+     */
     public void testMoveAllCars(Tester t) {
         reset();
         this.clist1.add(this.car1);
@@ -223,6 +257,10 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     }
 
     // 2.3.8 ////////////////////////////////////////////
+    /** test the loseLife
+     * 
+     * @author Austin Colcord
+     */
     public void testLoseLife(Tester t) {
         reset();
         t.checkExpect(this.frog.lives, 3);
@@ -231,12 +269,45 @@ public class ExamplesFrogger implements FroggerWorldConstants {
         this.frog.loseLife();
         t.checkExpect(this.frog.lives, 1);
     }
-    
-    
+
+
+    // 2.3.9 ////////////////////////////////////////////
+    /** test the collide
+     * 
+     * @author Austin Colcord
+     */
+    public void testCollide(Tester t) {
+        reset();
+        t.checkExpect(this.log1.collide(this.frog), false);
+        this.frog.posn.y = this.log1.posn.y;
+        t.checkExpect(this.log1.collide(this.frog), true);
+        this.frog.posn.x = 0;
+        t.checkExpect(this.log1.collide(this.frog), false);
+    }
+
+
     ///////////////////////////////////////////////////////////////////////////
     public static void main(String[] argv) {
         ExamplesFrogger ef = new ExamplesFrogger();
 
         Tester.runReport(ef, false, false);
-      }
+    }
+
+    @Override
+    public WorldImage makeImage() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void onKeyEvent(String arg0) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void onTick() {
+        // TODO Auto-generated method stub
+
+    }
 }

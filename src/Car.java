@@ -7,6 +7,8 @@
  *          2.1.2 facingLeft    -- boolean
  *          2.1.3 speed         -- int
  *          2.1.4 image         -- WorldImage
+ *          2.1.5 width         -- int
+ *          2.1.6 height        -- int
  *      2.2 METHODS
  *          2.2.1 moveCarLeft()     -- void
  *          2.2.2 moveCarRight()    -- void
@@ -32,8 +34,8 @@ public class Car implements FroggerWorldConstants{
     boolean facingLeft; //2.1.2
     int speed;          //2.1.3
     WorldImage image;   //2.1.4
-    int width;
-    int height;
+    int width;          //2.1.5
+    int height;         //2.1.6
 
     Car(Posn posn, boolean facingLeft, int speed, WorldImage image) {
         this.posn = posn;
