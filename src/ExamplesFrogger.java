@@ -19,6 +19,7 @@
  *          2.3.6 testMoveCarRight()
  *          2.3.7 testMoveAllCars()
  *          2.3.8 testLoseLife()
+ *          2.3.9 testWholeWorld()
  *          
  *          
  *****************************************************************************/
@@ -30,6 +31,9 @@ import javalib.worldimages.FromFileImage;
 import javalib.worldimages.Posn;
 import javalib.worldimages.WorldImage;
 import tester.*;
+
+
+
 ////////////////////////////////////////////////////////////////////////////
 
 
@@ -232,11 +236,20 @@ public class ExamplesFrogger implements FroggerWorldConstants {
         t.checkExpect(this.frog.lives, 1);
     }
     
-    
+    GameRunner world = new GameRunner();
+
+    // 2.3.9 - testWholeWorld /////////////////////////////////////////////////
+    // to run the game
+    void testWholeWorld(Tester t) {
+        this.world.bigBang(600, 300, 0.2);
+    }
+
+
+
     ///////////////////////////////////////////////////////////////////////////
     public static void main(String[] argv) {
         ExamplesFrogger ef = new ExamplesFrogger();
 
         Tester.runReport(ef, false, false);
-      }
+    }
 }

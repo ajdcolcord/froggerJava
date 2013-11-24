@@ -60,12 +60,12 @@ public class GameRunner extends World implements FroggerWorldConstants {
     //        this.lilypads = lilypads;
     //    }
 
-//    GameRunner() {
-//        this.player = new Frog();
-//        this.cars = new ArrayList<Car>();
-//        this.logs = new ArrayList<Log>();
-//        this.lilypads = new ArrayList<LilyPad>();
-//    }
+    GameRunner() {
+        this.player = new Frog();
+        this.cars = new ArrayList<Car>();
+        this.logs = new ArrayList<Log>();
+        this.lilypads = new ArrayList<LilyPad>();
+    }
 
 
     // 2.2.1 - onTick() ///////////////////////////////////////////////////////
@@ -195,7 +195,7 @@ public class GameRunner extends World implements FroggerWorldConstants {
             stack = stack.overlayImages(lp.image);
         }
 
-        return froggerBackgroundImage;
+        return stack;
     }
 
 
