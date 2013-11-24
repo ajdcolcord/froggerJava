@@ -33,7 +33,7 @@ import javalib.worldimages.Posn;
 import javalib.worldimages.WorldImage;
 import tester.*;
 
-<<<<<<< HEAD
+
 import java.awt.Color;
 import java.util.Iterator;
 
@@ -65,7 +65,7 @@ import tester.Tester;
  * @author Austin Colcord
  *
  */
-public class ExamplesFrogger extends World implements FroggerWorldConstants {
+public class ExamplesFrogger implements FroggerWorldConstants {
 
     // 2.1 Examples of Objects ///////////////////////////////////////////////
 
@@ -300,7 +300,7 @@ public class ExamplesFrogger extends World implements FroggerWorldConstants {
     // 2.3.9 - testWholeWorld /////////////////////////////////////////////////
     // to run the game
     void testWholeWorld(Tester t) {
-        this.world.bigBang(600, 300, 0.2);
+        this.world.bigBang(500, 1000, 0.2);
     }
 
 
