@@ -46,10 +46,10 @@ import javalib.soundworld.World;
  *
  */
 public class GameRunner extends World implements FroggerWorldConstants {
-    Frog player;
-    ArrayList<Car> cars;
-    ArrayList<Log> logs;
-    ArrayList<LilyPad> lilypads;
+    Frog player = new Frog();
+    ArrayList<Car> cars = new ArrayList<Car>();
+    ArrayList<Log> logs = new ArrayList<Log>();
+    ArrayList<LilyPad> lilypads = new ArrayList<LilyPad>();
 
 
     //    GameRunner(Frog player, ArrayList<Car> cars, 
@@ -60,12 +60,12 @@ public class GameRunner extends World implements FroggerWorldConstants {
     //        this.lilypads = lilypads;
     //    }
 
-    GameRunner() {
-        this.player = new Frog();
-        this.cars = new ArrayList<Car>();
-        this.logs = new ArrayList<Log>();
-        this.lilypads = new ArrayList<LilyPad>();
-    }
+//    GameRunner() {
+//        this.player = new Frog();
+//        this.cars = new ArrayList<Car>();
+//        this.logs = new ArrayList<Log>();
+//        this.lilypads = new ArrayList<LilyPad>();
+//    }
 
 
     // 2.2.1 - onTick() ///////////////////////////////////////////////////////
@@ -195,7 +195,7 @@ public class GameRunner extends World implements FroggerWorldConstants {
             stack = stack.overlayImages(lp.image);
         }
 
-        return stack;
+        return froggerBackgroundImage;
     }
 
 
