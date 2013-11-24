@@ -111,7 +111,7 @@ public abstract class MovingObject implements FroggerWorldConstants {
             return false;
         }
     } 
-
+    
 
 
 }
