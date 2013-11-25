@@ -52,27 +52,19 @@ public class ExamplesFrogger implements FroggerWorldConstants {
 
     // initial instance of a car that is at the bottom row of the road,
     // at the center of the screen, facing left
-    Car car1;  //2.1.2
+    MovingObject car1;  //2.1.2
 
     // initial instance of a car that is at the second to bottom
     // row of the road, at the center of the screen, facing right
-    Car car2;  //2.1.3
+    MovingObject car2;  //2.1.3
 
     // initial instance of a log that is at the middle of the bottom
     // row of water, facing left
-    Log log1;
+    MovingObject log1;
 
     // initial instance of a lilypad that is at the center of the middle
     // row of water, facing right
-    LilyPad lp1;
-
-
-    ArrayList<Car> carList = new ArrayList<Car>();
-    ArrayList<Log> logList = new ArrayList<Log>();
-    ArrayList<LilyPad> lpList = new ArrayList<LilyPad>();
-    
-    FroggerWorld fworld;
-    GameRunner runner;
+    MovingObject lp1;
     
     // an ArrayList of Cars that will be used to test the functions
     ArrayList<MovingObject> molist1;
@@ -80,11 +72,29 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     /////////////////////////////////////////////////////////////////////
 
 
+    Frog f1 = new Frog();
+    Car c1 = new Car(
+            new Posn((canvasWidth / 2), 
+                    ((canvasHeight / 20) * 3)),
+                    true,
+                    5,
+                    new FromFileImage(
+                            new Posn((canvasWidth / 2), 
+                                    ((canvasHeight / 20) * 3)), 
+                            "carLeft.png")); 
     
+    ArrayList<Car> carList = new ArrayList<Car>();
+    ArrayList<Log> logList = new ArrayList<Log>();
+    ArrayList<LilyPad> lpList = new ArrayList<LilyPad>();
     
-    
-    
-    
+
+    FroggerWorld fworld = new FroggerWorld(this.f1, this.carList,
+            this.logList, this.lpList);
+    GameRunner runner = new GameRunner(fworld);
+
+
+
+
 
     // 2.2 Methods ////////////////////////////////////////////////////////
 
@@ -135,20 +145,6 @@ public class ExamplesFrogger implements FroggerWorldConstants {
 
         molist1 = new ArrayList<MovingObject>();
         
-        carList.clear();
-        carList.add(this.car1);
-        carList.add(this.car2);
-        
-        logList.clear();
-        logList.add(log1);
-        
-        lpList.clear();
-        lpList.add(lp1);
-        
-        
-        fworld = new FroggerWorld(this.frog, this.carList,
-                                  this.logList, this.lpList);
-        runner = new GameRunner(fworld);
     }
 
     // 2.2.2 ////////////////////////////////////////////
@@ -181,7 +177,7 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     /*public void collideAny(Frog f, ArrayList<MovingObject> molist) {
         for (MovingObject mo : molist) {
             if (mo instanceof Car) {
-                
+
             }
         }
     } */
@@ -372,7 +368,6 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     // 2.3.9 - testWholeWorld /////////////////////////////////////////////////
     // to run the game
     void testWholeWorld(Tester t) {
-        this.reset();
         this.runner.bigBang(1000, 500, 0.2);
     }
 
