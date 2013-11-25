@@ -80,10 +80,7 @@ import tester.Tester;
 public class GameRunner extends World implements FroggerWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.1 - Fields ///////////////////////////////////////////////////////////
-    Frog player;
-    ArrayList<Car> cars;
-    ArrayList<Log> logs;
-    ArrayList<LilyPad> lilypads;
+    FroggerWorld fw;
 
 
 
@@ -93,19 +90,12 @@ public class GameRunner extends World implements FroggerWorldConstants {
     // 2.2 - Constructors /////////////////////////////////////////////////////
     // 2.2.1 //////////////////////////////////////////////////////////////////
     GameRunner() {
-        this.player = new Frog();
-        this.cars = new ArrayList<Car>();
-        this.logs = new ArrayList<Log>();
-        this.lilypads = new ArrayList<LilyPad>();
+        this.fw = new FroggerWorld();
     }
 
     // 2.2.2 //////////////////////////////////////////////////////////////////
-    GameRunner(Frog player, ArrayList<Car> cars, 
-            ArrayList<Log> logs, ArrayList<LilyPad> lilypads) {
-        this.player = player;
-        this.cars = cars;
-        this.logs = logs;
-        this.lilypads = lilypads;
+    GameRunner(FroggerWorld fw) {
+        this.fw = fw;
     }
 
 
@@ -256,7 +246,7 @@ public class GameRunner extends World implements FroggerWorldConstants {
      *  */
     public WorldImage makeImage() {
         WorldImage stack = new OverlayImages(froggerBackgroundImage,
-                                             this.player.makeImage());
+                this.player.makeImage());
 
 
         for (Car c : this.cars) {
@@ -273,8 +263,8 @@ public class GameRunner extends World implements FroggerWorldConstants {
 
         return stack;
     }
-    
-    
+
+
     public WorldImage onDraw() {
         return this.makeImage();
     }
