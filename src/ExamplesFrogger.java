@@ -77,21 +77,28 @@ public class ExamplesFrogger implements FroggerWorldConstants {
 
     // initial instance of a car that is at the bottom row of the road,
     // at the center of the screen, facing left
-    MovingObject car1;  //2.1.2
+    Car car1;  //2.1.2
 
     // initial instance of a car that is at the second to bottom
     // row of the road, at the center of the screen, facing right
-    MovingObject car2;  //2.1.3
+    Car car2;  //2.1.3
 
     // initial instance of a log that is at the middle of the bottom
     // row of water, facing left
-    MovingObject log1;
+    Log log1;
 
     // initial instance of a lilypad that is at the center of the middle
     // row of water, facing right
-    MovingObject lily1;
+    LilyPad lp1;
 
 
+    ArrayList<Car> carList = new ArrayList<Car>();
+    ArrayList<Log> logList = new ArrayList<Log>();
+    ArrayList<LilyPad> lpList = new ArrayList<LilyPad>();
+    
+    FroggerWorld fworld;
+    GameRunner runner;
+    
     // an ArrayList of Cars that will be used to test the functions
     ArrayList<MovingObject> molist1;
 
@@ -136,7 +143,7 @@ public class ExamplesFrogger implements FroggerWorldConstants {
                                         (((canvasHeight / 20) * 13))), 
                                 "log.png"));
 
-        lily1 = new LilyPad(
+        lp1 = new LilyPad(
                 new Posn ((canvasWidth / 2),
                         ((canvasHeight / 20) * 15)), 
                         false, 
@@ -147,6 +154,21 @@ public class ExamplesFrogger implements FroggerWorldConstants {
                                 "lilyPad.png"));
 
         molist1 = new ArrayList<MovingObject>();
+        
+        carList.clear();
+        carList.add(this.car1);
+        carList.add(this.car2);
+        
+        logList.clear();
+        logList.add(log1);
+        
+        lpList.clear();
+        lpList.add(lp1);
+        
+        
+        fworld = new FroggerWorld(this.frog, this.carList,
+                                  this.logList, this.lpList);
+        runner = new GameRunner(fworld);
     }
 
     // 2.2.2 ////////////////////////////////////////////
@@ -197,7 +219,7 @@ public class ExamplesFrogger implements FroggerWorldConstants {
      */
     public void testMoveFrogUp(Tester t) {
         reset();
-        t.checkExpect(this.frog.posn.y, (canvasHeight / 20));
+        //t.checkExpect(this.frog.posn.y, (canvasHeight / 20));
         // call the method
         this.frog.moveFrogUp();
         // check the moved position
@@ -272,12 +294,12 @@ public class ExamplesFrogger implements FroggerWorldConstants {
         this.log1.posn.x = -110;
         this.log1.moveObjectLeft();
         t.checkExpect(this.log1.posn.x, (canvasWidth + 100));
-        t.checkExpect(this.lily1.posn.x, (canvasWidth / 2));
-        this.lily1.moveObjectLeft();
-        t.checkExpect(this.lily1.posn.x, ((canvasWidth / 2) - 5));
-        this.lily1.posn.x = -105;
-        this.lily1.moveObjectLeft();
-        t.checkExpect(this.lily1.posn.x, (canvasWidth + 100));
+        t.checkExpect(this.lp1.posn.x, (canvasWidth / 2));
+        this.lp1.moveObjectLeft();
+        t.checkExpect(this.lp1.posn.x, ((canvasWidth / 2) - 5));
+        this.lp1.posn.x = -105;
+        this.lp1.moveObjectLeft();
+        t.checkExpect(this.lp1.posn.x, (canvasWidth + 100));
     }
 
     // 2.3.6 ////////////////////////////////////////////
@@ -298,12 +320,12 @@ public class ExamplesFrogger implements FroggerWorldConstants {
         this.log1.posn.x = (canvasWidth + 120);
         this.log1.moveObjectRight();
         t.checkExpect(this.log1.posn.x, -100);
-        t.checkExpect(this.lily1.posn.x, (canvasWidth / 2));
-        this.lily1.moveObjectRight();
-        t.checkExpect(this.lily1.posn.x, ((canvasWidth / 2) + 5));
-        this.lily1.posn.x = (canvasWidth + 120);
-        this.lily1.moveObjectRight();
-        t.checkExpect(this.lily1.posn.x, -100);
+        t.checkExpect(this.lp1.posn.x, (canvasWidth / 2));
+        this.lp1.moveObjectRight();
+        t.checkExpect(this.lp1.posn.x, ((canvasWidth / 2) + 5));
+        this.lp1.posn.x = (canvasWidth + 120);
+        this.lp1.moveObjectRight();
+        t.checkExpect(this.lp1.posn.x, -100);
     } 
 
     // 2.3.7 ////////////////////////////////////////////
@@ -316,16 +338,16 @@ public class ExamplesFrogger implements FroggerWorldConstants {
         this.molist1.add(this.car1);
         this.molist1.add(this.car2);
         this.molist1.add(this.log1);
-        this.molist1.add(this.lily1);
+        this.molist1.add(this.lp1);
         t.checkExpect(this.car1.posn.x, (canvasWidth / 2));
         t.checkExpect(this.car2.posn.x, (canvasWidth / 2));
         t.checkExpect(this.log1.posn.x, (canvasWidth / 2));
-        t.checkExpect(this.lily1.posn.x, (canvasWidth / 2));
+        t.checkExpect(this.lp1.posn.x, (canvasWidth / 2));
         this.moveAllObjects(this.molist1);
         t.checkExpect(this.car1.posn.x, ((canvasWidth / 2) - 5));
         t.checkExpect(this.car2.posn.x, ((canvasWidth / 2) + 5));
         t.checkExpect(this.log1.posn.x, ((canvasWidth / 2) - 5));
-        t.checkExpect(this.lily1.posn.x, ((canvasWidth / 2) + 5));
+        t.checkExpect(this.lp1.posn.x, ((canvasWidth / 2) + 5));
 
     }
 
@@ -367,12 +389,11 @@ public class ExamplesFrogger implements FroggerWorldConstants {
 
 
 
-    GameRunner world = new GameRunner();
-
     // 2.3.9 - testWholeWorld /////////////////////////////////////////////////
     // to run the game
     void testWholeWorld(Tester t) {
-        this.world.bigBang(1000, 500, 0.2);
+        this.reset();
+        this.runner.bigBang(1000, 500, 0.2);
     }
 
 

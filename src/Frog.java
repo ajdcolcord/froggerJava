@@ -22,11 +22,7 @@
  *****************************************************************************/
 
 // 1 - Libraries //////////////////////////////////////////////////////////////
-import javalib.colors.*;
-import javalib.funworld.*;
-import javalib.worldcanvas.*;
 import javalib.worldimages.*;
-import java.awt.Color;
 
 
 
@@ -62,8 +58,8 @@ public class Frog implements FroggerWorldConstants {
         this.posn = new Posn((canvasWidth / 2), 475);
         this.lives = 3;
         this.image = frogUp;
-        this.width = 100;
-        this.height = 100;
+        this.width = 50;
+        this.height = 50;
 
     }
 

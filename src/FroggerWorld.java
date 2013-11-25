@@ -215,7 +215,13 @@ public class FroggerWorld implements FroggerWorldConstants {
      * 
      *  */
     public WorldEnd worldEnder() {
-        return new WorldEnd(false, this.render());
+        // if player's position is in the water
+        if (this.player.posn.y < 200) {
+            return new WorldEnd(true, this.renderLast("YOU DED."));
+        }
+        else {
+            return new WorldEnd(false, this.render());
+        }
     }
 
 
@@ -262,7 +268,7 @@ public class FroggerWorld implements FroggerWorldConstants {
      *  */
     public WorldImage renderLast(String s) {
         return this.render().overlayImages(
-                new TextImage(new Posn(150, 80), s, 
-                        15, 3, new Red()));
+                new TextImage(new Posn(500, 250), s, 
+                        180, 3, new Red()));
     }
 }
