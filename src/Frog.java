@@ -34,63 +34,81 @@ public class Frog implements FroggerWorldConstants {
     // 2.1 //////////////////////////////////////
     Posn posn;
     int lives;
-    WorldImage image;
+    String image;
     int width;
     int height;
 
     Frog() {
         this.posn = new Posn((canvasWidth / 2), 475);
         this.lives = 3;
-        this.image = new FromFileImage(this.posn, "frogUp.png");
+        this.image = frogUp;
         this.width = 100;
         this.height = 100;
 
     }
 
-    // 2.2.1 ////////////////////////////////////////////////////
+    // 2.2.1 //////////////////////////////////////////////////////////////////
     /** move the frog up one step 
      * @author Austin Colcord
+     * @author Nick Alekhine
+     * 
      * */
     public void moveFrogUp() {
+        // if y coordinate is below canvasHeight
         if (this.posn.y > 50) {
+            // set new x coordinate
             this.posn.y = this.posn.y - (canvasHeight / 10);
+            // set image to frog in up position
+            this.image = frogUp;
         }
     }
 
-    // 2.2.2 ////////////////////////////////////////////////////
+    // 2.2.2 //////////////////////////////////////////////////////////////////
     /** move the frog down one step, unless the frog is at the bottom
      * row, then do nothing
      * @author Austin Colcord
+     * @author Nick Alekhine
+     * 
      */
     public void moveFrogDown() {
+        // if y coordinate is above canvasHeight
         if (this.posn.y < (canvasHeight) - 50) {
+            // set new y coordinate
             this.posn.y = this.posn.y + (canvasHeight / 10);
+            // set image to frog in down position
+            this.image = frogDown;
         }
     }
 
-    // 2.2.3 ////////////////////////////////////////////////////
+    // 2.2.3 //////////////////////////////////////////////////////////////////
     /** move the frog to the left, unless near the left edge of the canvas 
      * @author Austin Colcord
+     * @author Nick Alekhine
+     * 
      * */
     public void moveFrogLeft() {
-        if (this.posn.x <= (canvasWidth / 5)) {
-            this.posn = this.posn;
-        }
-        else {
-            this.posn.x = this.posn.x - (canvasWidth / 5);
+        // if x coordinate is greater than LHS of canvas.
+        if (this.posn.x > (canvasWidth / 20)) {
+            // set new x coordinate
+            this.posn.x = this.posn.x - (canvasWidth / 20);
+            // set image to frog in left position.
+            this.image = frogLeft;
         }
     }
 
     // 2.2.4 ////////////////////////////////////////////////////
     /**  move the frog to the right unless near the right edge of the canvas 
      * @author Austin Colcord
+     * @author Nick Alekhine
+     * 
      * */
     public void moveFrogRight() {
-        if (this.posn.x >= (canvasWidth - (canvasWidth / 5))) {
-            this.posn = this.posn;
-        }
-        else {
-            this.posn.x = this.posn.x + (canvasWidth / 5);
+        // if x coordinate is less than RHS of canvas
+        if (this.posn.x < (canvasWidth - (canvasWidth / 20))) {
+            // set new x coordinate
+            this.posn.x = this.posn.x + (canvasWidth / 20);
+            // set image to frog in right position
+            this.image = frogRight;
         }
     }
     
@@ -110,7 +128,7 @@ public class Frog implements FroggerWorldConstants {
     
     
     public WorldImage makeImage() {
-        return new FromFileImage(this.posn, "frogUp.png");
+        return new FromFileImage(this.posn, this.image);
     }
     
     
