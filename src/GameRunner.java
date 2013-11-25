@@ -21,36 +21,10 @@
 
 
 // 1 - Libraries //////////////////////////////////////////////////////////////
-import javalib.tunes.Note;
-import javalib.worldimages.OverlayImagesXY;
-import javalib.worldimages.Posn;
-import javalib.worldimages.RectangleImage;
-import javalib.worldimages.TextImage;
 import javalib.worldimages.WorldEnd;
 import javalib.worldimages.WorldImage;
 import javalib.soundworld.World;
 
-import java.awt.Color;
-import java.util.Iterator;
-
-import javalib.colors.Red;
-import javalib.soundworld.World;
-import javalib.tunes.Note;
-import javalib.tunes.SoundConstants;
-import javalib.tunes.TuneBucket;
-import javalib.worldimages.CircleImage;
-import javalib.worldimages.DiskImage;
-import javalib.worldimages.FromFileImage;
-import javalib.worldimages.LineImage;
-import javalib.worldimages.OvalImage;
-import javalib.worldimages.OverlayImages;
-import javalib.worldimages.Posn;
-import javalib.worldimages.RectangleImage;
-import javalib.worldimages.TextImage;
-import javalib.worldimages.TriangleImage;
-import javalib.worldimages.WorldEnd;
-import javalib.worldimages.WorldImage;
-import tester.Tester;
 
 
 

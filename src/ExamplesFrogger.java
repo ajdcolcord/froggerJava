@@ -26,42 +26,17 @@
  *          
  *****************************************************************************/
 
-// 1. Libraries ////////////////////////////////////////////////////////////
+// 1 - Libraries //////////////////////////////////////////////////////////////
 import java.util.ArrayList;
-
 import javalib.worldimages.FromFileImage;
 import javalib.worldimages.Posn;
-import javalib.worldimages.WorldImage;
-
-
-
-
-import java.awt.Color;
-import java.util.Iterator;
-
-import javalib.colors.Red;
-import javalib.soundworld.World;
-import javalib.tunes.Note;
-import javalib.tunes.SoundConstants;
-import javalib.tunes.TuneBucket;
-import javalib.worldimages.CircleImage;
-import javalib.worldimages.DiskImage;
-import javalib.worldimages.LineImage;
-import javalib.worldimages.OvalImage;
-import javalib.worldimages.RectangleImage;
-import javalib.worldimages.TextImage;
-import javalib.worldimages.TriangleImage;
-import javalib.worldimages.WorldEnd;
 import tester.Tester;
 
 
 
 
-////////////////////////////////////////////////////////////////////////////
 
-
-
-//2. ExamplesFrogger ///////////////////////////////////////////////////////
+// 2 - ExamplesFrogger ////////////////////////////////////////////////////////
 /** represents the examples, tests, and initial state of the frogger game 
  * 
  * @author Austin Colcord
@@ -105,6 +80,11 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     /////////////////////////////////////////////////////////////////////
 
 
+    
+    
+    
+    
+    
 
     // 2.2 Methods ////////////////////////////////////////////////////////
 
