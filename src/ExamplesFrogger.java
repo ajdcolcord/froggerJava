@@ -150,11 +150,11 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     }
 
     // 2.2.2 ////////////////////////////////////////////
-    /** move all of the cars in the given arrayList by calling
-     * the moveCarLeft method for cars facing left, and calling the
-     * moveCarRight method for cars facing left
+    /** move all of the objects in the given arrayList by calling
+     * the moveObjectLeft method for cars facing left, and calling the
+     * moveObjectRight method for cars facing left
      * 
-     * @param ArrayList<Car>
+     * @param ArrayList<Object>
      * @author Austin Colcord
      */
     public void moveAllObjects(ArrayList<MovingObject> molist) {
@@ -168,6 +168,21 @@ public class ExamplesFrogger implements FroggerWorldConstants {
         }
     }
 
+    // 2.2.2 ////////////////////////////////////////////
+    /** check to see if the frog has collided with any of
+     * the objects in the given ArrayList<MovingObject>.
+     * if it has collided with a car, call the loseLife 
+     * method on the frog, else do nothing
+     * @param ArrayList<MovingObject>
+     * @author Austin Colcord
+     */
+    /*public void collideAny(Frog f, ArrayList<MovingObject> molist) {
+        for (MovingObject mo : molist) {
+            if (mo instanceof Car) {
+                
+            }
+        }
+    } */
 
 
     /////////////////////////////////////////////////////////////////////
