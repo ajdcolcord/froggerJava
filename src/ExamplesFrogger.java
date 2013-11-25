@@ -28,6 +28,8 @@
 
 // 1 - Libraries //////////////////////////////////////////////////////////////
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import javalib.worldimages.FromFileImage;
 import javalib.worldimages.Posn;
 import tester.Tester;
