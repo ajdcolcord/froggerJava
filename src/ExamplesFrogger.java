@@ -372,7 +372,7 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     // 2.3.9 - testWholeWorld /////////////////////////////////////////////////
     // to run the game
     void testWholeWorld(Tester t) {
-        this.world.bigBang(500, 1000, 0.2);
+        this.world.bigBang(1000, 500, 0.2);
     }
 
 

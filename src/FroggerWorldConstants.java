@@ -35,10 +35,10 @@ public interface FroggerWorldConstants {
 
     ///////////////////////////////////////////////////////////////////////////
     // 2.1 - MEASUREMENTS /////////////////////////////////////////////////////
-    public int canvasHeight = 1000; // height of canvas
-    public int canvasWidth = 500; // width of canvas
+    public int canvasHeight = 500; // height of canvas
+    public int canvasWidth = 1000; // width of canvas
     public int canvasWidthMid = canvasWidth / 2; // midpoint of canvas width
-    public int stripHeight = 100; // height of strips
+    public int stripHeight = 50; // height of strips
 
     
     
@@ -92,19 +92,19 @@ public interface FroggerWorldConstants {
     // 2.3.1 - Grass Images ///////////////////////////////////////////////////
     /** the rectangle for the grass on the middle portion */
     public WorldImage grassImageMiddle = 
-            new RectangleImage(new Posn(canvasWidthMid, 450),
+            new RectangleImage(new Posn(canvasWidthMid, 225),
                                canvasWidth, 
                                stripHeight,
                                grassColor);
 
     public WorldImage grassImageTop = 
-            new RectangleImage(new Posn(canvasWidthMid, 50),
+            new RectangleImage(new Posn(canvasWidthMid, 25),
                                canvasWidth, 
                                stripHeight,
                                grassColor);
 
     public WorldImage grassImageBottom = 
-            new RectangleImage(new Posn(canvasWidthMid, 950), 
+            new RectangleImage(new Posn(canvasWidthMid, 475), 
                                canvasWidth, 
                                stripHeight, 
                                groundColor);
@@ -127,19 +127,19 @@ public interface FroggerWorldConstants {
     
     // 2.3.2 - Water Images ///////////////////////////////////////////////////
     public WorldImage waterImageTop = 
-            new RectangleImage(new Posn(canvasWidthMid, 150),
+            new RectangleImage(new Posn(canvasWidthMid, 75),
                                canvasWidth, 
                                (canvasHeight / 10),
                                waterColor);
 
     public WorldImage waterImageMiddle = 
-            new RectangleImage(new Posn(canvasWidthMid, 250),
+            new RectangleImage(new Posn(canvasWidthMid, 125),
                                canvasWidth, 
                                stripHeight,
                                waterColor);
 
     public WorldImage waterImageBottom = 
-            new RectangleImage(new Posn(canvasWidthMid, 350),
+            new RectangleImage(new Posn(canvasWidthMid, 175),
                                canvasWidth, 
                                (canvasHeight / 10),
                                waterColor);
@@ -163,25 +163,25 @@ public interface FroggerWorldConstants {
 
     // 2.3.3 - Road Images ////////////////////////////////////////////////////
     public WorldImage roadImageTop1 = 
-            new RectangleImage(new Posn(canvasWidthMid, 550),
+            new RectangleImage(new Posn(canvasWidthMid, 275),
                                canvasWidth, 
                                stripHeight,
                                roadColor);
 
     public WorldImage roadImageTop2 = 
-            new RectangleImage(new Posn(canvasWidthMid, 650),
+            new RectangleImage(new Posn(canvasWidthMid, 325),
                                canvasWidth, 
                                stripHeight,
                                roadColor);
 
     public WorldImage roadImageBottom1 = 
-            new RectangleImage(new Posn(canvasWidthMid, 750),
+            new RectangleImage(new Posn(canvasWidthMid, 375),
                                canvasWidth, 
                                stripHeight,
                                roadColor);
 
     public WorldImage roadImageBottom2 = 
-            new RectangleImage(new Posn(canvasWidthMid, 850),
+            new RectangleImage(new Posn(canvasWidthMid, 425),
                                canvasWidth, 
                                stripHeight,
                                roadColor);
