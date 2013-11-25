@@ -39,7 +39,7 @@ public class Frog implements FroggerWorldConstants {
     int height;
 
     Frog() {
-        this.posn = new Posn((canvasWidth / 2), 950);
+        this.posn = new Posn((canvasWidth / 2), 475);
         this.lives = 3;
         this.image = new FromFileImage(this.posn, "frogUp.png");
         this.width = 100;
