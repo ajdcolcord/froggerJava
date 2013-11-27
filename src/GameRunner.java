@@ -69,7 +69,7 @@ public class GameRunner extends World implements FroggerWorldConstants {
      * 
      *  */
     public void onTick() {
-//        this.fw.ticker();
+        this.fw.ticker();
     }
 
 
