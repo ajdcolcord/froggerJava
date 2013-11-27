@@ -46,48 +46,83 @@ import tester.Tester;
  */
 public class ExamplesFrogger implements FroggerWorldConstants {
 
-    // 2.1 Examples of Objects ///////////////////////////////////////////////
-
-    // initial instance of a frog that is centered at the bottom
-    // of the canvas, with 3 lives, and the image of the frog
-    Frog frog; //2.1.1
-
-    // initial instance of a car that is at the bottom row of the road,
-    // at the center of the screen, facing left
-    MovingObject car1;  //2.1.2
-
-    // initial instance of a car that is at the second to bottom
-    // row of the road, at the center of the screen, facing right
-    MovingObject car2;  //2.1.3
-
-    // initial instance of a log that is at the middle of the bottom
-    // row of water, facing left
-    MovingObject log1;
-
-    // initial instance of a lilypad that is at the center of the middle
-    // row of water, facing right
-    MovingObject lp1;
+    // 2.1 - Test Objects /////////////////////////////////////////////////////
+    // initialize test objects. 
     
-    // an ArrayList of Cars that will be used to test the functions
-    ArrayList<MovingObject> molist1;
+    // FROGS
+    Frog frog;
 
-    /////////////////////////////////////////////////////////////////////
+    // CARS
+    Car car1;
+    Car car2;
+
+    // LOGS
+    Log log1;
+    
+    // LILYPADS
+    LilyPad lp1;
+    
+    // ARRAYLISTS
+    ArrayList<Car> clist1; // non-empty case
+    ArrayList<Car> clist2; // empty case
+    
+    ArrayList<Log> llist1; // non-empty case
+    ArrayList<Log> llist2; // empty case
+    
+    ArrayList<LilyPad> lplist1; // non-empty case
+    ArrayList<LilyPad> lplist2; // empty case
+    
+    // initialize values in test objects
+    public void reset() {
+        // ...
+    }
+    
 
 
+
+    
+    // 2.2 - Game Running Objects /////////////////////////////////////////////
+    // These are actually used in the game. 
+    
+    // FROG ///////////////////////////
     Frog f1 = new Frog();
-    Car c1 = new Car(
-              new Posn(250, 400),
-              true,
-              5,
-              "carLeft.png"); 
     
-    ArrayList<Car> carList = new ArrayList<Car>(Arrays.asList(this.c1));
+    // CARS ///////////////////////////
+    // LANE 1 [FROM RHS -> LHS]
+    Car cl11 = new Car(new Posn(975, 425), true, 5, "carLeft.png"); 
+    Car cl12 = new Car(new Posn(900, 425), true, 5, "carLeft.png");
+    Car cl13 = new Car(new Posn(800, 425), true, 5, "carLeft.png");
+    Car cl14 = new Car(new Posn(400, 425), true, 5, "carLeft.png");
+    // ...
+    
+    // LANE 2 [FROM LHS -> RHS]
+    Car cl21 = new Car(new Posn(25, 375), false, 10, "carRight.png");
+    // ...
+    
+    // LANE 3 [FROM RHS -> LHS]
+    Car cl31 = new Car(new Posn(950, 325), true, 5, "carLeft.png");
+    // ...
+    
+    // LANE 4 [FROM RHS -> LHS]
+    Car cl41 = new Car(new Posn(50, 275), false, 10, "carRight.png");
+    // ...
+    
+    // LOGS ///////////////////////////
+    
+    // LILYPADS ///////////////////////
+    
+    // ARRAYLISTS
+    ArrayList<Car> carList = new ArrayList<Car>(
+            Arrays.asList(this.cl11, this.cl12, this.cl13, this.cl14,
+                          this.cl21, this.cl31, this.cl41));
     ArrayList<Log> logList = new ArrayList<Log>();
     ArrayList<LilyPad> lpList = new ArrayList<LilyPad>();
     
-
+    // FROGGERWORLD
     FroggerWorld fworld = new FroggerWorld(this.f1, this.carList,
             this.logList, this.lpList);
+    
+    // GAMERUNNER
     GameRunner runner = new GameRunner(fworld);
 
 
@@ -97,9 +132,6 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     // 2.2 Methods ////////////////////////////////////////////////////////
 
 //    // 2.2.1 ////////////////////////////////////////////
-//    /** initialize objects to these states
-//     *  @author Austin Colcord
-//     *  */
 //    public void reset() {
 //        frog = new Frog();
 //

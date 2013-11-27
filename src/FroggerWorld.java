@@ -236,22 +236,28 @@ public class FroggerWorld implements FroggerWorldConstants {
      * 
      *  */
     public WorldImage render() {
-        WorldImage stack = new OverlayImages(froggerBackgroundImage,
-                this.player.makeImage());
+        // initialize stack as background; 
+        WorldImage stack = froggerBackgroundImage;
 
-
-        for (Car c : this.cars) {
-            stack = new OverlayImages(stack, c.makeImage());
-        }
-
+        // overlay all logs onto the scene
         for (Log l : this.logs) {
             stack = new OverlayImages(stack, l.makeImage());
         }
 
+        // overlay all lilypads onto the scene
         for (LilyPad lp : this.lilypads) {
             stack = new OverlayImages(stack, lp.makeImage());
         }
+        
+        // overlay the player onto the scene
+        stack = new OverlayImages(stack, this.player.makeImage());
+        
+        // overlay all the cars onto the scene
+        for (Car c : this.cars) {
+            stack = new OverlayImages(stack, c.makeImage());
+        }
 
+        
         return stack;
     }
 
