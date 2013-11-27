@@ -108,6 +108,8 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     // ...
     
     // LOGS ///////////////////////////
+    // LANE 1 [FROM RHS -> LHS]
+    Log ll11 = new Log(new Posn(975, 175), false, 5, "log.png");
     
     // LILYPADS ///////////////////////
     
@@ -115,7 +117,8 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     ArrayList<Car> carList = new ArrayList<Car>(
             Arrays.asList(this.cl11, this.cl12, this.cl13, this.cl14,
                           this.cl21, this.cl31, this.cl41));
-    ArrayList<Log> logList = new ArrayList<Log>();
+    ArrayList<Log> logList = new ArrayList<Log>(
+            Arrays.asList(this.ll11));
     ArrayList<LilyPad> lpList = new ArrayList<LilyPad>();
     
     // FROGGERWORLD
