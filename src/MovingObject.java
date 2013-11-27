@@ -14,31 +14,30 @@
  *          
  *****************************************************************************/
 
-// 1. Libraries ////////////////////////////////////////////////////////
-import javalib.colors.*;
-import javalib.funworld.*;
-import javalib.worldcanvas.*;
+// 1 - Libraries //////////////////////////////////////////////////////////////
 import javalib.worldimages.*;
-import java.awt.Color;
-
-///////////////////////////////////////////////////////////////////////
 
 
-// 2 AWaterObject ////////////////////////////////////////////////////////
-/** represents the abstract class that contains all the 
- * fields for objects that are in the water
- * @author Austin
+
+
+
+// 2 - AWaterObject ///////////////////////////////////////////////////////////
+/** represents the abstract class that contains all the fields for objects that 
+ *  are in the water.
+ * @author Austin Colcord
+ * @author Nick Alekhine
  *
  */
 public abstract class MovingObject implements FroggerWorldConstants {
-    Posn posn;          //2.1.1
-    boolean facingLeft; //2.1.2
-    int speed;          //2.1.3
-    WorldImage image;   //2.1.4
-    int width;          //2.1.5
-    int height;         //2.1.6
+    Posn posn;          
+    boolean facingLeft; 
+    int speed;          
+    String image;   
+    int width;          
+    int height;         
 
-    MovingObject(Posn posn, boolean facingLeft, int speed, WorldImage image) {
+    MovingObject(Posn posn, boolean facingLeft, int speed, 
+                 String image, int width, int height) {
         this.posn = posn;
         this.facingLeft = facingLeft;
         this.speed = speed;
@@ -110,8 +109,17 @@ public abstract class MovingObject implements FroggerWorldConstants {
         else {
             return false;
         }
-    } 
-    
+    }
+
+
+
+
+
+    // 2.3.7 - makeImage() ////////////////////////////////////////////////////
+    public WorldImage makeImage() {
+        return new FromFileImage(this.posn, this.image);
+    }
+
 
 
 }

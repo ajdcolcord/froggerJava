@@ -1,15 +1,14 @@
 import javalib.worldimages.Posn;
-import javalib.worldimages.WorldImage;
 
-/** represents the lilypads in the game that extends the 
- * AWaterObject class and its methods
- * @author Austin
+/** represents the lilypads in the game that extends the MovingObject class and 
+ *  its methods.
+ * @author Austin Colcord
+ * @author Nick Alekhine
  *
  */
 public class LilyPad extends MovingObject {
-    LilyPad(Posn posn, boolean facingLeft, int speed, WorldImage image) {
-        super(posn, facingLeft, speed, image);
-        this.width = 100;
-        this.height = 100;
+    
+    LilyPad(Posn posn, boolean facingLeft, int speed, String image) {
+        super(posn, facingLeft, speed, image, 50, 50);
     }
 }

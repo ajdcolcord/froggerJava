@@ -241,15 +241,15 @@ public class FroggerWorld implements FroggerWorldConstants {
 
 
         for (Car c : this.cars) {
-            stack = stack.overlayImages(c.image);
+            stack = new OverlayImages(stack, c.makeImage());
         }
 
         for (Log l : this.logs) {
-            stack = stack.overlayImages(l.image);
+            stack = new OverlayImages(stack, l.makeImage());
         }
 
         for (LilyPad lp : this.lilypads) {
-            stack = stack.overlayImages(lp.image);
+            stack = new OverlayImages(stack, lp.makeImage());
         }
 
         return stack;
