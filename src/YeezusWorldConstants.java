@@ -59,6 +59,6 @@ public interface YeezusWorldConstants {
     public String rickRossLeft = "rickRossLeft.png";
     
     // 2.2.4 - LilyPad Images /////////////////////////////////////////////////
-    public String lilyPad = "lilyPad.png";
+    public String macMiller = "macMiller.png";
     
 }

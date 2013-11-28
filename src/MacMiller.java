@@ -6,9 +6,9 @@ import javalib.worldimages.Posn;
  * @author Nick Alekhine
  *
  */
-public class LilyPad extends MovingObject {
+public class MacMiller extends MovingObject {
     
-    LilyPad(Posn posn, boolean facingLeft, int speed, String image) {
+    MacMiller(Posn posn, boolean facingLeft, int speed, String image) {
         super(posn, facingLeft, speed, image, 50, 50);
     }
 }

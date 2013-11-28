@@ -52,7 +52,7 @@ public class YeezusWorld implements YeezusWorldConstants {
     Yeezus player;
     ArrayList<Car> cars;
     ArrayList<RickRoss> logs;
-    ArrayList<LilyPad> lilypads;
+    ArrayList<MacMiller> lilypads;
     MakeSound sounder = new MakeSound(); 
 
 
@@ -65,12 +65,12 @@ public class YeezusWorld implements YeezusWorldConstants {
         this.player = new Yeezus();
         this.cars = new ArrayList<Car>();
         this.logs = new ArrayList<RickRoss>();
-        this.lilypads = new ArrayList<LilyPad>();
+        this.lilypads = new ArrayList<MacMiller>();
     }
 
     // 2.2.2 //////////////////////////////////////////////////////////////////
     YeezusWorld(Yeezus player, ArrayList<Car> cars, 
-            ArrayList<RickRoss> logs, ArrayList<LilyPad> lilypads) {
+            ArrayList<RickRoss> logs, ArrayList<MacMiller> lilypads) {
         this.player = player;
         this.cars = cars;
         this.logs = logs;
@@ -110,7 +110,7 @@ public class YeezusWorld implements YeezusWorldConstants {
         }
 
         // go through list of lilypads and see if player has collided with any
-        for (LilyPad lp : this.lilypads) {
+        for (MacMiller lp : this.lilypads) {
             // if player has collided with the lilypad
             if (lp.collide(this.player)) {
                 this.player.move(lp.facingLeft, lp.speed);
@@ -148,7 +148,7 @@ public class YeezusWorld implements YeezusWorldConstants {
         }
 
         // go through list of lilypads and move them
-        for (LilyPad lp : this.lilypads) {
+        for (MacMiller lp : this.lilypads) {
             if (lp.facingLeft) {
                 lp.moveObjectLeft();
             }
@@ -257,7 +257,7 @@ public class YeezusWorld implements YeezusWorldConstants {
         }
 
         // overlay all lilypads onto the scene
-        for (LilyPad lp : this.lilypads) {
+        for (MacMiller lp : this.lilypads) {
             stack = new OverlayImages(stack, lp.makeImage());
         }
 

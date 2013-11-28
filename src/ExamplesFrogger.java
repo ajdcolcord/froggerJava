@@ -60,7 +60,7 @@ public class ExamplesFrogger implements YeezusWorldConstants {
     RickRoss log1;
     
     // LILYPADS
-    LilyPad lp1;
+    MacMiller lp1;
     
     // ARRAYLISTS
     ArrayList<Car> clist1; // non-empty case
@@ -69,8 +69,8 @@ public class ExamplesFrogger implements YeezusWorldConstants {
     ArrayList<RickRoss> llist1; // non-empty case
     ArrayList<RickRoss> llist2; // empty case
     
-    ArrayList<LilyPad> lplist1; // non-empty case
-    ArrayList<LilyPad> lplist2; // empty case
+    ArrayList<MacMiller> lplist1; // non-empty case
+    ArrayList<MacMiller> lplist2; // empty case
     
     // initialize values in test objects
     public void reset() {
@@ -113,6 +113,7 @@ public class ExamplesFrogger implements YeezusWorldConstants {
     
     // LANE 2 [FROM LHS -> RHS]
     RickRoss ll21 = new RickRoss(new Posn(975, 125), true, 10, rickRossLeft);
+    MacMiller ll22 = new MacMiller(new Posn(900, 125), true, 10, macMiller);
     
     
     // LANE 3 [FROM RHS -> LHS]
@@ -127,7 +128,8 @@ public class ExamplesFrogger implements YeezusWorldConstants {
                           this.cl21, this.cl31, this.cl41));
     ArrayList<RickRoss> logList = new ArrayList<RickRoss>(
             Arrays.asList(this.ll11, this.ll21, this.ll31));
-    ArrayList<LilyPad> lpList = new ArrayList<LilyPad>();
+    ArrayList<MacMiller> lpList = new ArrayList<MacMiller>(
+            Arrays.asList(this.ll22));
     
     // FROGGERWORLD
     YeezusWorld fworld = new YeezusWorld(this.f1, this.carList,
