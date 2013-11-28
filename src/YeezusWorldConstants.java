@@ -1,14 +1,14 @@
 /******************************************************************************
  * TABLE OF CONTENTS
  *   1. Libraries
- *   2. FroggerWorldConstants
+ *   2. YeezusWorldConstants
  *      2.1 MEASUREMENTS
  *      2.2 IMAGES
- *        2.2.1 - froggerBackgroundImage -- WorldImage
- *        2.2.2 - Frog Images            -- String
+ *        2.2.1 - BackgroundImage        -- WorldImage
+ *        2.2.2 - Yeezus Images          -- String
  *        2.2.3 - Car Images             -- String
- *        2.2.4 - Log Images             -- String
- *        2.2.5 - LilyPad Images         -- String
+ *        2.2.4 - RickRoss Images        -- String
+ *        2.2.5 - MacMiller Images       -- String
  *          
  */
 
@@ -20,9 +20,8 @@ import javalib.worldimages.*;
 
 
 
-// 2 - FroggerWorldConstants //////////////////////////////////////////////////
-/** Represents the constants of data that are used
- * throughout the Frogger Game
+// 2 - YeezusWorldConstants ///////////////////////////////////////////////////
+/** Represents the constants of data that are used throughout the game
  * @author Nick Alekhine
  *
  */
@@ -39,12 +38,14 @@ public interface YeezusWorldConstants {
     
     
     
+    ///////////////////////////////////////////////////////////////////////////
     // 2.2 - IMAGES ///////////////////////////////////////////////////////////
-    // 2.2.1 - froggerBackgroundImage /////////////////////////////////////////
-    public WorldImage froggerBackgroundImage = 
+    
+    // 2.2.1 - BackgroundImage /////////////////////////////////////////
+    public WorldImage backgroundImage = 
             new FromFileImage(new Posn(500, 250), "scene.png");
     
-    // 2.2.2 - Yeezus Images ///////////////////////////////////////////////////
+    // 2.2.2 - Yeezus Images //////////////////////////////////////////////////
     public String yeUp = "yeUp.png";
     public String yeDown = "yeDown.png";
     public String yeLeft = "yeLeft.png";
@@ -54,11 +55,11 @@ public interface YeezusWorldConstants {
     public String carLeft = "carLeft.png";
     public String carRight = "carRight.png";
     
-    // 2.2.4 - RickRoss Images /////////////////////////////////////////////////
+    // 2.2.4 - RickRoss Images ////////////////////////////////////////////////
     public String rickRossRight = "rickRossRight.png";
     public String rickRossLeft = "rickRossLeft.png";
     
-    // 2.2.4 - LilyPad Images /////////////////////////////////////////////////
+    // 2.2.4 - MacMiller Images ///////////////////////////////////////////////
     public String macMiller = "macMiller.png";
     
 }

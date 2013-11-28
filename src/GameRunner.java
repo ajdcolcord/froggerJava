@@ -137,6 +137,6 @@ public class GameRunner extends World implements YeezusWorldConstants {
 
     ///////////////////////////////////////////////////////////////////////////
     // support for the regression tests
-    public static ExamplesFrogger examplesInstance = 
-            new ExamplesFrogger();
+    public static ExamplesYeezus examplesInstance = 
+            new ExamplesYeezus();
 }

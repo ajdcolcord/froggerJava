@@ -60,7 +60,6 @@ public class Yeezus implements YeezusWorldConstants {
         this.image = yeUp;
         this.width = 50;
         this.height = 50;
-
     }
 
     
@@ -74,13 +73,13 @@ public class Yeezus implements YeezusWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.3 - Methods //////////////////////////////////////////////////////////
     
-    // 2.3.1 - moveFrogUp() ///////////////////////////////////////////////////
-    /** move the frog up one step 
+    // 2.3.1 - moveUp() ///////////////////////////////////////////////////
+    /** move up one step 
      * @author Austin Colcord
      * @author Nick Alekhine
      * 
      * */
-    public void moveFrogUp() {
+    public void moveUp() {
         // if y coordinate is below canvasHeight
         if (this.posn.y > 50) {
             // set new x coordinate
@@ -94,14 +93,13 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     
-    // 2.3.2 - moveFrogDown() /////////////////////////////////////////////////
-    /** move the frog down one step, unless the frog is at the bottom
-     * row, then do nothing
+    // 2.3.2 - moveDown() /////////////////////////////////////////////////
+    /** move down one step unless at the bottom
      * @author Austin Colcord
      * @author Nick Alekhine
      * 
      */
-    public void moveFrogDown() {
+    public void moveDown() {
         // if y coordinate is above canvasHeight
         if (this.posn.y < (canvasHeight) - 50) {
             // set new y coordinate
@@ -116,12 +114,12 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     // 2.3.3 - moveFrogLeft() /////////////////////////////////////////////////
-    /** move the frog to the left, unless near the left edge of the canvas 
+    /** move to the left unless near the left edge of the canvas 
      * @author Austin Colcord
      * @author Nick Alekhine
      * 
      * */
-    public void moveFrogLeft() {
+    public void moveLeft() {
         // if x coordinate is greater than LHS of canvas.
         if (this.posn.x > (canvasWidth / 20)) {
             // set new x coordinate
@@ -135,13 +133,13 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     
-    // 2.3.4 - moveFrogRight() ////////////////////////////////////////////////
-    /**  move the frog to the right unless near the right edge of the canvas 
+    // 2.3.4 - moveRight() ////////////////////////////////////////////////////
+    /**  move to the right unless near the right edge of the canvas 
      * @author Austin Colcord
      * @author Nick Alekhine
      * 
      * */
-    public void moveFrogRight() {
+    public void moveRight() {
         // if x coordinate is less than RHS of canvas
         if (this.posn.x < (canvasWidth - (canvasWidth / 20))) {
             // set new x coordinate
@@ -156,9 +154,10 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     // 2.3.5 - loseLife() ////////////////////////////////////////////////////.
-    /** make the frog lose a life by 1. this will be called if
-     * the frog falls in the water or is hit by a car
+    /** lose life if enter water or collide with car
      * @author Austin Colcord
+     * @author Nick Alekhine
+     * 
      */
     public void loseLife() {
         this.lives = this.lives - 1;
@@ -169,11 +168,16 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     // 2.3.6 - move(Boolean, int) /////////////////////////////////////////////
+    /** Move in the direction and the speed given.
+     * @param Boolean, int
+     * @author Nick Alekhine 
+     * 
+     * */
     public void move(Boolean facingLeft, int speed) {
         // if moving left
         if (facingLeft) {
             // if x coordinate is not beyond canvas
-            if (this.posn.x < (canvasWidth / 20)) {
+            if (this.posn.x > (canvasWidth / 20)) {
                 this.posn.x = this.posn.x - speed;
             }
         }
@@ -191,6 +195,10 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     // 2.3.7 - makeImage() ////////////////////////////////////////////////////
+    /** Make image out of this image and position. 
+     * @author Nick Alekhine 
+     * 
+     * */
     public WorldImage makeImage() {
         return new FromFileImage(this.posn, this.image);
     }

@@ -26,7 +26,7 @@ import javalib.worldimages.Posn;
 
 
 // 2 - Car ///////////////////////////////////////////////////////////////////
-/** represents the car in the game 
+/** to represent a car
  * @author Austin Colcord
  * @author Nick Alekhine
  * */

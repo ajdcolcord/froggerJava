@@ -105,7 +105,7 @@ public class YeezusWorld implements YeezusWorldConstants {
             // if player has collided with the log
             if (l.collide(this.player)) {
                 this.player.move(l.facingLeft, l.speed);
-                break;
+                return; // breaks out of method. 
             }
         }
 
@@ -172,22 +172,22 @@ public class YeezusWorld implements YeezusWorldConstants {
 
         // "up" key press
         if (ke.equals("up")) {
-            this.player.moveFrogUp();
+            this.player.moveUp();
         }
 
         // "down" key press
         else if (ke.equals("down")) {
-            this.player.moveFrogDown();
+            this.player.moveDown();
         }
 
         // "left" key press
         else if (ke.equals("left")) {
-            this.player.moveFrogLeft();
+            this.player.moveLeft();
         }
 
         // "right" key press
         else if (ke.equals("right")) {
-            this.player.moveFrogRight();
+            this.player.moveRight();
         }
 
     }
@@ -208,7 +208,7 @@ public class YeezusWorld implements YeezusWorldConstants {
         // go through list of cars and see if any car has collided with player 
         for (Car c : this.cars) {
             if (c.collide(player)) {
-                return new WorldEnd(true, this.renderLast("YOU DED."));
+                return new WorldEnd(true, this.renderLast("YOU DEAD."));
             }
         }
 
@@ -223,7 +223,7 @@ public class YeezusWorld implements YeezusWorldConstants {
             }
             
             if (!hasCollided) {
-                return new WorldEnd(true, this.renderLast("DROWNED."));
+                return new WorldEnd(true, this.renderLast("YOU DROWNED."));
             }
             
             
@@ -249,7 +249,7 @@ public class YeezusWorld implements YeezusWorldConstants {
      *  */
     public WorldImage render() {
         // initialize stack as background; 
-        WorldImage stack = froggerBackgroundImage;
+        WorldImage stack = backgroundImage;
 
         // overlay all logs onto the scene
         for (RickRoss l : this.logs) {
@@ -287,7 +287,7 @@ public class YeezusWorld implements YeezusWorldConstants {
     public WorldImage renderLast(String s) {
         return this.render().overlayImages(
                 new TextImage(new Posn(500, 250), s, 
-                        180, 3, new Red()));
+                        120, 3, new Red()));
     }
     
     public WorldImage winState() {
