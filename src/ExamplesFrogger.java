@@ -100,11 +100,11 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     // ...
     
     // LANE 3 [FROM RHS -> LHS]
-    Car cl31 = new Car(new Posn(950, 325), true, 5, "carLeft.png");
+    Car cl31 = new Car(new Posn(950, 325), true, 7, "carLeft.png");
     // ...
     
     // LANE 4 [FROM RHS -> LHS]
-    Car cl41 = new Car(new Posn(50, 275), false, 10, "carRight.png");
+    Car cl41 = new Car(new Posn(50, 275), false, 13, "carRight.png");
     // ...
     
     // LOGS ///////////////////////////

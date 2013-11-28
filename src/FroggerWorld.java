@@ -157,7 +157,7 @@ public class FroggerWorld implements FroggerWorldConstants {
             }
         }
     }
-    
+
     // 2.2.1.3 - commenceDeathGripping() //////////////////////////////////////
     /** COMMENCE DEATH GRIPPING
      * @author Nick Alekhine 
@@ -180,27 +180,27 @@ public class FroggerWorld implements FroggerWorldConstants {
      * 
      *  */
     public void keyEventer(String ke) {
-        
+
         // "up" key press
         if (ke.equals("up")) {
             this.player.moveFrogUp();
         }
-        
+
         // "down" key press
         else if (ke.equals("down")) {
             this.player.moveFrogDown();
         }
-        
+
         // "left" key press
         else if (ke.equals("left")) {
             this.player.moveFrogLeft();
         }
-        
+
         // "right" key press
         else if (ke.equals("right")) {
             this.player.moveFrogRight();
         }
-        
+
     }
 
 
@@ -210,18 +210,37 @@ public class FroggerWorld implements FroggerWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.2.3 - worldEnder() ///////////////////////////////////////////////////
     /** To end the game if a collision occurs. 
+     * @param boolean (auto-terminates game if true)
      * @return WorldEnd
      * @author Nick Alekhine
      * 
      *  */
     public WorldEnd worldEnder() {
+        // go through list of cars and see if any car has collided with player 
+        for (Car c : this.cars) {
+            if (c.collide(player)) {
+                return new WorldEnd(true, this.renderLast("YOU DED."));
+            }
+        }
+
         // if player's position is in the water
-        if (this.player.posn.y < 200) {
-            return new WorldEnd(true, this.renderLast("YOU DED."));
+        if (this.player.posn.y < 200 && this.player.posn.y > 25) {
+            boolean hasCollided = false;
+            
+            for (Log l : this.logs) {
+                if (l.collide(player)) {
+                    hasCollided = true;
+                }
+            }
+            
+            if (!hasCollided) {
+                return new WorldEnd(true, this.renderLast("DROWNED."));
+            }
+            
+            
         }
-        else {
-            return new WorldEnd(false, this.render());
-        }
+        
+        return new WorldEnd(false, this.render());
     }
 
 
@@ -248,16 +267,16 @@ public class FroggerWorld implements FroggerWorldConstants {
         for (LilyPad lp : this.lilypads) {
             stack = new OverlayImages(stack, lp.makeImage());
         }
-        
+
         // overlay the player onto the scene
         stack = new OverlayImages(stack, this.player.makeImage());
-        
+
         // overlay all the cars onto the scene
         for (Car c : this.cars) {
             stack = new OverlayImages(stack, c.makeImage());
         }
 
-        
+
         return stack;
     }
 
