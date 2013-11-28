@@ -49,7 +49,7 @@ import javalib.worldimages.WorldImage;
 public class FroggerWorld implements FroggerWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.1 - Fields ///////////////////////////////////////////////////////////
-    Frog player;
+    Yeezus player;
     ArrayList<Car> cars;
     ArrayList<Log> logs;
     ArrayList<LilyPad> lilypads;
@@ -62,14 +62,14 @@ public class FroggerWorld implements FroggerWorldConstants {
     // 2.2 - Constructors /////////////////////////////////////////////////////
     // 2.2.1 //////////////////////////////////////////////////////////////////
     FroggerWorld() {
-        this.player = new Frog();
+        this.player = new Yeezus();
         this.cars = new ArrayList<Car>();
         this.logs = new ArrayList<Log>();
         this.lilypads = new ArrayList<LilyPad>();
     }
 
     // 2.2.2 //////////////////////////////////////////////////////////////////
-    FroggerWorld(Frog player, ArrayList<Car> cars, 
+    FroggerWorld(Yeezus player, ArrayList<Car> cars, 
             ArrayList<Log> logs, ArrayList<LilyPad> lilypads) {
         this.player = player;
         this.cars = cars;

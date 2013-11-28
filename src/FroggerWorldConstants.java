@@ -45,10 +45,10 @@ public interface FroggerWorldConstants {
             new FromFileImage(new Posn(500, 250), "scene.png");
     
     // 2.2.2 - Frog Images ////////////////////////////////////////////////////
-    public String frogUp = "frogUp.png";
-    public String frogDown = "frogDown.png";
-    public String frogLeft = "frogLeft.png";
-    public String frogRight = "frogRight.png";
+    public String yeUp = "yeUp.png";
+    public String yeDown = "yeDown.png";
+    public String yeLeft = "yeLeft.png";
+    public String yeRight = "yeRight.png";
     
     // 2.2.3 - Car Images /////////////////////////////////////////////////////
     public String carLeft = "carLeft.png";

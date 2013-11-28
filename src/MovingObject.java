@@ -93,7 +93,7 @@ public abstract class MovingObject implements FroggerWorldConstants {
      * @param f the frog that is given to test against this
      * @author Austin Colcord
      */
-    public boolean collide(Frog f) {
+    public boolean collide(Yeezus f) {
         // setting the left and right edges of this object and the frog
         int thisLeftEdge = (this.posn.x - (this.width / 2));
         int thisRightEdge = (this.posn.x + (this.width / 2));

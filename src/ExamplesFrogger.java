@@ -50,7 +50,7 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     // initialize test objects. 
     
     // FROGS
-    Frog frog;
+    Yeezus frog;
 
     // CARS
     Car car1;
@@ -85,7 +85,7 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     // These are actually used in the game. 
     
     // FROG ///////////////////////////
-    Frog f1 = new Frog();
+    Yeezus f1 = new Yeezus();
     
     // CARS ///////////////////////////
     // LANE 1 [FROM RHS -> LHS]
