@@ -28,7 +28,7 @@ import javalib.worldimages.*;
  * @author Nick Alekhine
  *
  */
-public abstract class MovingObject implements FroggerWorldConstants {
+public abstract class MovingObject implements YeezusWorldConstants {
     Posn posn;          
     boolean facingLeft; 
     int speed;          

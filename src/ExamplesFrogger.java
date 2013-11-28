@@ -44,7 +44,7 @@ import tester.Tester;
  * @author Austin Colcord
  *
  */
-public class ExamplesFrogger implements FroggerWorldConstants {
+public class ExamplesFrogger implements YeezusWorldConstants {
 
     // 2.1 - Test Objects /////////////////////////////////////////////////////
     // initialize test objects. 
@@ -57,7 +57,7 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     Car car2;
 
     // LOGS
-    Log log1;
+    RickRoss log1;
     
     // LILYPADS
     LilyPad lp1;
@@ -66,8 +66,8 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     ArrayList<Car> clist1; // non-empty case
     ArrayList<Car> clist2; // empty case
     
-    ArrayList<Log> llist1; // non-empty case
-    ArrayList<Log> llist2; // empty case
+    ArrayList<RickRoss> llist1; // non-empty case
+    ArrayList<RickRoss> llist2; // empty case
     
     ArrayList<LilyPad> lplist1; // non-empty case
     ArrayList<LilyPad> lplist2; // empty case
@@ -109,14 +109,14 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     
     // LOGS ///////////////////////////
     // LANE 1 [FROM RHS -> LHS]
-    Log ll11 = new Log(new Posn(975, 175), false, 5, "log.png");
+    RickRoss ll11 = new RickRoss(new Posn(50, 175), false, 5, rickRossRight);
     
     // LANE 2 [FROM LHS -> RHS]
-    Log ll21 = new Log(new Posn(975, 125), false, 5, "log.png");
+    RickRoss ll21 = new RickRoss(new Posn(975, 125), true, 10, rickRossLeft);
     
     
     // LANE 3 [FROM RHS -> LHS]
-    Log ll31 = new Log(new Posn(975, 75), false, 5, "log.png");
+    RickRoss ll31 = new RickRoss(new Posn(100, 75), false, 7, rickRossRight);
     
     
     // LILYPADS ///////////////////////
@@ -125,12 +125,12 @@ public class ExamplesFrogger implements FroggerWorldConstants {
     ArrayList<Car> carList = new ArrayList<Car>(
             Arrays.asList(this.cl11, this.cl12, this.cl13, this.cl14,
                           this.cl21, this.cl31, this.cl41));
-    ArrayList<Log> logList = new ArrayList<Log>(
+    ArrayList<RickRoss> logList = new ArrayList<RickRoss>(
             Arrays.asList(this.ll11, this.ll21, this.ll31));
     ArrayList<LilyPad> lpList = new ArrayList<LilyPad>();
     
     // FROGGERWORLD
-    FroggerWorld fworld = new FroggerWorld(this.f1, this.carList,
+    YeezusWorld fworld = new YeezusWorld(this.f1, this.carList,
             this.logList, this.lpList);
     
     // GAMERUNNER

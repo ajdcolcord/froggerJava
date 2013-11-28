@@ -46,12 +46,12 @@ import javalib.worldimages.WorldImage;
  * @author Nick Alekhine 
  * 
  * */
-public class FroggerWorld implements FroggerWorldConstants {
+public class YeezusWorld implements YeezusWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.1 - Fields ///////////////////////////////////////////////////////////
     Yeezus player;
     ArrayList<Car> cars;
-    ArrayList<Log> logs;
+    ArrayList<RickRoss> logs;
     ArrayList<LilyPad> lilypads;
     MakeSound sounder = new MakeSound(); 
 
@@ -61,16 +61,16 @@ public class FroggerWorld implements FroggerWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.2 - Constructors /////////////////////////////////////////////////////
     // 2.2.1 //////////////////////////////////////////////////////////////////
-    FroggerWorld() {
+    YeezusWorld() {
         this.player = new Yeezus();
         this.cars = new ArrayList<Car>();
-        this.logs = new ArrayList<Log>();
+        this.logs = new ArrayList<RickRoss>();
         this.lilypads = new ArrayList<LilyPad>();
     }
 
     // 2.2.2 //////////////////////////////////////////////////////////////////
-    FroggerWorld(Yeezus player, ArrayList<Car> cars, 
-            ArrayList<Log> logs, ArrayList<LilyPad> lilypads) {
+    YeezusWorld(Yeezus player, ArrayList<Car> cars, 
+            ArrayList<RickRoss> logs, ArrayList<LilyPad> lilypads) {
         this.player = player;
         this.cars = cars;
         this.logs = logs;
@@ -101,7 +101,7 @@ public class FroggerWorld implements FroggerWorldConstants {
     public void moveWhenOnLilyPadOrLog() {
 
         // go through list of logs and see if player has collided with any
-        for (Log l : this.logs) {
+        for (RickRoss l : this.logs) {
             // if player has collided with the log
             if (l.collide(this.player)) {
                 this.player.move(l.facingLeft, l.speed);
@@ -138,7 +138,7 @@ public class FroggerWorld implements FroggerWorldConstants {
         }
 
         // go through list of logs and move them
-        for (Log l : this.logs) {
+        for (RickRoss l : this.logs) {
             if (l.facingLeft) {
                 l.moveObjectLeft();
             }
@@ -216,7 +216,7 @@ public class FroggerWorld implements FroggerWorldConstants {
         if (this.player.posn.y < 200 && this.player.posn.y > 25) {
             boolean hasCollided = false;
             
-            for (Log l : this.logs) {
+            for (RickRoss l : this.logs) {
                 if (l.collide(player)) {
                     hasCollided = true;
                 }
@@ -252,7 +252,7 @@ public class FroggerWorld implements FroggerWorldConstants {
         WorldImage stack = froggerBackgroundImage;
 
         // overlay all logs onto the scene
-        for (Log l : this.logs) {
+        for (RickRoss l : this.logs) {
             stack = new OverlayImages(stack, l.makeImage());
         }
 

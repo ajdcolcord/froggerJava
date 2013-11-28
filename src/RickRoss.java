@@ -5,8 +5,8 @@ import javalib.worldimages.*;
  * @author Nick Alekhine
  *
  */
-public class Log extends MovingObject {
-    Log(Posn posn, boolean facingLeft, int speed, String image) {
+public class RickRoss extends MovingObject {
+    RickRoss(Posn posn, boolean facingLeft, int speed, String image) {
         super(posn, facingLeft, speed, image, 200, 50);
     }
 }

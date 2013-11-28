@@ -26,7 +26,7 @@ import javalib.worldimages.*;
  * @author Nick Alekhine
  *
  */
-public interface FroggerWorldConstants {
+public interface YeezusWorldConstants {
 
     ///////////////////////////////////////////////////////////////////////////
     // 2.1 - MEASUREMENTS /////////////////////////////////////////////////////
@@ -44,7 +44,7 @@ public interface FroggerWorldConstants {
     public WorldImage froggerBackgroundImage = 
             new FromFileImage(new Posn(500, 250), "scene.png");
     
-    // 2.2.2 - Frog Images ////////////////////////////////////////////////////
+    // 2.2.2 - Yeezus Images ///////////////////////////////////////////////////
     public String yeUp = "yeUp.png";
     public String yeDown = "yeDown.png";
     public String yeLeft = "yeLeft.png";
@@ -54,8 +54,9 @@ public interface FroggerWorldConstants {
     public String carLeft = "carLeft.png";
     public String carRight = "carRight.png";
     
-    // 2.2.4 - Log Images /////////////////////////////////////////////////////
-    public String log = "log.png";
+    // 2.2.4 - RickRoss Images /////////////////////////////////////////////////
+    public String rickRossRight = "rickRossRight.png";
+    public String rickRossLeft = "rickRossLeft.png";
     
     // 2.2.4 - LilyPad Images /////////////////////////////////////////////////
     public String lilyPad = "lilyPad.png";

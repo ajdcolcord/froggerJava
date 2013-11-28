@@ -34,7 +34,7 @@ import javalib.worldimages.*;
  * @author Nick Alekhine
  * 
  * */
-public class Yeezus implements FroggerWorldConstants {
+public class Yeezus implements YeezusWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.1 - Fields ///////////////////////////////////////////////////////////
     Posn posn;

@@ -36,10 +36,10 @@ import javalib.soundworld.World;
  * @author Nick Alekhine
  *
  */
-public class GameRunner extends World implements FroggerWorldConstants {
+public class GameRunner extends World implements YeezusWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.1 - Fields ///////////////////////////////////////////////////////////
-    FroggerWorld fw;
+    YeezusWorld fw;
 
 
 
@@ -49,11 +49,11 @@ public class GameRunner extends World implements FroggerWorldConstants {
     // 2.2 - Constructors /////////////////////////////////////////////////////
     // 2.2.1 //////////////////////////////////////////////////////////////////
     GameRunner() {
-        this.fw = new FroggerWorld();
+        this.fw = new YeezusWorld();
     }
 
     // 2.2.2 //////////////////////////////////////////////////////////////////
-    GameRunner(FroggerWorld fw) {
+    GameRunner(YeezusWorld fw) {
         this.fw = fw;
     }
 
