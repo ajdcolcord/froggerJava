@@ -158,17 +158,6 @@ public class FroggerWorld implements FroggerWorldConstants {
         }
     }
 
-    // 2.2.1.3 - commenceDeathGripping() //////////////////////////////////////
-    /** COMMENCE DEATH GRIPPING
-     * @author Nick Alekhine 
-     * 
-     * */
-    public void commenceDeathGripping() {
-        if (this.player.posn.y <= 550) {
-            this.sounder.playSound("getGot.wav");
-        }
-    }
-
 
 
 
@@ -240,6 +229,10 @@ public class FroggerWorld implements FroggerWorldConstants {
             
         }
         
+        if (this.player.posn.y <= 25) {
+            return new WorldEnd(true, this.winState());
+        }
+        
         return new WorldEnd(false, this.render());
     }
 
@@ -295,5 +288,12 @@ public class FroggerWorld implements FroggerWorldConstants {
         return this.render().overlayImages(
                 new TextImage(new Posn(500, 250), s, 
                         180, 3, new Red()));
+    }
+    
+    public WorldImage winState() {
+        this.sounder.playSound("win.wav");
+        return this.render().overlayImages(
+                new TextImage(new Posn(500, 250), "YOU ARE A GOD", 
+                        100, 3, new Red()));
     }
 }
