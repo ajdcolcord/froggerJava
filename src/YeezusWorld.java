@@ -368,15 +368,4 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
                 new TextImage(new Posn(500, 250), "YOU ARE A GOD", 
                         100, 3, new Red()));
     }
-
-    //    /** places the count for lives on the screen
-    //     * 
-    //     * @return WorldImage
-    //     * @author Austin Colcord
-    //     */
-    //    public WorldImage lifeCount() {
-    //        return this.makeImage().overlayImages(
-    //                new TextImage(new Posn(50, 50), "Lives: " + this.player.lives,
-    //                        100, 3, new Red()));
-    //    }
 }
