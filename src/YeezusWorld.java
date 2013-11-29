@@ -192,21 +192,25 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
         // "up" key press
         if (ke.equals("up")) {
             this.player.moveUp();
+            this.keyTunes.addNote(BAGPIPE, new Note("E0n2"));
         }
 
         // "down" key press
         else if (ke.equals("down")) {
             this.player.moveDown();
+            this.keyTunes.addNote(BAGPIPE, new Note("E1n2"));
         }
 
         // "left" key press
         else if (ke.equals("left")) {
             this.player.moveLeft();
+            this.keyTunes.addNote(PIANO, new Note("E1n2"));
         }
 
         // "right" key press
         else if (ke.equals("right")) {
             this.player.moveRight();
+            this.keyTunes.addNote(PIANO, new Note("E0n2"));
         }
 
     }
