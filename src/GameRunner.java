@@ -30,7 +30,7 @@ import javalib.soundworld.World;
 
 
 // 2 - GamerRunner ////////////////////////////////////////////////////////////
-/** the class that runs the Frogger Game
+/** the class that runs the Yeezus Game
  * 
  * @author Austin
  * @author Nick Alekhine

@@ -89,16 +89,16 @@ public class YeezusWorld implements YeezusWorldConstants {
      * 
      *  */
     public void ticker() {
-        this.moveWhenOnLilyPadOrLog();
+        this.moveWhenOnRickRossorMacMiller();
         this.moveObjects();
     }
 
     // 2.2.1.1 - moveWhenOnLilyPadOrLog() /////////////////////////////////////
-    /** Move the player when on a lily pad or log
+    /** Move the player when on a MacMiller or RickRoss
      * @author Nick Alekhine 
      * 
      * */
-    public void moveWhenOnLilyPadOrLog() {
+    public void moveWhenOnRickRossorMacMiller() {
 
         // go through list of logs and see if player has collided with any
         for (RickRoss l : this.ricks) {

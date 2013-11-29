@@ -7,6 +7,6 @@ import javalib.worldimages.*;
  */
 public class RickRoss extends MovingObject {
     RickRoss(Posn posn, boolean facingLeft, int speed, String image) {
-        super(posn, facingLeft, speed, image, 200, 50);
+        super(posn, facingLeft, speed, image, 90, 50);
     }
 }
