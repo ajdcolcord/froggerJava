@@ -30,6 +30,7 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javalib.colors.Black;
 import javalib.colors.Red;
 import javalib.soundworld.World;
 import javalib.tunes.Note;
@@ -57,7 +58,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
     ArrayList<RickRoss> ricks;
     ArrayList<MacMiller> macs;
     MakeSound sounder = new MakeSound(); 
-    
+
     Iterator<Note> tuneToPlay = (new Song()).iterator();
     int play = 0;
 
@@ -70,7 +71,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
             67, 69, 64,  0, 64,  0,
             64,  0, 65,  0, 62,  0
     };
-    
+
 
 
 
@@ -301,11 +302,16 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
     /** To draw the world onto the scene.
      * @return WorldImage 
      * @author Nick Alekhine
+     * @author Austin Colcord
      * 
      *  */
     public WorldImage makeImage() {
         // initialize stack as background; 
         WorldImage stack = backgroundImage;
+        // set the image of the life counter
+        WorldImage lifeCount = new TextImage(
+                new Posn(900, 30), "Lives: " + this.player.lives,
+                30, 3, new Black());
 
         // overlay all logs onto the scene
         for (RickRoss l : this.ricks) {
@@ -325,8 +331,8 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
             stack = new OverlayImages(stack, c.makeImage());
         }
 
-
-        return stack;
+        //overlay the lifeCounter over the whole image
+        return new OverlayImages(stack, lifeCount);
     }
 
 
@@ -346,10 +352,27 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
                         120, 3, new Red()));
     }
 
+
+    /** 
+     * 
+     * @return WorldImage
+     * @author Nick Alekhine
+     */
     public WorldImage winState() {
         this.sounder.playSound("win.wav");
         return this.makeImage().overlayImages(
                 new TextImage(new Posn(500, 250), "YOU ARE A GOD", 
                         100, 3, new Red()));
     }
+
+    //    /** places the count for lives on the screen
+    //     * 
+    //     * @return WorldImage
+    //     * @author Austin Colcord
+    //     */
+    //    public WorldImage lifeCount() {
+    //        return this.makeImage().overlayImages(
+    //                new TextImage(new Posn(50, 50), "Lives: " + this.player.lives,
+    //                        100, 3, new Red()));
+    //    }
 }

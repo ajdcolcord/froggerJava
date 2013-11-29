@@ -105,6 +105,11 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
         this.y1.moveUp();
         //check the moved position
         t.checkExpect(this.y1.posn.y, 425);
+        //set the y position to the top of the canvas
+        this.y1.posn.y = 0;
+        this.y1.moveUp();
+        //check to see that it didn't move
+        t.checkExpect(this.y1.posn.y, 0);
     }
 
 
@@ -184,108 +189,172 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
         //check the original position
         t.checkExpect(this.rr1.posn.x, 300);
         //move the object left
-                  this.rr1.moveObjectLeft();
-                  //check the moved position
-                  t.checkExpect(this.rr1.posn.x, 290);
-                  //set to a new position off the page
-                  this.rr1.posn.x = -110;
-                  this.rr1.moveObjectLeft();
-                  //make sure the object reset to the right side
-                  t.checkExpect(this.rr1.posn.x, (canvasWidth + 100));
-                  
-                  
-           //       t.checkExpect(this.mm1.posn.x, (canvasWidth / 2));
-        //          this.mm1.moveObjectLeft();
-        //          t.checkExpect(this.mm1.posn.x, ((canvasWidth / 2) - 5));
-        //          this.mm1.posn.x = -105;
-        //          this.mm1.moveObjectLeft();
-        //t.checkExpect(this.mm1.posn.x, (canvasWidth + 100));
-    }
-    //
-    //  // 2.3.6 ////////////////////////////////////////////
-    //  /** test the moveCarLeft
-    //   * @author Austin Colcord
-    //   */
-    //  public void testMoveObjectRight(Tester t) {
-    //      reset();
-    //      t.checkExpect(this.car1.posn.x, (canvasWidth / 2));
-    //      this.car1.moveObjectRight();
-    //      t.checkExpect(this.car1.posn.x, ((canvasWidth / 2) + 5));
-    //      this.car1.posn.x = (canvasWidth + 100);
-    //      this.car1.moveObjectRight();
-    //      t.checkExpect(this.car1.posn.x, -100);
-    //      t.checkExpect(this.log1.posn.x, (canvasWidth / 2));
-    //      this.log1.moveObjectRight();
-    //      t.checkExpect(this.log1.posn.x, ((canvasWidth / 2) + 5));
-    //      this.log1.posn.x = (canvasWidth + 120);
-    //      this.log1.moveObjectRight();
-    //      t.checkExpect(this.log1.posn.x, -100);
-    //      t.checkExpect(this.lp1.posn.x, (canvasWidth / 2));
-    //      this.lp1.moveObjectRight();
-    //      t.checkExpect(this.lp1.posn.x, ((canvasWidth / 2) + 5));
-    //      this.lp1.posn.x = (canvasWidth + 120);
-    //      this.lp1.moveObjectRight();
-    //      t.checkExpect(this.lp1.posn.x, -100);
-    //  } 
-    //
-    //  // 2.3.7 ////////////////////////////////////////////
-    //  /** test the moveAllCars
-    //   * 
-    //   * @author Austin Colcord
-    //   */
-    //  public void testMoveAllObjects(Tester t) {
-    //      reset();
-    //      this.molist1.add(this.car1);
-    //      this.molist1.add(this.car2);
-    //      this.molist1.add(this.log1);
-    //      this.molist1.add(this.lp1);
-    //      t.checkExpect(this.car1.posn.x, (canvasWidth / 2));
-    //      t.checkExpect(this.car2.posn.x, (canvasWidth / 2));
-    //      t.checkExpect(this.log1.posn.x, (canvasWidth / 2));
-    //      t.checkExpect(this.lp1.posn.x, (canvasWidth / 2));
-    //      this.moveAllObjects(this.molist1);
-    //      t.checkExpect(this.car1.posn.x, ((canvasWidth / 2) - 5));
-    //      t.checkExpect(this.car2.posn.x, ((canvasWidth / 2) + 5));
-    //      t.checkExpect(this.log1.posn.x, ((canvasWidth / 2) - 5));
-    //      t.checkExpect(this.lp1.posn.x, ((canvasWidth / 2) + 5));
-    //
-    //  }
-    //
-    //  // 2.3.8 ////////////////////////////////////////////
-    //  /** test the loseLife
-    //   * 
-    //   * @author Austin Colcord
-    //   */
-    //  public void testLoseLife(Tester t) {
-    //      reset();
-    //      t.checkExpect(this.frog.lives, 3);
-    //      this.frog.loseLife();
-    //      t.checkExpect(this.frog.lives, 2);
-    //      this.frog.loseLife();
-    //      t.checkExpect(this.frog.lives, 1);
-    //  }
-    //
-    //
-    //
-    //  // 2.3.9 ////////////////////////////////////////////
-    //  /** test the collide
-    //   * 
-    //   * @author Austin Colcord
-    //   */
-    //  public void testCollide(Tester t) {
-    //      reset();
-    //      t.checkExpect(this.log1.collide(this.frog), false);
-    //      this.frog.posn.y = this.log1.posn.y;
-    //      t.checkExpect(this.log1.collide(this.frog), true);
-    //      reset();
-    //      t.checkExpect(this.log1.collide(this.frog), false);
-    //      t.checkExpect(this.car1.collide(this.frog), false);
-    //      this.frog.posn.y = this.car1.posn.y;
-    //      t.checkExpect(this.car1.collide(this.frog), true);
-    //      this.frog.posn.x = this.frog.posn.x + 100;
-    //      t.checkExpect(this.car1.collide(this.frog), false);
-    //  }
+        this.rr1.moveObjectLeft();
+        //check the moved position
+        t.checkExpect(this.rr1.posn.x, 290);
+        //set to a new position off the page
+        this.rr1.posn.x = -110;
+        this.rr1.moveObjectLeft();
+        //make sure the object reset to the right side
+        t.checkExpect(this.rr1.posn.x, 1100);
 
+        //check the original position
+        t.checkExpect(this.mm1.posn.x, 400);
+        //move the object left
+        this.mm1.moveObjectLeft();
+        //check the moved position
+        t.checkExpect(this.mm1.posn.x, 390);
+        //set a new position outside the screen
+        this.mm1.posn.x = -105;
+        this.mm1.moveObjectLeft();
+        //check that the object resets on the other side of the screen
+        t.checkExpect(this.mm1.posn.x, (canvasWidth + 100));
+    }
+
+    // 2.3.6 ////////////////////////////////////////////
+    /** test the moveCarLeft
+     * @author Austin Colcord
+     */
+    public void testMoveObjectRight(Tester t) {
+        reset();
+        //test the original position
+        t.checkExpect(this.c1.posn.x, 100);
+        //move the object right
+        this.c1.moveObjectRight();
+        //check that the position was moved
+        t.checkExpect(this.c1.posn.x, 110);
+        //set to a position off of the screen
+        this.c1.posn.x = (canvasWidth + 100);
+        this.c1.moveObjectRight();
+        //check that the position resets to the left side
+        t.checkExpect(this.c1.posn.x, -100);
+
+        //test the original position
+        t.checkExpect(this.rr1.posn.x, 300);
+        //move the object right
+        this.rr1.moveObjectRight();
+        //check that the object moved
+        t.checkExpect(this.rr1.posn.x, 310);
+        //set to a new position off of the screen
+        this.rr1.posn.x = (canvasWidth + 120);
+        this.rr1.moveObjectRight();
+        //check that the object resets ot before the screen
+        t.checkExpect(this.rr1.posn.x, -100);
+
+        //test the original position
+        t.checkExpect(this.mm1.posn.x, 400);
+        //move the object right
+        this.mm1.moveObjectRight();
+        //check the moved position
+        t.checkExpect(this.mm1.posn.x, 410);
+        //set a new position off the screen
+        this.mm1.posn.x = (canvasWidth + 120);
+        this.mm1.moveObjectRight();
+        //check that the position resets
+        t.checkExpect(this.mm1.posn.x, -100);
+    } 
+
+
+    // 2.3.8 ////////////////////////////////////////////
+    /** test the loseLife
+     * 
+     * @author Austin Colcord
+     */
+    public void testLoseLife(Tester t) {
+        reset();
+        t.checkExpect(this.y1.lives, 3);
+        this.y1.loseLife();
+        t.checkExpect(this.y1.lives, 2);
+        this.y1.loseLife();
+        t.checkExpect(this.y1.lives, 1);
+    }
+
+
+
+    // 2.3.9 ////////////////////////////////////////////
+    /** test the collide
+     * 
+     * @author Austin Colcord
+     */
+    public void testCollide(Tester t) {
+        reset();
+        t.checkExpect(this.rr1.collide(this.y1), false);
+        this.y1.posn = this.rr1.posn;
+        t.checkExpect(this.rr1.collide(this.y1), true);
+        reset();
+        t.checkExpect(this.rr1.collide(this.y1), false);
+        t.checkExpect(this.c1.collide(this.y1), false);
+        this.y1.posn = this.c1.posn;
+        t.checkExpect(this.c1.collide(this.y1), true);
+        t.checkExpect(this.mm1.collide(this.y1), false);
+        this.y1.posn = this.mm1.posn;
+        t.checkExpect(this.mm1.collide(this.y1), true);
+    }
+
+    // 2.3.10 ////////////////////////////////////////////
+    /** test the makeImage method for makeImage in the 
+     * Moving Object class
+     * 
+     * @author Austin Colcord
+     */
+    public void testMakeImageMO(Tester t) {
+        reset();
+        t.checkExpect(this.c1.makeImage(),  
+                new FromFileImage(new Posn(100, 100), "carLeft.png"));
+        t.checkExpect(this.rr1.makeImage(),
+                new FromFileImage(new Posn(300, 200), "rickRossRight.png"));
+        t.checkExpect(this.mm1.makeImage(),
+                new FromFileImage(new Posn(400, 200), "macMiller.png"));
+    }
+
+
+    // 2.3.11 ////////////////////////////////////////////
+    /** test the move method for Yeezus class
+     * 
+     * @author Austin Colcord
+     */
+    public void testMove(Tester t) {
+        reset();
+        t.checkExpect(this.y1.posn.x, 500);
+        this.y1.move(true, 10);
+        t.checkExpect(this.y1.posn.x, 490);
+        this.y1.move(false, 20);
+        t.checkExpect(this.y1.posn.x, 510);
+    }
+
+
+    // 2.3.12 ////////////////////////////////////////////
+    /** test the returnToStart method for Yeezus class
+     * 
+     * @author Austin Colcord
+     */
+    public void testReturnToStart(Tester t) {
+        reset();
+        this.y1.posn.y = 300;
+        this.y1.posn.x = 500;
+        this.y1.returnToStart();
+        t.checkExpect(this.y1.posn.x, (canvasWidth / 2));
+        t.checkExpect(this.y1.posn.y, 475);
+    }
+
+
+
+    // 2.3.13 ////////////////////////////////////////////
+    /** test the makeImage method for Yeezus class
+     * 
+     * @author Austin Colcord
+     */
+    public void testMakeImageY(Tester t) {
+        reset();
+        t.checkExpect(this.y1.makeImage(),
+                new FromFileImage(new Posn(500, 475), "yeUp.png"));
+        this.y1.posn.x = 100;
+        t.checkExpect(this.y1.makeImage(),
+                new FromFileImage(new Posn(100, 475), "yeUp.png"));
+        this.y1.moveLeft();
+        t.checkExpect(this.y1.makeImage(),
+                new FromFileImage(new Posn(50, 475), "yeLeft.png"));
+    }
 
 
 
@@ -344,7 +413,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     YeezusWorld fworld = new YeezusWorld(this.f1, this.carList,
             this.logList, this.lpList);
 
-    
+
     /** Produce the initial YeezusWorld
      * @return the initial world that starts the game
      */
