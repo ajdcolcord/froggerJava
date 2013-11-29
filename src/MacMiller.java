@@ -1,7 +1,6 @@
 import javalib.worldimages.Posn;
 
-/** represents the lilypads in the game that extends the MovingObject class and 
- *  its methods.
+/** to represent a MacMiller floating in the water. 
  * @author Austin Colcord
  * @author Nick Alekhine
  *

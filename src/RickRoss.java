@@ -1,6 +1,6 @@
-import javalib.worldimages.*;
+import javalib.worldimages.Posn;
 
-/** represents the logs in the water. Implements MovingObject.
+/** To represent a RickRoss floating on his back down the river. 
  * @author Austin Colcord
  * @author Nick Alekhine
  *

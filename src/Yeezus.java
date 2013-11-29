@@ -1,23 +1,24 @@
 /******************************************************************************
  * TABLE OF CONTENTS
  *   1. Libraries
- *   2. Frog
+ *   2. Yeezus
  *    2.1 FIELDS
- *      2.1.1 posn   -- Posn
- *      2.1.2 lives  -- int
- *      2.1.3 image  -- String
- *      2.1.4 width  -- int
- *      2.1.5 height -- int
+ *      2.1.1 posn               -- Posn
+ *      2.1.2 lives              -- int
+ *      2.1.3 image              -- String
+ *      2.1.4 width              -- int
+ *      2.1.5 height             -- int
  *    2.2 CONSTRUCTORS
- *      2.2.1 Frog()
+ *      2.2.1 Yeezus()
  *    2.3 METHODS
- *      2.3.1 moveFrogUp()       -- void
- *      2.3.2 moveFrogDown()     -- void
- *      2.3.3 moveFrogLeft()     -- void
- *      2.3.4 moveFrogRight()    -- void
+ *      2.3.1 moveUp()           -- void
+ *      2.3.2 moveDown()         -- void
+ *      2.3.3 moveLeft()         -- void
+ *      2.3.4 moveRight()        -- void
  *      2.3.5 loseLife()         -- void 
  *      2.3.6 move(Boolean, int) -- void
- *      2.3.7 makeImage()        -- WorldImage
+ *      2.3.7 returnToStart()    -- void
+ *      2.3.8 makeImage()        -- WorldImage
  *          
  *****************************************************************************/
 
@@ -28,8 +29,8 @@ import javalib.worldimages.*;
 
 
 
-//2 - Frog ////////////////////////////////////////////////////////////////////
-/** represents the frog that is controlled by the player 
+// 2 - Yeezus /////////////////////////////////////////////////////////////////
+/** To represent the player you control.  
  * @author Austin Colcord
  * @author Nick Alekhine
  * 
@@ -37,11 +38,11 @@ import javalib.worldimages.*;
 public class Yeezus implements YeezusWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.1 - Fields ///////////////////////////////////////////////////////////
-    Posn posn;
-    int lives;
-    String image;
-    int width;
-    int height;
+    Posn posn;    // 2.1.1
+    int lives;    // 2.1.2
+    String image; // 2.1.3
+    int width;    // 2.1.4
+    int height;   // 2.1.5
 
     
     
@@ -73,7 +74,7 @@ public class Yeezus implements YeezusWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.3 - Methods //////////////////////////////////////////////////////////
     
-    // 2.3.1 - moveUp() ///////////////////////////////////////////////////
+    // 2.3.1 - moveUp() ///////////////////////////////////////////////////////
     /** move up one step 
      * @author Austin Colcord
      * @author Nick Alekhine
@@ -93,7 +94,7 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     
-    // 2.3.2 - moveDown() /////////////////////////////////////////////////
+    // 2.3.2 - moveDown() /////////////////////////////////////////////////////
     /** move down one step unless at the bottom
      * @author Austin Colcord
      * @author Nick Alekhine
@@ -113,7 +114,7 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     
-    // 2.3.3 - moveFrogLeft() /////////////////////////////////////////////////
+    // 2.3.3 - moveLeft() /////////////////////////////////////////////////////
     /** move to the left unless near the left edge of the canvas 
      * @author Austin Colcord
      * @author Nick Alekhine
@@ -153,7 +154,7 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     
-    // 2.3.5 - loseLife() ////////////////////////////////////////////////////.
+    // 2.3.5 - loseLife() /////////////////////////////////////////////////////
     /** lose life if enter water or collide with car
      * @author Austin Colcord
      * @author Nick Alekhine
@@ -190,6 +191,11 @@ public class Yeezus implements YeezusWorldConstants {
         }
     }
     
+    
+    
+    
+    
+    // 2.3.7 - returnToStart() ////////////////////////////////////////////////
     /** To return this player to the original position
      * @author Nick Alekhine
      * 
@@ -202,7 +208,7 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     
-    // 2.3.7 - makeImage() ////////////////////////////////////////////////////
+    // 2.3.8 - makeImage() ////////////////////////////////////////////////////
     /** Make image out of this image and position. 
      * @author Nick Alekhine 
      * 

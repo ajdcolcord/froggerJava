@@ -28,8 +28,6 @@
 
 // 1 - Libraries //////////////////////////////////////////////////////////////
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import javalib.colors.Black;
 import javalib.colors.Red;
 import javalib.soundworld.World;
@@ -58,20 +56,6 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
     ArrayList<RickRoss> ricks;
     ArrayList<MacMiller> macs;
     MakeSound sounder = new MakeSound(); 
-
-    Iterator<Note> tuneToPlay = (new Song()).iterator();
-    int play = 0;
-
-    int[] tickyTackTune = new int[] {
-            67, 69, 64,  0, 62,  0,   
-            67, 69, 64,  0, 62,  0, 
-            67, 67, 72, 72, 
-            72, 74, 76, 74, 72,  0,
-            72, 69, 65,  0, 65,  0,
-            67, 69, 64,  0, 64,  0,
-            64,  0, 65,  0, 62,  0
-    };
-
 
 
 
