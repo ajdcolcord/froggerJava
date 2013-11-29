@@ -56,7 +56,7 @@ public class GameRunner {
     /** An instance of the <code>Examples</code> class that defines
      * the initial world
      */
-    ExamplesYeezus ey = new ExamplesYeezus();
+    ExamplesYeezusWorld ey = new ExamplesYeezusWorld();
 
     /** the initial world that invokes the <code>bigBang</code> method */
     YeezusWorld yw = this.ey.initYeezusWorld();
@@ -83,6 +83,6 @@ public class GameRunner {
 
     ///////////////////////////////////////////////////////////////////////////
     // support for the regression tests
-    public static ExamplesYeezus examplesInstance = 
-            new ExamplesYeezus();
+    public static ExamplesYeezusWorld examplesInstance = 
+            new ExamplesYeezusWorld();
 }

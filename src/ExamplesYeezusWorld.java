@@ -44,7 +44,7 @@ import tester.Tester;
  * @author Austin Colcord
  *
  */
-public class ExamplesYeezus implements YeezusWorldConstants {
+public class ExamplesYeezusWorld implements YeezusWorldConstants {
 
     // 2.1 - Test Objects /////////////////////////////////////////////////////
     // initialize test objects. 
@@ -350,13 +350,14 @@ public class ExamplesYeezus implements YeezusWorldConstants {
      */
     public YeezusWorld initYeezusWorld() {
         return this.fworld;
+    }
 
 
 
 
     ///////////////////////////////////////////////////////////////////////////
     public static void main(String[] argv) {
-        ExamplesYeezus ef = new ExamplesYeezus();
+        ExamplesYeezusWorld ef = new ExamplesYeezusWorld();
 
         Tester.runReport(ef, false, false);
     }
