@@ -190,6 +190,14 @@ public class Yeezus implements YeezusWorldConstants {
         }
     }
     
+    /** To return this player to the original position
+     * @author Nick Alekhine
+     * 
+     *  */
+    public void returnToStart() {
+        this.posn = new Posn((canvasWidth / 2), 475);
+    }
+    
     
     
     

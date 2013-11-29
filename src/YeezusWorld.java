@@ -51,8 +51,8 @@ public class YeezusWorld implements YeezusWorldConstants {
     // 2.1 - Fields ///////////////////////////////////////////////////////////
     Yeezus player;
     ArrayList<Car> cars;
-    ArrayList<RickRoss> logs;
-    ArrayList<MacMiller> lilypads;
+    ArrayList<RickRoss> ricks;
+    ArrayList<MacMiller> macs;
     MakeSound sounder = new MakeSound(); 
 
 
@@ -64,17 +64,17 @@ public class YeezusWorld implements YeezusWorldConstants {
     YeezusWorld() {
         this.player = new Yeezus();
         this.cars = new ArrayList<Car>();
-        this.logs = new ArrayList<RickRoss>();
-        this.lilypads = new ArrayList<MacMiller>();
+        this.ricks = new ArrayList<RickRoss>();
+        this.macs = new ArrayList<MacMiller>();
     }
 
     // 2.2.2 //////////////////////////////////////////////////////////////////
     YeezusWorld(Yeezus player, ArrayList<Car> cars, 
-            ArrayList<RickRoss> logs, ArrayList<MacMiller> lilypads) {
+            ArrayList<RickRoss> ricks, ArrayList<MacMiller> macs) {
         this.player = player;
         this.cars = cars;
-        this.logs = logs;
-        this.lilypads = lilypads;
+        this.ricks = ricks;
+        this.macs = macs;
     }
 
 
@@ -101,7 +101,7 @@ public class YeezusWorld implements YeezusWorldConstants {
     public void moveWhenOnLilyPadOrLog() {
 
         // go through list of logs and see if player has collided with any
-        for (RickRoss l : this.logs) {
+        for (RickRoss l : this.ricks) {
             // if player has collided with the log
             if (l.collide(this.player)) {
                 this.player.move(l.facingLeft, l.speed);
@@ -110,7 +110,7 @@ public class YeezusWorld implements YeezusWorldConstants {
         }
 
         // go through list of lilypads and see if player has collided with any
-        for (MacMiller lp : this.lilypads) {
+        for (MacMiller lp : this.macs) {
             // if player has collided with the lilypad
             if (lp.collide(this.player)) {
                 this.player.move(lp.facingLeft, lp.speed);
@@ -138,7 +138,7 @@ public class YeezusWorld implements YeezusWorldConstants {
         }
 
         // go through list of logs and move them
-        for (RickRoss l : this.logs) {
+        for (RickRoss l : this.ricks) {
             if (l.facingLeft) {
                 l.moveObjectLeft();
             }
@@ -148,7 +148,7 @@ public class YeezusWorld implements YeezusWorldConstants {
         }
 
         // go through list of lilypads and move them
-        for (MacMiller lp : this.lilypads) {
+        for (MacMiller lp : this.macs) {
             if (lp.facingLeft) {
                 lp.moveObjectLeft();
             }
@@ -207,32 +207,70 @@ public class YeezusWorld implements YeezusWorldConstants {
     public WorldEnd worldEnder() {
         // go through list of cars and see if any car has collided with player 
         for (Car c : this.cars) {
+            // if car has collided with the player
             if (c.collide(player)) {
-                return new WorldEnd(true, this.renderLast("YOU DEAD."));
+                // if the player has 1 (or fewer) lives, end the game. 
+                if (this.player.lives <= 1) {
+                    return new WorldEnd(true, this.renderLast("YOU DEAD."));
+                }
+                // lose one life. 
+                else {
+                    this.player.loseLife();
+                    this.player.returnToStart();
+                    return new WorldEnd(false, this.render());
+                }
             }
         }
 
         // if player's position is in the water
         if (this.player.posn.y < 200 && this.player.posn.y > 25) {
             boolean hasCollided = false;
-            
-            for (RickRoss l : this.logs) {
-                if (l.collide(player)) {
+
+            int i = 0;
+            // go through the list of RickRoss'
+            while (i < this.ricks.size() && !hasCollided) {
+                // if the RickRoss has collided with the player
+                if (this.ricks.get(i).collide(this.player)) {
                     hasCollided = true;
                 }
+
+                i++;
             }
-            
+
+            i = 0; // reset incrementer
+            // go through the list of MacMillers
+            while (i < this.macs.size() && !hasCollided) {
+                // if the MacMiller has collided with the player
+                if (this.macs.get(i).collide(this.player)) {
+                    hasCollided = true;
+                }
+
+                i++;
+            }
+
+            // if player has not collided with a RickRoss or MacMiller.
             if (!hasCollided) {
-                return new WorldEnd(true, this.renderLast("YOU DROWNED."));
+                // if the player has 1 (or fewer) lives, end the game. 
+                if (this.player.lives <= 1) {
+                    return new WorldEnd(true, this.renderLast("YOU DROWNED."));
+                }
+                // lose one life. 
+                else {
+                    this.player.loseLife();
+                    this.player.returnToStart();
+                    return new WorldEnd(false, this.render());
+                }
             }
-            
-            
+
+
         }
-        
+
+        // if player has reached the 'Ye Zone
         if (this.player.posn.y <= 25) {
             return new WorldEnd(true, this.winState());
         }
-        
+
+        // else the game continues on. 
         return new WorldEnd(false, this.render());
     }
 
@@ -252,12 +290,12 @@ public class YeezusWorld implements YeezusWorldConstants {
         WorldImage stack = backgroundImage;
 
         // overlay all logs onto the scene
-        for (RickRoss l : this.logs) {
+        for (RickRoss l : this.ricks) {
             stack = new OverlayImages(stack, l.makeImage());
         }
 
-        // overlay all lilypads onto the scene
-        for (MacMiller lp : this.lilypads) {
+        // overlay all MacMiller's onto the scene
+        for (MacMiller lp : this.macs) {
             stack = new OverlayImages(stack, lp.makeImage());
         }
 
@@ -289,7 +327,7 @@ public class YeezusWorld implements YeezusWorldConstants {
                 new TextImage(new Posn(500, 250), s, 
                         120, 3, new Red()));
     }
-    
+
     public WorldImage winState() {
         this.sounder.playSound("win.wav");
         return this.render().overlayImages(

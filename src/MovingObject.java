@@ -21,7 +21,7 @@ import javalib.worldimages.*;
 
 
 
-// 2 - AWaterObject ///////////////////////////////////////////////////////////
+// 2 - MovingObject ///////////////////////////////////////////////////////////
 /** represents the abstract class that contains all the fields for objects that 
  *  are in the water.
  * @author Austin Colcord
