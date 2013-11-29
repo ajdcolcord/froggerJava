@@ -20,12 +20,6 @@
 
 
 
-// 1 - Libraries //////////////////////////////////////////////////////////////
-import javalib.worldimages.WorldEnd;
-import javalib.worldimages.WorldImage;
-import javalib.soundworld.World;
-
-
 
 
 
@@ -36,7 +30,7 @@ import javalib.soundworld.World;
  * @author Nick Alekhine
  *
  */
-public class GameRunner extends World implements YeezusWorldConstants {
+public class GameRunner {
     ///////////////////////////////////////////////////////////////////////////
     // 2.1 - Fields ///////////////////////////////////////////////////////////
     YeezusWorld fw;
@@ -59,76 +53,28 @@ public class GameRunner extends World implements YeezusWorldConstants {
 
 
 
+    /** An instance of the <code>Examples</code> class that defines
+     * the initial world
+     */
+    ExamplesYeezus ey = new ExamplesYeezus();
 
+    /** the initial world that invokes the <code>bigBang</code> method */
+    YeezusWorld yw = this.ey.initYeezusWorld();
 
-    ///////////////////////////////////////////////////////////////////////////
-    // 2.3 - Methods //////////////////////////////////////////////////////////
-    // 2.2.1 - onTick() ///////////////////////////////////////////////////////
-    /** Move the player around the scene. Move logs, lilypads, and cars.
-     * @author Nick Alekhine
-     * 
-     *  */
-    public void onTick() {
-        this.fw.ticker();
+    /** 
+     * Method that runs the game
+     */
+    void run() {
+        this.yw.bigBang(1000, 500, 0.075);
     }
 
-
-
-
-
-    ///////////////////////////////////////////////////////////////////////////
-    // 2.2.2 - onKeyEvent(String) /////////////////////////////////////////////
-    /** Change the direction of the player.
-     * @author Nick Alekhine
-     * 
-     *  */
-    public void onKeyEvent(String ke){
-        this.fw.keyEventer(ke);
-    }
-
-
-
-
-
-    ///////////////////////////////////////////////////////////////////////////
-    // 2.2.3 - worldEnds() ////////////////////////////////////////////////////
-    /** To end the game if a collision occurs. 
-     * @return WorldEnd
-     * @author Nick Alekhine
-     * 
-     *  */
-    public WorldEnd worldEnds() {
-        return this.fw.worldEnder();
-    }
-
-
-
-
-
-    ///////////////////////////////////////////////////////////////////////////
-    // 2.2.4 - makeImage() ////////////////////////////////////////////////////
-    /** To draw the world onto the scene.
-     * @return WorldImage 
-     * @author Nick Alekhine
-     * 
-     *  */
-    public WorldImage makeImage() {
-        return this.fw.render();
-    }
-
-
-
-
-
-    ///////////////////////////////////////////////////////////////////////////
-    // 2.2.5 - lastImage(String) //////////////////////////////////////////////
-    /** To draw the win / lose message at the end of the game. 
-     * @return WorldImage
-     * @author Nick Alekhine
-     * 
-     *  */
-    public WorldImage lastImage(String s) {
-        return this.fw.renderLast(s);
+    /**
+     * Main method to run the game
+     * @param argv unused
+     */
+    public static void main(String[] argv) {
+        GameRunner gm = new GameRunner();
+        gm.run();
     }
 
 

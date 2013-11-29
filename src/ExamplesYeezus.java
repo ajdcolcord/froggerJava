@@ -402,16 +402,11 @@ public class ExamplesYeezus implements YeezusWorldConstants {
     YeezusWorld fworld = new YeezusWorld(this.f1, this.carList,
             this.logList, this.lpList);
     
-    // GAMERUNNER
-    GameRunner runner = new GameRunner(fworld);
-
-
-
-
-    // 2.3.9 - testWholeWorld /////////////////////////////////////////////////
-    // to run the game
-    void testWholeWorld(Tester t) {
-        this.runner.bigBang(1000, 500, .075);
+    /** Produce the initial YeezusWorld
+     * @return the initial world that starts the game
+     */
+    public YeezusWorld initYeezusWorld() {
+        return this.fworld;
     }
 
 

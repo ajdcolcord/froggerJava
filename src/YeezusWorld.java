@@ -28,8 +28,11 @@
 
 // 1 - Libraries //////////////////////////////////////////////////////////////
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javalib.colors.Red;
+import javalib.soundworld.World;
+import javalib.tunes.Note;
 import javalib.worldimages.OverlayImages;
 import javalib.worldimages.Posn;
 import javalib.worldimages.TextImage;
@@ -46,7 +49,7 @@ import javalib.worldimages.WorldImage;
  * @author Nick Alekhine 
  * 
  * */
-public class YeezusWorld implements YeezusWorldConstants {
+public class YeezusWorld extends World implements YeezusWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.1 - Fields ///////////////////////////////////////////////////////////
     Yeezus player;
@@ -54,6 +57,21 @@ public class YeezusWorld implements YeezusWorldConstants {
     ArrayList<RickRoss> ricks;
     ArrayList<MacMiller> macs;
     MakeSound sounder = new MakeSound(); 
+    
+    Iterator<Note> tuneToPlay = (new Song()).iterator();
+    int play = 0;
+
+    int[] tickyTackTune = new int[] {
+            67, 69, 64,  0, 62,  0,   
+            67, 69, 64,  0, 62,  0, 
+            67, 67, 72, 72, 
+            72, 74, 76, 74, 72,  0,
+            72, 69, 65,  0, 65,  0,
+            67, 69, 64,  0, 64,  0,
+            64,  0, 65,  0, 62,  0
+    };
+    
+
 
 
 
@@ -88,7 +106,7 @@ public class YeezusWorld implements YeezusWorldConstants {
      * @author Nick Alekhine
      * 
      *  */
-    public void ticker() {
+    public void onTick() {
         this.moveWhenOnRickRossorMacMiller();
         this.moveObjects();
     }
@@ -168,7 +186,7 @@ public class YeezusWorld implements YeezusWorldConstants {
      * @author Nick Alekhine
      * 
      *  */
-    public void keyEventer(String ke) {
+    public void onKeyEvent(String ke) {
 
         // "up" key press
         if (ke.equals("up")) {
@@ -204,20 +222,20 @@ public class YeezusWorld implements YeezusWorldConstants {
      * @author Nick Alekhine
      * 
      *  */
-    public WorldEnd worldEnder() {
+    public WorldEnd worldEnds() {
         // go through list of cars and see if any car has collided with player 
         for (Car c : this.cars) {
             // if car has collided with the player
             if (c.collide(player)) {
                 // if the player has 1 (or fewer) lives, end the game. 
                 if (this.player.lives <= 1) {
-                    return new WorldEnd(true, this.renderLast("YOU DEAD."));
+                    return new WorldEnd(true, this.lastImage("YOU DEAD."));
                 }
                 // lose one life. 
                 else {
                     this.player.loseLife();
                     this.player.returnToStart();
-                    return new WorldEnd(false, this.render());
+                    return new WorldEnd(false, this.makeImage());
                 }
             }
         }
@@ -252,13 +270,13 @@ public class YeezusWorld implements YeezusWorldConstants {
             if (!hasCollided) {
                 // if the player has 1 (or fewer) lives, end the game. 
                 if (this.player.lives <= 1) {
-                    return new WorldEnd(true, this.renderLast("YOU DROWNED."));
+                    return new WorldEnd(true, this.lastImage("YOU DROWNED."));
                 }
                 // lose one life. 
                 else {
                     this.player.loseLife();
                     this.player.returnToStart();
-                    return new WorldEnd(false, this.render());
+                    return new WorldEnd(false, this.makeImage());
                 }
             }
 
@@ -271,7 +289,7 @@ public class YeezusWorld implements YeezusWorldConstants {
         }
 
         // else the game continues on. 
-        return new WorldEnd(false, this.render());
+        return new WorldEnd(false, this.makeImage());
     }
 
 
@@ -285,7 +303,7 @@ public class YeezusWorld implements YeezusWorldConstants {
      * @author Nick Alekhine
      * 
      *  */
-    public WorldImage render() {
+    public WorldImage makeImage() {
         // initialize stack as background; 
         WorldImage stack = backgroundImage;
 
@@ -322,15 +340,15 @@ public class YeezusWorld implements YeezusWorldConstants {
      * @author Nick Alekhine
      * 
      *  */
-    public WorldImage renderLast(String s) {
-        return this.render().overlayImages(
+    public WorldImage lastImage(String s) {
+        return this.makeImage().overlayImages(
                 new TextImage(new Posn(500, 250), s, 
                         120, 3, new Red()));
     }
 
     public WorldImage winState() {
         this.sounder.playSound("win.wav");
-        return this.render().overlayImages(
+        return this.makeImage().overlayImages(
                 new TextImage(new Posn(500, 250), "YOU ARE A GOD", 
                         100, 3, new Red()));
     }
