@@ -3,22 +3,24 @@
  *   1. Libraries
  *   2. FroggerWorld
  *     2.1 FIELDS
- *       2.1.1 player   -- Frog
- *       2.1.2 cars     -- ArrayList<Log>
- *       2.1.3 logs     -- ArrayList<Car>
- *       2.1.4 LilyPads -- ArrayList<LilyPad>
+ *       2.1.1 player                              -- Yeezus
+ *       2.1.2 cars                                -- ArrayList<Car>
+ *       2.1.3 ricks                               -- ArrayList<RickRoss>
+ *       2.1.4 macs                                -- ArrayList<MacMiller>
+ *       2.1.5 sounder                             -- MakeSound
  *     2.2 CONSTRUCTORS
- *       2.2.1 FroggerWorld()
- *       2.2.2 FroggerWorld(Frog, ArrayList<Car>,
- *                          ArrayList<Log>, ArrayList<LilyPad>)
+ *       2.2.1 YeezusWorld()
+ *       2.2.2 YeezusWorld(Yeezus, ArrayList<Car>,
+ *                         ArrayList<RickRoss>, ArrayList<MacMiller>)
  *     2.3 METHODS
- *       2.3.1 ticker()                     -- void
- *         2.3.1.1 moveWhenOnLilyPadOrLog() -- void
- *         2.3.1.2 moveObjects()            -- void
- *       2.3.2 keyEventer(String)           -- void
- *       2.3.3 worldEnder()                  -- WorldEnd
- *       2.3.4 render()                  -- WorldImage
- *       2.3.5 renderLast(String)            -- WorldImage
+ *       2.3.1 onTick()                            -- void
+ *         2.3.1.1 moveWhenOnRickRossOrMacMiller() -- void
+ *         2.3.1.2 moveObjects()                   -- void
+ *       2.3.2 onKeyEvent(String)                  -- void
+ *       2.3.3 worldEnds()                         -- WorldEnd
+ *       2.3.4 makeImage()                         -- WorldImage
+ *       2.3.5 lastImage(String)                   -- WorldImage
+ *       2.3.6 winState()                          -- WorldImage
  * 
  *****************************************************************************/
 
@@ -51,11 +53,11 @@ import javalib.worldimages.WorldImage;
 public class YeezusWorld extends World implements YeezusWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.1 - Fields ///////////////////////////////////////////////////////////
-    Yeezus player;
-    ArrayList<Car> cars;
-    ArrayList<RickRoss> ricks;
-    ArrayList<MacMiller> macs;
-    MakeSound sounder = new MakeSound(); 
+    Yeezus player; // 2.1.1
+    ArrayList<Car> cars; // 2.1.2
+    ArrayList<RickRoss> ricks; // 2.1.3
+    ArrayList<MacMiller> macs; // 2.1.4
+    MakeSound sounder = new MakeSound(); // 2.1.5 
 
 
 
@@ -63,7 +65,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
     ///////////////////////////////////////////////////////////////////////////
     // 2.2 - Constructors /////////////////////////////////////////////////////
-    // 2.2.1 //////////////////////////////////////////////////////////////////
+    // 2.2.1 
     YeezusWorld() {
         this.player = new Yeezus();
         this.cars = new ArrayList<Car>();
@@ -71,7 +73,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
         this.macs = new ArrayList<MacMiller>();
     }
 
-    // 2.2.2 //////////////////////////////////////////////////////////////////
+    // 2.2.2 
     YeezusWorld(Yeezus player, ArrayList<Car> cars, 
             ArrayList<RickRoss> ricks, ArrayList<MacMiller> macs) {
         this.player = player;
@@ -86,7 +88,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
     ///////////////////////////////////////////////////////////////////////////
     // 2.3 - Methods //////////////////////////////////////////////////////////
-    // 2.2.1 - ticker() ///////////////////////////////////////////////////////
+    // 2.2.1 - onTick() ///////////////////////////////////////////////////////
     /** Move the player around the scene. Move logs, lilypads, and cars.
      * @author Nick Alekhine
      * 
@@ -96,7 +98,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
         this.moveObjects();
     }
 
-    // 2.2.1.1 - moveWhenOnLilyPadOrLog() /////////////////////////////////////
+    // 2.2.1.1 - moveWhenOnRickRossOrMacMiller() //////////////////////////////
     /** Move the player when on a MacMiller or RickRoss
      * @author Nick Alekhine 
      * 
@@ -166,7 +168,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.2 - keyEventer(String) /////////////////////////////////////////////
+    // 2.2.2 - onKeyEvent(String) /////////////////////////////////////////////
     /** Change the direction of the player.
      * @author Nick Alekhine
      * 
@@ -204,7 +206,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.3 - worldEnder() ///////////////////////////////////////////////////
+    // 2.2.3 - worldEnds() ////////////////////////////////////////////////////
     /** To end the game if a collision occurs. 
      * @param boolean (auto-terminates game if true)
      * @return WorldEnd
@@ -286,7 +288,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.4 - render() ///////////////////////////////////////////////////////
+    // 2.2.4 - makeImage() ////////////////////////////////////////////////////
     /** To draw the world onto the scene.
      * @return WorldImage 
      * @author Nick Alekhine
@@ -296,11 +298,13 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
     public WorldImage makeImage() {
         // initialize stack as background; 
         WorldImage stack = backgroundImage;
+        
         // set the image of the life counter
         WorldImage lifeCount = new TextImage(
                 new Posn(900, 30), "Lives: " + this.player.lives,
                 30, 3, new Black());
 
+        
         // overlay all logs onto the scene
         for (RickRoss l : this.ricks) {
             stack = new OverlayImages(stack, l.makeImage());
@@ -328,8 +332,8 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.5 - renderLast(String) /////////////////////////////////////////////
-    /** To draw the win / lose message at the end of the game. 
+    // 2.2.5 - lastImage(String) /////////////////////////////////////////////
+    /** To draw the lose message at the end of the game. 
      * @return WorldImage
      * @author Nick Alekhine
      * 
@@ -341,8 +345,9 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
     }
 
 
-    /** 
-     * 
+    ///////////////////////////////////////////////////////////////////////////
+    // 2.2.6 - winState() /////////////////////////////////////////////////////
+    /** To draw the win message at the end of the game. 
      * @return WorldImage
      * @author Nick Alekhine
      */
