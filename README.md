@@ -14,3 +14,15 @@ This game was developed in the span of two weeks for CS2510: Fundamentals of Com
 
 ### How To Play The Game
 This will be filled out later. 
+
+### What Needs To Get Cleaned Up
+- Car.java
+- ExamplesYeezusWorld.java
+- GameRunner.java
+- MacMiller.java
+- MakeSound.java
+- MovingObject.java
+- RickRoss.java
+- Yeezus.java
+- ~~YeezusWorld.java~~
+- YeezusWorldConstants.java
