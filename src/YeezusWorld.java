@@ -53,10 +53,10 @@ import javalib.worldimages.WorldImage;
 public class YeezusWorld extends World implements YeezusWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.1 - Fields ///////////////////////////////////////////////////////////
-    Yeezus player; // 2.1.1
-    ArrayList<Car> cars; // 2.1.2
-    ArrayList<RickRoss> ricks; // 2.1.3
-    ArrayList<MacMiller> macs; // 2.1.4
+    Yeezus player;                       // 2.1.1
+    ArrayList<Car> cars;                 // 2.1.2
+    ArrayList<RickRoss> ricks;           // 2.1.3
+    ArrayList<MacMiller> macs;           // 2.1.4
     MakeSound sounder = new MakeSound(); // 2.1.5 
 
 
