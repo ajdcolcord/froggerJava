@@ -21,7 +21,7 @@ This will be filled out later.
 - GameRunner.java
 - ~~MacMiller.java~~
 - MakeSound.java
-- MovingObject.java
+- ~~MovingObject.java~~
 - ~~RickRoss.java~~
 - ~~Yeezus.java~~
 - ~~YeezusWorld.java~~

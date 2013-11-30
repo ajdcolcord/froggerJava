@@ -3,14 +3,19 @@
  *   1. Libraries
  *   2. MovingObject
  *      2.1 FIELDS
- *          2.1.1 posn          -- Posn
- *          2.1.2 facingLeft    -- boolean
- *          2.1.3 speed         -- int
- *          2.1.4 image         -- WorldImage
- *          2.1.5 width         -- int
- *          2.1.6 height        -- int
- *      2.2 METHODS
- *          2.2.1 collide(Frog f)   -- boolean
+ *          2.1.1 posn              -- Posn
+ *          2.1.2 facingLeft        -- boolean
+ *          2.1.3 speed             -- int
+ *          2.1.4 image             -- WorldImage
+ *          2.1.5 width             -- int
+ *          2.1.6 height            -- int
+ *      2.2 CONSTRUCTORS 
+ *      2.3 METHODS
+ *          2.3.1 collide(Yeezus)   -- boolean
+ *          2.3.2 moveObjectLeft()  -- void
+ *          2.3.3 moveObjectRight() -- void
+ *          2.3.4 makeImage()       -- WorldImage
+ *          
  *          
  *****************************************************************************/
 
@@ -29,13 +34,15 @@ import javalib.worldimages.*;
  *
  */
 public abstract class MovingObject implements YeezusWorldConstants {
-    Posn posn;          
-    boolean facingLeft; 
-    int speed;          
-    String image;   
-    int width;          
-    int height;         
+    // 2.1 - Fields ///////////////////////////////////////////////////////////
+    Posn posn;          // 2.1.1
+    boolean facingLeft; // 2.1.2
+    int speed;          // 2.1.3
+    String image;       // 2.1.4
+    int width;          // 2.1.5
+    int height;         // 2.1.6
 
+    // 2.2 - Constructors /////////////////////////////////////////////////////
     MovingObject(Posn posn, boolean facingLeft, int speed, 
                  String image, int width, int height) {
         this.posn = posn;
@@ -48,14 +55,10 @@ public abstract class MovingObject implements YeezusWorldConstants {
 
 
 
-    // 2.2 Methods /////////////////////////////////////////////////////
+    // 2.3 - Methods //////////////////////////////////////////////////////////
 
-    // 2.2.1 /////////////////////////////////////////////////////
-    /** move the object to the left when called by the 
-     * rate of speed that the object contains. Once the
-     * object has fully passed the left edge of the screen,
-     * place the object at the border of the right edge
-     * of the screen to restart the object
+    // 2.3.1 - moveObjectLeft() ///////////////////////////////////////////////
+    /** move the object to the left using this object's speed. 
      * 
      * @author Austin Colcord
      */
@@ -69,11 +72,8 @@ public abstract class MovingObject implements YeezusWorldConstants {
         }
     }
 
-    // 2.2.2 /////////////////////////////////////////////////////
-    /** move the object to the right when called by the rate
-     * of speed that the object contains. Once the object has
-     * fully passed the right edge of the screen, place the object at
-     * the border of the left edge of the screen to restart the object
+    // 2.3.2 - moveObjectRight() //////////////////////////////////////////////
+    /** move the object to the right using this object's speed. 
      * 
      * @author Austin Colcord
      */
@@ -88,9 +88,10 @@ public abstract class MovingObject implements YeezusWorldConstants {
         }
     }
 
-    // 2.2.3 //////////////////////////////////////////////////////
-    /** return a boolean to tell if the frog has collided with this object
-     * @param f the frog that is given to test against this
+    // 2.3.3 - collide(Yeezus) ////////////////////////////////////////////////
+    /** to determine if the given Yeezus has collided with this object.
+     * @param Yeezus
+     * @return boolean 
      * @author Austin Colcord
      */
     public boolean collide(Yeezus f) {
@@ -111,15 +112,13 @@ public abstract class MovingObject implements YeezusWorldConstants {
         }
     }
 
-
-
-
-
-    // 2.3.7 - makeImage() ////////////////////////////////////////////////////
+    // 2.3.4 - makeImage() ////////////////////////////////////////////////////
+    /** To make an image from this object's position and image filename. 
+     * @return WorldImage
+     * @author Nick Alekhine 
+     * 
+     * */
     public WorldImage makeImage() {
         return new FromFileImage(this.posn, this.image);
     }
-
-
-
 }
