@@ -341,7 +341,9 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
      * @author Nick Alekhine
      * 
      *  */
+    @SuppressWarnings("deprecation")
     public WorldImage lastImage(String s) {
+        this.bg.stop();
         return this.makeImage().overlayImages(
                 new TextImage(new Posn(500, 250), s, 
                         120, 3, new Red()));
@@ -354,6 +356,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
      * @return WorldImage
      * @author Nick Alekhine
      */
+    @SuppressWarnings("deprecation")
     public WorldImage winState() {
         this.bg.stop();
         this.sounder.playSound("win.wav");
