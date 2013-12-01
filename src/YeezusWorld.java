@@ -168,7 +168,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.2 - onKeyEvent(String) /////////////////////////////////////////////
+    // 2.2.2 - onKeyEvent(String) ///////////////////////////////////////TESTED
     /** Change the direction of the player.
      * @author Nick Alekhine
      * 
@@ -288,7 +288,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.4 - makeImage() ////////////////////////////////////////////////////
+    // 2.2.4 - makeImage() //////////////////////////////////////////////TESTED
     /** To draw the world onto the scene.
      * @return WorldImage 
      * @author Nick Alekhine
@@ -332,7 +332,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.5 - lastImage(String) /////////////////////////////////////////////
+    // 2.2.5 - lastImage(String) ////////////////////////////////////////TESTED
     /** To draw the lose message at the end of the game. 
      * @return WorldImage
      * @author Nick Alekhine
@@ -346,7 +346,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.6 - winState() /////////////////////////////////////////////////////
+    // 2.2.6 - winState() ///////////////////////////////////////////////TESTED
     /** To draw the win message at the end of the game. 
      * @return WorldImage
      * @author Nick Alekhine
