@@ -209,7 +209,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.3 - worldEnds() ////////////////////////////////////////////////////
+    // 2.2.3 - worldEnds() //////////////////////////////////////////////TESTED
     /** To end the game if a collision occurs. 
      * @param boolean (auto-terminates game if true)
      * @return WorldEnd
@@ -357,6 +357,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
     public WorldImage winState() {
         this.bg.stop();
         this.sounder.playSound("win.wav");
+        //this.sounder.playSound("win.wav");
         return this.makeImage().overlayImages(
                 new TextImage(new Posn(500, 250), "YOU ARE A GOD", 
                         100, 3, new Red()));

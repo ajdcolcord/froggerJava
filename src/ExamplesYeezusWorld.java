@@ -36,6 +36,7 @@ import javalib.worldimages.FromFileImage;
 import javalib.worldimages.OverlayImages;
 import javalib.worldimages.Posn;
 import javalib.worldimages.TextImage;
+import javalib.worldimages.WorldEnd;
 import javalib.worldimages.WorldImage;
 import tester.Tester;
 
@@ -512,6 +513,58 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
      * 
      * @author Austin Colcord
      */
+    public void testWorldEnds(Tester t) {
+        reset();
+        //test when nothing collides
+        t.checkExpect(this.yWorld1.worldEnds(), 
+                new WorldEnd(false, this.yWorld1.makeImage()));
+        //set the y position to the ye' zone and test
+        this.y1.posn.y = 25;
+        t.checkExpect(this.yWorld1.worldEnds(),
+                new WorldEnd(true, this.yWorld1.winState()));
+        //check when the player collides with a car with 1 life
+        this.y1.lives = 1;
+        this.y1.posn = this.c1.posn;
+        t.checkExpect(this.yWorld1.worldEnds(),
+                new WorldEnd(true, this.yWorld1.lastImage("YOU DEAD.")));
+        //check when the player collides with a car but has more than 1 life
+        reset();
+        this.y1.lives = 3;
+        this.y1.posn = this.c1.posn;
+        t.checkExpect(this.yWorld1.worldEnds(),
+                new WorldEnd(false, this.yWorld1.makeImage()));
+        //check when the player is in the water, 
+        //not colliding with a RickRoss or MacMiller, lives > 1
+        reset();
+        this.y1.posn.x = this.rr1.posn.x + 100;
+        this.y1.posn.y = 100;
+        t.checkExpect(this.rr1.collide(this.y1), false);
+        t.checkExpect(this.mm1.collide(this.y1), false);
+        t.checkExpect(this.c1.collide(this.y1), false);
+        t.checkExpect(this.yWorld1.worldEnds(),
+                new WorldEnd(false, this.yWorld1.makeImage()));
+        //check when the player is in the water, 
+        //not colliding with a RickRoss or MacMiller, lives = 1
+        reset();
+        this.y1.posn.x = this.rr1.posn.x + 100;
+        this.y1.posn.y = 100;
+        this.y1.lives = 1;
+        t.checkExpect(this.rr1.collide(this.y1), false);
+        t.checkExpect(this.mm1.collide(this.y1), false);
+        t.checkExpect(this.c1.collide(this.y1), false);
+        t.checkExpect(this.yWorld1.worldEnds(),
+                new WorldEnd(true, this.yWorld1.lastImage("YOU DROWNED.")));
+        //check when the player collides with a RickRoss, with more than 1 life
+        this.y1.posn = this.rr1.posn;
+        this.y1.lives = 3;
+        t.checkExpect(this.yWorld1.worldEnds(),
+                new WorldEnd(false, this.yWorld1.makeImage()));
+        //check when the player collides with a RickRoss, with more than 1 life
+        this.y1.posn = this.mm1.posn;
+        this.y1.lives = 3;
+        t.checkExpect(this.yWorld1.worldEnds(),
+                new WorldEnd(false, this.yWorld1.makeImage()));
+    }
 
 
     // 2.3.19 ////////////////////////////////////////////
@@ -519,7 +572,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
      * 
      * @author Austin Colcord
      */
-    public void testMakeImage(Tester t) {
+    public void testMakeImageYW(Tester t) {
         reset();
         //make the full image of the world//////////////////////////////////
         WorldImage stack1 = backgroundImage;
