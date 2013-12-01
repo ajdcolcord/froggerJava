@@ -22,6 +22,7 @@
  *       2.3.4 makeImage()                         -- WorldImage
  *       2.3.5 lastImage(String)                   -- WorldImage
  *       2.3.6 winState()                          -- WorldImage
+ *       2.3.7 bigBang(int, int, double)           -- void
  * 
  *****************************************************************************/
 
@@ -55,11 +56,11 @@ import javalib.worldimages.WorldImage;
 public class YeezusWorld extends World implements YeezusWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.1 - Fields ///////////////////////////////////////////////////////////
-    Yeezus player;                       // 2.1.1
-    ArrayList<Car> cars;                 // 2.1.2
-    ArrayList<RickRoss> ricks;           // 2.1.3
-    ArrayList<MacMiller> macs;           // 2.1.4
-    MakeSound sounder = new MakeSound(); // 2.1.5 
+    Yeezus player;                              // 2.1.1
+    ArrayList<Car> cars;                        // 2.1.2
+    ArrayList<RickRoss> ricks;                  // 2.1.3
+    ArrayList<MacMiller> macs;                  // 2.1.4
+    MakeSound sounder = new MakeSound();        // 2.1.5 
     BackgroundMusic bg = new BackgroundMusic(); // 2.1.6
 
 
@@ -91,7 +92,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
     ///////////////////////////////////////////////////////////////////////////
     // 2.3 - Methods //////////////////////////////////////////////////////////
-    // 2.2.1 - onTick() /////////////////////////////////////////////////TESTED
+    // 2.3.1 - onTick() /////////////////////////////////////////////////TESTED
     /** Move the player around the scene. Move logs, lilypads, and cars.
      * @author Nick Alekhine
      * 
@@ -101,7 +102,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
         this.moveObjects();
     }
 
-    // 2.2.1.1 - moveWhenOnRickRossOrMacMiller() ////////////////////////TESTED
+    // 2.3.1.1 - moveWhenOnRickRossOrMacMiller() ////////////////////////TESTED
     /** Move the player when on a MacMiller or RickRoss
      * @author Nick Alekhine 
      * 
@@ -128,7 +129,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
     }
 
 
-    // 2.2.1.2 - moveObjects() //////////////////////////////////////////TESTED
+    // 2.3.1.2 - moveObjects() //////////////////////////////////////////TESTED
     /** Move the list of cars, logs, and lilypads
      * @author Nick Alekhine
      * @author Austin Colcord
@@ -171,7 +172,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.2 - onKeyEvent(String) ///////////////////////////////////////TESTED
+    // 2.3.2 - onKeyEvent(String) ///////////////////////////////////////TESTED
     /** Change the direction of the player.
      * @author Nick Alekhine
      * 
@@ -209,7 +210,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.3 - worldEnds() //////////////////////////////////////////////TESTED
+    // 2.3.3 - worldEnds() //////////////////////////////////////////////TESTED
     /** To end the game if a collision occurs. 
      * @param boolean (auto-terminates game if true)
      * @return WorldEnd
@@ -291,7 +292,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.4 - makeImage() //////////////////////////////////////////////TESTED
+    // 2.3.4 - makeImage() //////////////////////////////////////////////TESTED
     /** To draw the world onto the scene.
      * @return WorldImage 
      * @author Nick Alekhine
@@ -301,13 +302,13 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
     public WorldImage makeImage() {
         // initialize stack as background; 
         WorldImage stack = backgroundImage;
-        
+
         // set the image of the life counter
         WorldImage lifeCount = new TextImage(
                 new Posn(900, 30), "Lives: " + this.player.lives,
                 30, 3, new Black());
 
-        
+
         // overlay all logs onto the scene
         for (RickRoss l : this.ricks) {
             stack = new OverlayImages(stack, l.makeImage());
@@ -335,7 +336,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.5 - lastImage(String) ////////////////////////////////////////TESTED
+    // 2.3.5 - lastImage(String) ////////////////////////////////////////TESTED
     /** To draw the lose message at the end of the game. 
      * @return WorldImage
      * @author Nick Alekhine
@@ -351,7 +352,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.6 - winState() ///////////////////////////////////////////////TESTED
+    // 2.3.6 - winState() ///////////////////////////////////////////////TESTED
     /** To draw the win message at the end of the game. 
      * @return WorldImage
      * @author Nick Alekhine
@@ -365,14 +366,18 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
                 new TextImage(new Posn(500, 250), "YOU ARE A GOD", 
                         100, 3, new Red()));
     }
+
     
-    
-    
-    
-    
-    public void bigBang(int x, int y, double tick) {
+    ///////////////////////////////////////////////////////////////////////////
+    // 2.3.7 - bigBang(int, int, double) //////////////////////////////////////
+    /** To override the super's big bang so music can be player
+     * @param int, int, double
+     * @author Nick Alekhine
+     * 
+     *  */
+    public void bigBang(int width, int height, double tick) {
         this.bg.start();
-        
-        super.bigBang(x, y, tick);
+
+        super.bigBang(width, height, tick);
     }
 }
