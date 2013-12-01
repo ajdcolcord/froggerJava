@@ -1,27 +1,41 @@
 /******************************************************************************
  * TABLE OF CONTENTS
  *   1. Libraries
- *   2. ExamplesFrogger
+ *   2. ExamplesYeezusWorld
  *      2.1 EXAMPLES OF OBJECTS
- *          2.1.1 frog      -- Frog
- *          2.1.2 car1      -- Car
- *          2.1.3 car2      -- Car
- *          2.1.4
- *          2.1.4 clist1    -- ArrayList<Car>
- *      2.2 METHODS
- *          2.2.1 reset()                           -- void
- *          2.2.2 moveAllCars(ArrayList<Car> clist) -- void
- *      2.3 TESTS OF METHODS
- *          2.3.1 testMoveFrogUp()
- *          2.3.2 testMoveFrogDown()
- *          2.3.3 testMoveFrogLeft()
- *          2.3.4 testMoveFrogRight()
- *          2.3.5 testMoveCarLeft()
- *          2.3.6 testMoveCarRight()
- *          2.3.7 testMoveAllCars()
- *          2.3.8 testLoseLife()
- *          2.3.9 testCollide()
- *          2.3.9 testWholeWorld()
+ *          2.1.1 y1        -- Yeezus
+ *          2.1.2 c1        -- Car
+ *          2.1.3 rr1       -- RickRoss
+ *          2.1.4 mm1       -- MacMiller
+ *          2.1.5 clistmt   -- ArrayList<Car>
+ *          2.1.6 clist1    -- ArrayList<Car>
+ *          2.1.6 rrlistmt  -- ArrayList<RickRoss>
+ *          2.1.6 rrlist1   -- ArrayList<RickRoss>
+ *          2.1.6 mmlistmt  -- ArrayList<MacMiller>
+ *          2.1.6 mmlist1   -- ArrayList<MacMiller>
+ *          2.1.6 yWorld1   -- YeezusWorld
+ *      2.2 TESTS OF METHODS
+ *          2.2.1 testMoveUp()
+ *          2.2.2 testMoveDown()
+ *          2.2.3 testMoveLeft()
+ *          2.2.4 testMoveRight()
+ *          2.2.5 testMoveObjectLeft()
+ *          2.2.6 testMoveObjectRight()
+ *          2.2.7 testLoseLife()
+ *          2.2.8 testCollide()
+ *          2.2.9 testMakeImageMO()
+ *          2.2.10 testMove()
+ *          2.2.11 testReturnToStart
+ *          2.2.12 testMakeImageY
+ *          2.2.13 testMoveWhenOnRickRossorMacMiller
+ *          2.2.14 testMoveObjects
+ *          2.2.15 testOnTick
+ *          2.2.16 testOnKeyEvent
+ *          2.2.17 testWorldEnds
+ *          2.2.18 testMakeImageYW
+ *          2.2.19 testLastImage
+ *          2.2.20 testWinState
+ *      2.3 Game Running Objects
  *          
  *          
  *****************************************************************************/
@@ -44,7 +58,7 @@ import tester.Tester;
 
 
 
-// 2 - ExamplesFrogger ////////////////////////////////////////////////////////
+// 2 - ExamplesYeezusWorld ////////////////////////////////////////////////////////
 /** represents the examples, tests, and initial state of the frogger game 
  * 
  * @author Austin Colcord
@@ -56,26 +70,26 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     // initialize test objects. 
 
     // FROGS
-    Yeezus y1;
+    Yeezus y1; //2.1.1
 
     // CARS
-    Car c1;
+    Car c1;  //2.1.2
 
     // LOGS
-    RickRoss rr1;
+    RickRoss rr1;  //2.1.3
 
     // LILYPADS
-    MacMiller mm1;
+    MacMiller mm1;  //2.1.4
 
     // ARRAYLISTS
-    ArrayList<Car> clistmt; // non-empty case
-    ArrayList<Car> clist1; // empty case
+    ArrayList<Car> clistmt; // non-empty case //2.1.5
+    ArrayList<Car> clist1; // empty case      //2.1.6
 
-    ArrayList<RickRoss> rrlistmt; // non-empty case
-    ArrayList<RickRoss> rrlist1; // empty case
+    ArrayList<RickRoss> rrlistmt; // non-empty case  //2.1.7
+    ArrayList<RickRoss> rrlist1; // empty case       //2.1.8
 
-    ArrayList<MacMiller> mmlistmt; // non-empty case
-    ArrayList<MacMiller> mmlist1; // empty case
+    ArrayList<MacMiller> mmlistmt; // non-empty case  //2.1.9
+    ArrayList<MacMiller> mmlist1; // empty case       //2.1.10
 
     YeezusWorld yWorld1;
 
@@ -105,10 +119,11 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     }
 
 
-    // 2.3 Tests of Methods //////////////////////////////////////////////////
+    // 2.2 Tests of Methods //////////////////////////////////////////////////
 
-    // 2.3.1 ////////////////////////////////////////////
+    // 2.2.1 ////////////////////////////////////////////
     /** test the moveUp method
+     * 
      * @author Austin Colcord
      */
     public void testMoveUp(Tester t) {
@@ -126,8 +141,9 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     }
 
 
-    // 2.3.2 ////////////////////////////////////////////
+    // 2.2.2 ////////////////////////////////////////////
     /** test the movedDown method
+     * 
      * @author Austin Colcord
      */
     public void testMoveDown(Tester t) {
@@ -144,8 +160,9 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
         t.checkExpect(this.y1.posn.y, 500);
     }
 
-    // 2.3.3 ////////////////////////////////////////////
+    // 2.2.3 ////////////////////////////////////////////
     /** test the moveLeft
+     * 
      * @author Austin Colcord
      */
     public void testMoveLeft(Tester t) {
@@ -162,8 +179,9 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
         t.checkExpect(this.y1.posn.x, 0);
     }
 
-    // 2.3.4 ////////////////////////////////////////////
-    /** test the moveRight
+    // 2.2.4 ////////////////////////////////////////////
+    /** test the moveRight method
+     * 
      * @author Austin Colcord
      */
     public void testMoveRight(Tester t) {
@@ -181,8 +199,9 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
         t.checkExpect(this.y1.posn.x, canvasWidth);
     }
 
-    // 2.3.5 ////////////////////////////////////////////
-    /** test the moveCarLeft
+    // 2.2.5 ////////////////////////////////////////////
+    /** test the moveObjectLeft method
+     * 
      * @author Austin Colcord
      */
     public void testMoveObjectLeft(Tester t) {
@@ -224,8 +243,9 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
         t.checkExpect(this.mm1.posn.x, (canvasWidth + 100));
     }
 
-    // 2.3.6 ////////////////////////////////////////////
-    /** test the moveCarLeft
+    // 2.2.6 ////////////////////////////////////////////
+    /** test the moveCarLeft method
+     * 
      * @author Austin Colcord
      */
     public void testMoveObjectRight(Tester t) {
@@ -268,8 +288,8 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     } 
 
 
-    // 2.3.8 ////////////////////////////////////////////
-    /** test the loseLife
+    // 2.2.7 ////////////////////////////////////////////
+    /** test the loseLife method
      * 
      * @author Austin Colcord
      */
@@ -284,8 +304,8 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
 
 
 
-    // 2.3.9 ////////////////////////////////////////////
-    /** test the collide
+    // 2.2.8 ////////////////////////////////////////////
+    /** test the collide method
      * 
      * @author Austin Colcord
      */
@@ -304,7 +324,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
         t.checkExpect(this.mm1.collide(this.y1), true);
     }
 
-    // 2.3.10 ////////////////////////////////////////////
+    // 2.2.9 ////////////////////////////////////////////
     /** test the makeImage method for makeImage in the 
      * Moving Object class
      * 
@@ -321,7 +341,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     }
 
 
-    // 2.3.11 ////////////////////////////////////////////
+    // 2.2.10 ////////////////////////////////////////////
     /** test the move method for Yeezus class
      * 
      * @author Austin Colcord
@@ -336,7 +356,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     }
 
 
-    // 2.3.12 ////////////////////////////////////////////
+    // 2.2.11 ////////////////////////////////////////////
     /** test the returnToStart method for Yeezus class
      * 
      * @author Austin Colcord
@@ -352,7 +372,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
 
 
 
-    // 2.3.13 ////////////////////////////////////////////
+    // 2.2.12 ////////////////////////////////////////////
     /** test the makeImage method for Yeezus class
      * 
      * @author Austin Colcord
@@ -370,7 +390,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     }
 
 
-    // 2.3.14 ////////////////////////////////////////////
+    // 2.2.13 ////////////////////////////////////////////
     /** test the moveWhenOnRickRossOrMacMiller method in yeezusworld
      * 
      * @author Austin Colcord
@@ -407,7 +427,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     }
 
 
-    // 2.3.15 ////////////////////////////////////////////
+    // 2.2.14 ////////////////////////////////////////////
     /** test the moveObjects method in yeezusworld
      * 
      * @author Austin Colcord
@@ -433,7 +453,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     }
 
 
-    // 2.3.16 ////////////////////////////////////////////
+    // 2.2.15 ////////////////////////////////////////////
     /** test the onTick method in yeezusworld
      * 
      * @author Austin Colcord
@@ -479,7 +499,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     }
 
 
-    // 2.3.17 ////////////////////////////////////////////
+    // 2.2.16 ////////////////////////////////////////////
     /** test the onKeyEvent method in yeezusworld
      * 
      * @author Austin Colcord
@@ -508,7 +528,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     }
 
 
-    // 2.3.18 ////////////////////////////////////////////
+    // 2.3.17 ////////////////////////////////////////////
     /** test the worldEnds method in yeezusworld
      * 
      * @author Austin Colcord
@@ -567,7 +587,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     }
 
 
-    // 2.3.19 ////////////////////////////////////////////
+    // 2.2.18 ////////////////////////////////////////////
     /** test the makeImage method in yeezusworld
      * 
      * @author Austin Colcord
@@ -589,7 +609,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     }
 
 
-    // 2.3.20 ////////////////////////////////////////////
+    // 2.2.19 ////////////////////////////////////////////
     /** test the lastImage method in yeezusworld
      * 
      * @author Austin Colcord
@@ -603,7 +623,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     }
 
 
-    // 2.3.21 ////////////////////////////////////////////
+    // 2.2.20 ////////////////////////////////////////////
     /** test the winState method in yeezusworld
      * 
      * @author Austin Colcord
@@ -617,7 +637,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     }
 
 
-    // 2.2 - Game Running Objects /////////////////////////////////////////////
+    // 2.3 - Game Running Objects /////////////////////////////////////////////
     // These are actually used in the game. 
 
     // FROG ///////////////////////////
