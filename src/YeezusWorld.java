@@ -47,7 +47,7 @@ import javalib.worldimages.WorldImage;
 
 
 
-// 2 - FroggerWorld ///////////////////////////////////////////////////////////
+// 2 - YeezusWorld ///////////////////////////////////////////////////////////
 /** The world state. Consists of a frog, cars, logs, and lilypads. 
  * @author Austin Colcord
  * @author Nick Alekhine 
