@@ -663,7 +663,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     Car cl41 = new Car(new Posn(50, 275), false, 13, "carRight.png");
     // ...
 
-    // LOGS ///////////////////////////
+    // RICKROSS' & MACMILLERS ///////////////////////////
     // LANE 1 [FROM RHS -> LHS]
     RickRoss ll11 = new RickRoss(new Posn(50, 175), false, 5, rickRossRight);
 
@@ -676,20 +676,19 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     RickRoss ll31 = new RickRoss(new Posn(100, 75), false, 7, rickRossRight);
 
 
-    // LILYPADS ///////////////////////
 
     // ARRAYLISTS
     ArrayList<Car> carList = new ArrayList<Car>(
             Arrays.asList(this.cl11, this.cl12, this.cl13, this.cl14,
                     this.cl21, this.cl31, this.cl41));
-    ArrayList<RickRoss> logList = new ArrayList<RickRoss>(
+    ArrayList<RickRoss> rrList = new ArrayList<RickRoss>(
             Arrays.asList(this.ll11, this.ll21, this.ll31));
     ArrayList<MacMiller> lpList = new ArrayList<MacMiller>(
             Arrays.asList(this.ll22));
 
-    // FROGGERWORLD
+    // YEEZUSWORLD
     YeezusWorld fworld = new YeezusWorld(this.f1, this.carList,
-            this.logList, this.lpList);
+            this.rrList, this.lpList);
 
 
     /** Produce the initial YeezusWorld

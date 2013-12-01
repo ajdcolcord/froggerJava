@@ -361,7 +361,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
     public WorldImage winState() {
         this.bg.stop();
         this.sounder.playSound("win.wav");
-        //this.sounder.playSound("win.wav");
+        this.sounder.playSound("win.wav");
         return this.makeImage().overlayImages(
                 new TextImage(new Posn(500, 250), "YOU ARE A GOD", 
                         100, 3, new Red()));
