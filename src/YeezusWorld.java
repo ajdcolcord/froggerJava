@@ -8,6 +8,7 @@
  *       2.1.3 ricks                               -- ArrayList<RickRoss>
  *       2.1.4 macs                                -- ArrayList<MacMiller>
  *       2.1.5 sounder                             -- MakeSound
+ *       2.1.6 bg                                  -- BackgroundMusic
  *     2.2 CONSTRUCTORS
  *       2.2.1 YeezusWorld()
  *       2.2.2 YeezusWorld(Yeezus, ArrayList<Car>,
@@ -30,6 +31,7 @@
 
 // 1 - Libraries //////////////////////////////////////////////////////////////
 import java.util.ArrayList;
+
 import javalib.colors.Black;
 import javalib.colors.Red;
 import javalib.soundworld.World;
@@ -58,6 +60,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
     ArrayList<RickRoss> ricks;           // 2.1.3
     ArrayList<MacMiller> macs;           // 2.1.4
     MakeSound sounder = new MakeSound(); // 2.1.5 
+    BackgroundMusic bg = new BackgroundMusic(); // 2.1.6
 
 
 
@@ -352,9 +355,20 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
      * @author Nick Alekhine
      */
     public WorldImage winState() {
+        this.bg.stop();
         this.sounder.playSound("win.wav");
         return this.makeImage().overlayImages(
                 new TextImage(new Posn(500, 250), "YOU ARE A GOD", 
                         100, 3, new Red()));
+    }
+    
+    
+    
+    
+    
+    public void bigBang(int x, int y, double tick) {
+        this.bg.start();
+        
+        super.bigBang(x, y, tick);
     }
 }

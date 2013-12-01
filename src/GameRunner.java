@@ -28,7 +28,6 @@ public class GameRunner {
      */
     public static void main(String[] argv) {
         GameRunner gm = new GameRunner();
-        (new BackgroundMusic()).start();
         gm.run();
     }
 
