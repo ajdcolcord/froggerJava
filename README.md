@@ -17,12 +17,12 @@ This will be filled out later.
 
 ### What Needs To Get Cleaned Up
 - ~~Car.java~~
-- ExamplesYeezusWorld.java
-- GameRunner.java
+- ~~ExamplesYeezusWorld.java~~
+- ~~GameRunner.java~~
 - ~~MacMiller.java~~
-- MakeSound.java
+- ~~MakeSound.java~~
 - ~~MovingObject.java~~
 - ~~RickRoss.java~~
 - ~~Yeezus.java~~
 - ~~YeezusWorld.java~~
-- YeezusWorldConstants.java
+- ~~YeezusWorldConstants.java~~

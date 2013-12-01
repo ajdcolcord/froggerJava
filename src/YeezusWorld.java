@@ -8,6 +8,7 @@
  *       2.1.3 ricks                               -- ArrayList<RickRoss>
  *       2.1.4 macs                                -- ArrayList<MacMiller>
  *       2.1.5 sounder                             -- MakeSound
+ *       2.1.6 bg                                  -- BackgroundMusic
  *     2.2 CONSTRUCTORS
  *       2.2.1 YeezusWorld()
  *       2.2.2 YeezusWorld(Yeezus, ArrayList<Car>,
@@ -21,6 +22,7 @@
  *       2.3.4 makeImage()                         -- WorldImage
  *       2.3.5 lastImage(String)                   -- WorldImage
  *       2.3.6 winState()                          -- WorldImage
+ *       2.3.7 bigBang(int, int, double)           -- void
  * 
  *****************************************************************************/
 
@@ -30,6 +32,7 @@
 
 // 1 - Libraries //////////////////////////////////////////////////////////////
 import java.util.ArrayList;
+
 import javalib.colors.Black;
 import javalib.colors.Red;
 import javalib.soundworld.World;
@@ -44,7 +47,7 @@ import javalib.worldimages.WorldImage;
 
 
 
-// 2 - FroggerWorld ///////////////////////////////////////////////////////////
+// 2 - YeezusWorld ///////////////////////////////////////////////////////////
 /** The world state. Consists of a frog, cars, logs, and lilypads. 
  * @author Austin Colcord
  * @author Nick Alekhine 
@@ -53,11 +56,12 @@ import javalib.worldimages.WorldImage;
 public class YeezusWorld extends World implements YeezusWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.1 - Fields ///////////////////////////////////////////////////////////
-    Yeezus player;                       // 2.1.1
-    ArrayList<Car> cars;                 // 2.1.2
-    ArrayList<RickRoss> ricks;           // 2.1.3
-    ArrayList<MacMiller> macs;           // 2.1.4
-    MakeSound sounder = new MakeSound(); // 2.1.5 
+    Yeezus player;                              // 2.1.1
+    ArrayList<Car> cars;                        // 2.1.2
+    ArrayList<RickRoss> ricks;                  // 2.1.3
+    ArrayList<MacMiller> macs;                  // 2.1.4
+    MakeSound sounder = new MakeSound();        // 2.1.5 
+    BackgroundMusic bg = new BackgroundMusic(); // 2.1.6
 
 
 
@@ -88,7 +92,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
     ///////////////////////////////////////////////////////////////////////////
     // 2.3 - Methods //////////////////////////////////////////////////////////
-    // 2.2.1 - onTick() /////////////////////////////////////////////////TESTED
+    // 2.3.1 - onTick() /////////////////////////////////////////////////TESTED
     /** Move the player around the scene. Move logs, lilypads, and cars.
      * @author Nick Alekhine
      * 
@@ -98,7 +102,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
         this.moveObjects();
     }
 
-    // 2.2.1.1 - moveWhenOnRickRossOrMacMiller() ////////////////////////TESTED
+    // 2.3.1.1 - moveWhenOnRickRossOrMacMiller() ////////////////////////TESTED
     /** Move the player when on a MacMiller or RickRoss
      * @author Nick Alekhine 
      * 
@@ -125,7 +129,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
     }
 
 
-    // 2.2.1.2 - moveObjects() //////////////////////////////////////////TESTED
+    // 2.3.1.2 - moveObjects() //////////////////////////////////////////TESTED
     /** Move the list of cars, logs, and lilypads
      * @author Nick Alekhine
      * @author Austin Colcord
@@ -168,7 +172,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.2 - onKeyEvent(String) ///////////////////////////////////////TESTED
+    // 2.3.2 - onKeyEvent(String) ///////////////////////////////////////TESTED
     /** Change the direction of the player.
      * @author Nick Alekhine
      * 
@@ -206,7 +210,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.3 - worldEnds() //////////////////////////////////////////////TESTED
+    // 2.3.3 - worldEnds() //////////////////////////////////////////////TESTED
     /** To end the game if a collision occurs. 
      * @param boolean (auto-terminates game if true)
      * @return WorldEnd
@@ -288,7 +292,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.4 - makeImage() //////////////////////////////////////////////TESTED
+    // 2.3.4 - makeImage() //////////////////////////////////////////////TESTED
     /** To draw the world onto the scene.
      * @return WorldImage 
      * @author Nick Alekhine
@@ -298,13 +302,13 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
     public WorldImage makeImage() {
         // initialize stack as background; 
         WorldImage stack = backgroundImage;
-        
+
         // set the image of the life counter
         WorldImage lifeCount = new TextImage(
                 new Posn(900, 30), "Lives: " + this.player.lives,
                 30, 3, new Black());
 
-        
+
         // overlay all logs onto the scene
         for (RickRoss l : this.ricks) {
             stack = new OverlayImages(stack, l.makeImage());
@@ -332,13 +336,15 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.5 - lastImage(String) ////////////////////////////////////////TESTED
+    // 2.3.5 - lastImage(String) ////////////////////////////////////////TESTED
     /** To draw the lose message at the end of the game. 
      * @return WorldImage
      * @author Nick Alekhine
      * 
      *  */
+    @SuppressWarnings("deprecation")
     public WorldImage lastImage(String s) {
+        this.bg.stop();
         return this.makeImage().overlayImages(
                 new TextImage(new Posn(500, 250), s, 
                         120, 3, new Red()));
@@ -346,15 +352,32 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     ///////////////////////////////////////////////////////////////////////////
-    // 2.2.6 - winState() ///////////////////////////////////////////////TESTED
+    // 2.3.6 - winState() ///////////////////////////////////////////////TESTED
     /** To draw the win message at the end of the game. 
      * @return WorldImage
      * @author Nick Alekhine
      */
+    @SuppressWarnings("deprecation")
     public WorldImage winState() {
+        this.bg.stop();
+        this.sounder.playSound("win.wav");
         //this.sounder.playSound("win.wav");
         return this.makeImage().overlayImages(
                 new TextImage(new Posn(500, 250), "YOU ARE A GOD", 
                         100, 3, new Red()));
+    }
+
+    
+    ///////////////////////////////////////////////////////////////////////////
+    // 2.3.7 - bigBang(int, int, double) //////////////////////////////////////
+    /** To override the super's big bang so music can be player
+     * @param int, int, double
+     * @author Nick Alekhine
+     * 
+     *  */
+    public void bigBang(int width, int height, double tick) {
+        this.bg.start();
+
+        super.bigBang(width, height, tick);
     }
 }
