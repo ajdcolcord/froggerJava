@@ -15,8 +15,6 @@ public class GameRunner {
     YeezusWorld yw = this.ey.initYeezusWorld();
 
     
-    
-    
     /**  Method that runs the game
      */
     void run() {
