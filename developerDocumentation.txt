@@ -1,0 +1,50 @@
+This documents what each class does at a high-levle. For more in-depth 
+coverage, please refer to the table of contents and descriptions found
+in each class. 
+
+
+
+
+// ORDERING OF CLASSES [top-level down] ///////////////////////////////////////
+GameRunner 
+    - Class that runs the game and invokes bigBang method on YeezusWorld.
+
+YeezusWorld 
+    - The worldstate. This is where the drawing, ticking, stopping, and 
+      endstate functions are found. 
+
+      This class also contains the fields:
+      Yeezus  -- Player that user controls
+      
+      ArrayList<Car> --------+
+      ArrayList<RickRoss>    | The obstacles on the screen. Under MovingObject.
+      ArrayList<MacMiller> --+
+      
+      MakeSound -- Class that can stream audio from .wav files
+      BackgroundMusic -- Class that is a separate thread to play bg music.
+
+
+Yeezus
+    - The player that the user controls.
+
+MovingObject
+    - The obstacles on the screen. Car, RickRoss, and MacMiller are sub-classes
+      of MovingObject.
+
+MakeSound
+    - A class with a method that streams audio from .wav files.
+
+BackgroundMusic
+    - A class that creates a separate thread and plays background music. 
+      Uses MakeSound to stream audio. 
+
+YeezusWorldConstants
+    - Houses several different constants in a class for various elements
+      such as screen width and height. 
+
+ExamplesYeezusWorld
+    - Examples class that tests all methods in this game. 
+
+
+
+
