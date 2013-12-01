@@ -30,8 +30,13 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javalib.colors.Black;
+import javalib.colors.Red;
 import javalib.worldimages.FromFileImage;
+import javalib.worldimages.OverlayImages;
 import javalib.worldimages.Posn;
+import javalib.worldimages.TextImage;
+import javalib.worldimages.WorldImage;
 import tester.Tester;
 
 
@@ -470,9 +475,93 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
         t.checkExpect(this.rr1.posn.y, 200);
         t.checkExpect(this.mm1.posn.x, 380);
         t.checkExpect(this.mm1.posn.y, 200);
-        
     }
 
+
+    // 2.3.17 ////////////////////////////////////////////
+    /** test the onKeyEvent method in yeezusworld
+     * 
+     * @author Austin Colcord
+     */
+    public void testOnKeyEvent(Tester t) {
+        reset();
+        //check original position
+        t.checkExpect(this.y1.posn.x, 500);
+        t.checkExpect(this.y1.posn.y, 475);
+        //call up, and test position
+        this.yWorld1.onKeyEvent("up");
+        t.checkExpect(this.y1.posn.x, 500);
+        t.checkExpect(this.y1.posn.y, 425);
+        //call down, and test position
+        this.yWorld1.onKeyEvent("down");
+        t.checkExpect(this.y1.posn.x, 500);
+        t.checkExpect(this.y1.posn.y, 475);
+        //call left, and test position
+        this.yWorld1.onKeyEvent("left");
+        t.checkExpect(this.y1.posn.x, 450);
+        t.checkExpect(this.y1.posn.y, 475);
+        //call right, and test position
+        this.yWorld1.onKeyEvent("right");
+        t.checkExpect(this.y1.posn.x, 500);
+        t.checkExpect(this.y1.posn.y, 475);
+    }
+
+
+    // 2.3.18 ////////////////////////////////////////////
+    /** test the worldEnds method in yeezusworld
+     * 
+     * @author Austin Colcord
+     */
+
+
+    // 2.3.19 ////////////////////////////////////////////
+    /** test the makeImage method in yeezusworld
+     * 
+     * @author Austin Colcord
+     */
+    public void testMakeImage(Tester t) {
+        reset();
+        //make the full image of the world//////////////////////////////////
+        WorldImage stack1 = backgroundImage;
+        WorldImage lifeCount = new TextImage(
+                new Posn(900, 30), "Lives: 3", 30, 3, new Black());
+        WorldImage stack2 = new OverlayImages(stack1, this.rr1.makeImage());
+        WorldImage stack3 = new OverlayImages(stack2, mm1.makeImage());
+        WorldImage stack4 = new OverlayImages(stack3, this.y1.makeImage());
+        WorldImage stack5 = new OverlayImages(stack4, this.c1.makeImage());
+        WorldImage fullStack = new OverlayImages(stack5, lifeCount);
+        ////////////////////////////////////////////////////////////////////
+        //test the makeImage function with the above image
+        t.checkExpect(this.yWorld1.makeImage(), fullStack);
+    }
+
+
+    // 2.3.20 ////////////////////////////////////////////
+    /** test the lastImage method in yeezusworld
+     * 
+     * @author Austin Colcord
+     */
+    public void testLastImage(Tester t) {
+        reset();
+        t.checkExpect(this.yWorld1.lastImage("LOSE"),
+                this.yWorld1.makeImage().overlayImages(
+                        new TextImage(new Posn(500, 250), "LOSE", 
+                                120, 3, new Red())));
+    }
+
+
+    // 2.3.21 ////////////////////////////////////////////
+    /** test the winState method in yeezusworld
+     * 
+     * @author Austin Colcord
+     */
+    public void testWinState(Tester t) {
+        reset();
+        t.checkExpect(this.yWorld1.winState(),
+                this.yWorld1.makeImage().overlayImages(
+                        new TextImage(new Posn(500, 250), "YOU ARE A GOD", 
+                                100, 3, new Red())));
+    }
 
 
     // 2.2 - Game Running Objects /////////////////////////////////////////////
