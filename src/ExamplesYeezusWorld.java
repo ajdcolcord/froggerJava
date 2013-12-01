@@ -71,12 +71,16 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     ArrayList<MacMiller> mmlistmt; // non-empty case
     ArrayList<MacMiller> mmlist1; // empty case
 
+    YeezusWorld yWorld1;
+
     // initialize values in test objects
     public void reset() {
         this.y1 = new Yeezus();
         this.c1 = new Car(new Posn(100, 100), true, 10, "carLeft.png");
-        this.rr1 = new RickRoss(new Posn(300, 200), false, 10, "rickRossRight.png");
-        this.mm1 = new MacMiller(new Posn(400, 200), true, 10, "macMiller.png");
+        this.rr1 = new RickRoss(
+                new Posn(300, 200), false, 10, "rickRossRight.png");
+        this.mm1 = new MacMiller(
+                new Posn(400, 200), true, 10, "macMiller.png");
 
         this.clistmt = new ArrayList<Car>();
         this.clist1 = new ArrayList<Car>();
@@ -89,6 +93,9 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
         this.mmlistmt = new ArrayList<MacMiller>();
         this.mmlist1 = new ArrayList<MacMiller>();
         this.mmlist1.add(this.mm1);
+
+        this.yWorld1 = new YeezusWorld(
+                this.y1, this.clist1, this.rrlist1, this.mmlist1);
     }
 
 
@@ -356,6 +363,115 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
                 new FromFileImage(new Posn(50, 475), "yeLeft.png"));
     }
 
+
+    // 2.3.14 ////////////////////////////////////////////
+    /** test the moveWhenOnRickRossOrMacMiller method in yeezusworld
+     * 
+     * @author Austin Colcord
+     */
+    public void testMoveWhenOnRickRossorMacMiller(Tester t) {
+        reset();
+        //check the original position
+        t.checkExpect(this.y1.posn.x, 500);
+        t.checkExpect(this.y1.posn.y, 475);
+        this.yWorld1.moveWhenOnRickRossorMacMiller();
+        //check that the positions didn't move (since not on anything)
+        t.checkExpect(this.y1.posn.x, 500);
+        t.checkExpect(this.y1.posn.y, 475);
+        //set the position to the same as the rr1 in the world
+        this.y1.posn.y = this.rr1.posn.y;
+        this.y1.posn.x = this.rr1.posn.x;
+        //check those positions
+        t.checkExpect(this.y1.posn.x, 300);
+        t.checkExpect(this.y1.posn.y, 200);
+        this.yWorld1.moveWhenOnRickRossorMacMiller();
+        //check that the x position increased by 10
+        t.checkExpect(this.y1.posn.x, 310);
+        t.checkExpect(this.y1.posn.y, 200);
+        //set the position to the same as the mm1 in the world
+        this.y1.posn.y = this.mm1.posn.y;
+        this.y1.posn.x = this.mm1.posn.x;
+        //check the position
+        t.checkExpect(this.y1.posn.x, 400);
+        t.checkExpect(this.y1.posn.y, 200);
+        this.yWorld1.moveWhenOnRickRossorMacMiller();
+        //check that the x position moved
+        t.checkExpect(this.y1.posn.x, 390);
+        t.checkExpect(this.y1.posn.y, 200);
+    }
+
+
+    // 2.3.15 ////////////////////////////////////////////
+    /** test the moveObjects method in yeezusworld
+     * 
+     * @author Austin Colcord
+     */
+    public void testMoveObjects(Tester t) {
+        reset();
+        //check all original positions
+        t.checkExpect(this.c1.posn.x, 100);
+        t.checkExpect(this.c1.posn.y, 100);
+        t.checkExpect(this.rr1.posn.x, 300);
+        t.checkExpect(this.rr1.posn.y, 200);
+        t.checkExpect(this.mm1.posn.x, 400);
+        t.checkExpect(this.mm1.posn.y, 200);
+        //call moveObjects
+        this.yWorld1.moveObjects();
+        //check all objects that moved
+        t.checkExpect(this.c1.posn.x, 90);
+        t.checkExpect(this.c1.posn.y, 100);
+        t.checkExpect(this.rr1.posn.x, 310);
+        t.checkExpect(this.rr1.posn.y, 200);
+        t.checkExpect(this.mm1.posn.x, 390);
+        t.checkExpect(this.mm1.posn.y, 200);
+    }
+
+
+    // 2.3.16 ////////////////////////////////////////////
+    /** test the onTick method in yeezusworld
+     * 
+     * @author Austin Colcord
+     */
+    public void testOnTick(Tester t) {
+        reset();
+        //check all original positions
+        t.checkExpect(this.c1.posn.x, 100);
+        t.checkExpect(this.c1.posn.y, 100);
+        t.checkExpect(this.rr1.posn.x, 300);
+        t.checkExpect(this.rr1.posn.y, 200);
+        t.checkExpect(this.mm1.posn.x, 400);
+        t.checkExpect(this.mm1.posn.y, 200);
+        t.checkExpect(this.y1.posn.x, 500);
+        t.checkExpect(this.y1.posn.y, 475);
+        //call onTick
+        this.yWorld1.onTick();
+        //check all moved positions
+        t.checkExpect(this.c1.posn.x, 90);
+        t.checkExpect(this.c1.posn.y, 100);
+        t.checkExpect(this.rr1.posn.x, 310);
+        t.checkExpect(this.rr1.posn.y, 200);
+        t.checkExpect(this.mm1.posn.x, 390);
+        t.checkExpect(this.mm1.posn.y, 200);
+        t.checkExpect(this.y1.posn.x, 500);
+        t.checkExpect(this.y1.posn.y, 475);
+        //set the posn of the player to be on rr1
+        this.y1.posn.y = this.rr1.posn.y;
+        this.y1.posn.x = this.rr1.posn.x;
+        //check those positions
+        t.checkExpect(this.y1.posn.x, 310);
+        t.checkExpect(this.y1.posn.y, 200);
+        this.yWorld1.onTick();
+        //check that the x position increased by 10
+        t.checkExpect(this.y1.posn.x, 320);
+        t.checkExpect(this.y1.posn.y, 200);
+        t.checkExpect(this.c1.posn.x, 80);
+        t.checkExpect(this.c1.posn.y, 100);
+        t.checkExpect(this.rr1.posn.x, 320);
+        t.checkExpect(this.rr1.posn.y, 200);
+        t.checkExpect(this.mm1.posn.x, 380);
+        t.checkExpect(this.mm1.posn.y, 200);
+        
+    }
 
 
 

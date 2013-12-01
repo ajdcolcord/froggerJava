@@ -57,7 +57,7 @@ public abstract class MovingObject implements YeezusWorldConstants {
 
     // 2.3 - Methods //////////////////////////////////////////////////////////
 
-    // 2.3.1 - moveObjectLeft() ///////////////////////////////////////////////
+    // 2.3.1 - moveObjectLeft() /////////////////////////////////////////TESTED
     /** move the object to the left using this object's speed. 
      * 
      * @author Austin Colcord
@@ -72,7 +72,7 @@ public abstract class MovingObject implements YeezusWorldConstants {
         }
     }
 
-    // 2.3.2 - moveObjectRight() //////////////////////////////////////////////
+    // 2.3.2 - moveObjectRight() ////////////////////////////////////////TESTED
     /** move the object to the right using this object's speed. 
      * 
      * @author Austin Colcord
@@ -88,7 +88,7 @@ public abstract class MovingObject implements YeezusWorldConstants {
         }
     }
 
-    // 2.3.3 - collide(Yeezus) ////////////////////////////////////////////////
+    // 2.3.3 - collide(Yeezus) //////////////////////////////////////////TESTED
     /** to determine if the given Yeezus has collided with this object.
      * @param Yeezus
      * @return boolean 
@@ -112,7 +112,7 @@ public abstract class MovingObject implements YeezusWorldConstants {
         }
     }
 
-    // 2.3.4 - makeImage() ////////////////////////////////////////////////////
+    // 2.3.4 - makeImage() //////////////////////////////////////////////TESTED
     /** To make an image from this object's position and image filename. 
      * @return WorldImage
      * @author Nick Alekhine 

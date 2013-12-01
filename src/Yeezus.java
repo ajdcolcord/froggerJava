@@ -74,7 +74,7 @@ public class Yeezus implements YeezusWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.3 - Methods //////////////////////////////////////////////////////////
     
-    // 2.3.1 - moveUp() ///////////////////////////////////////////////////////
+    // 2.3.1 - moveUp() /////////////////////////////////////////////////TESTED
     /** move up one step 
      * @author Austin Colcord
      * @author Nick Alekhine
@@ -94,7 +94,7 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     
-    // 2.3.2 - moveDown() /////////////////////////////////////////////////////
+    // 2.3.2 - moveDown() ///////////////////////////////////////////////TESTED
     /** move down one step unless at the bottom
      * @author Austin Colcord
      * @author Nick Alekhine
@@ -114,7 +114,7 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     
-    // 2.3.3 - moveLeft() /////////////////////////////////////////////////////
+    // 2.3.3 - moveLeft() ///////////////////////////////////////////////TESTED
     /** move to the left unless near the left edge of the canvas 
      * @author Austin Colcord
      * @author Nick Alekhine
@@ -134,7 +134,7 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     
-    // 2.3.4 - moveRight() ////////////////////////////////////////////////////
+    // 2.3.4 - moveRight() //////////////////////////////////////////////TESTED
     /**  move to the right unless near the right edge of the canvas 
      * @author Austin Colcord
      * @author Nick Alekhine
@@ -154,7 +154,7 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     
-    // 2.3.5 - loseLife() /////////////////////////////////////////////////////
+    // 2.3.5 - loseLife() ///////////////////////////////////////////////TESTED
     /** lose life if enter water or collide with car
      * @author Austin Colcord
      * @author Nick Alekhine
@@ -168,7 +168,7 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     
-    // 2.3.6 - move(Boolean, int) /////////////////////////////////////////////
+    // 2.3.6 - move(Boolean, int) ///////////////////////////////////////TESTED
     /** Move in the direction and the speed given.
      * @param Boolean, int
      * @author Nick Alekhine 
@@ -195,7 +195,7 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     
-    // 2.3.7 - returnToStart() ////////////////////////////////////////////////
+    // 2.3.7 - returnToStart() //////////////////////////////////////////TESTED
     /** To return this player to the original position
      * @author Nick Alekhine
      * 
@@ -208,7 +208,7 @@ public class Yeezus implements YeezusWorldConstants {
     
     
     
-    // 2.3.8 - makeImage() ////////////////////////////////////////////////////
+    // 2.3.8 - makeImage() //////////////////////////////////////////////TESTED
     /** Make image out of this image and position. 
      * @author Nick Alekhine 
      * 

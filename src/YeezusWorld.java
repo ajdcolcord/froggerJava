@@ -88,7 +88,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
     ///////////////////////////////////////////////////////////////////////////
     // 2.3 - Methods //////////////////////////////////////////////////////////
-    // 2.2.1 - onTick() ///////////////////////////////////////////////////////
+    // 2.2.1 - onTick() /////////////////////////////////////////////////TESTED
     /** Move the player around the scene. Move logs, lilypads, and cars.
      * @author Nick Alekhine
      * 
@@ -98,7 +98,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
         this.moveObjects();
     }
 
-    // 2.2.1.1 - moveWhenOnRickRossOrMacMiller() //////////////////////////////
+    // 2.2.1.1 - moveWhenOnRickRossOrMacMiller() ////////////////////////TESTED
     /** Move the player when on a MacMiller or RickRoss
      * @author Nick Alekhine 
      * 
@@ -125,7 +125,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
     }
 
 
-    // 2.2.1.2 - moveObjects() ////////////////////////////////////////////////
+    // 2.2.1.2 - moveObjects() //////////////////////////////////////////TESTED
     /** Move the list of cars, logs, and lilypads
      * @author Nick Alekhine
      * @author Austin Colcord
