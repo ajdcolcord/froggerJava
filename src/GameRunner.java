@@ -1,3 +1,9 @@
+//CS 2510 Fall 2013
+//Assignment 8
+//partner1-Alekhine, Nick --alekhn
+//partner2-Colcord, Austin --acolcord
+
+
 /** the class that runs the Yeezus Game
  * 
  * @author Austin

@@ -1,3 +1,9 @@
+//CS 2510 Fall 2013
+//Assignment 8
+//partner1-Alekhine, Nick --alekhn
+//partner2-Colcord, Austin --acolcord
+
+
 /******************************************************************************
  * This code was created by stackoverflow user greenLizard.
  * The original post can be found here:
@@ -43,7 +49,7 @@ import javax.sound.sampled.SourceDataLine;
 public class MakeSound {
 
     // 2.1 - Constants ////////////////////////////////////////////////////////
-    private final int BUFFER_SIZE = 128000;
+    private final int bufferSize = 128000;
     private File soundFile;
     private AudioInputStream audioStream;
     private AudioFormat audioFormat;
@@ -61,7 +67,7 @@ public class MakeSound {
      * @author Nick Alekhine (editor)
      * 
      */
-    public void playSound(String filename){
+    public void playSound(String filename) {
 
         String strFilename = filename;
 
@@ -80,7 +86,7 @@ public class MakeSound {
             audioStream = AudioSystem.getAudioInputStream(soundFile);
         } 
         // if the supplied soundFile is not actually an audio stream. 
-        catch (Exception e){
+        catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
         }
@@ -108,11 +114,12 @@ public class MakeSound {
         sourceLine.start();
 
         int nBytesRead = 0;
-        byte[] abData = new byte[BUFFER_SIZE];
+        byte[] abData = new byte[bufferSize];
         while (nBytesRead != -1) {
             try {
                 nBytesRead = audioStream.read(abData, 0, abData.length);
-            } catch (IOException e) {
+            } 
+            catch (IOException e) {
                 e.printStackTrace();
             }
             if (nBytesRead >= 0) {

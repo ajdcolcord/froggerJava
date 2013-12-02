@@ -1,3 +1,8 @@
+//CS 2510 Fall 2013
+//Assignment 8
+//partner1-Alekhine, Nick --alekhn
+//partner2-Colcord, Austin --acolcord
+
 /******************************************************************************
  * TABLE OF CONTENTS
  *   1. Libraries
