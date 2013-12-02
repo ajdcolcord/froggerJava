@@ -14,7 +14,7 @@ public class GameRunner {
     /** the initial world that invokes the <code>bigBang</code> method */
     YeezusWorld yw = this.ey.initYeezusWorld();
 
-    
+
     /**  Method that runs the game
      */
     void run() {
@@ -28,8 +28,6 @@ public class GameRunner {
         GameRunner gm = new GameRunner();
         gm.run();
     }
-
-
 
 
 

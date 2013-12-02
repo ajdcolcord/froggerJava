@@ -58,8 +58,8 @@ import tester.Tester;
 
 
 
-// 2 - ExamplesYeezusWorld ////////////////////////////////////////////////////////
-/** represents the examples, tests, and initial state of the frogger game 
+// 2 - ExamplesYeezusWorld ////////////////////////////////////////////////////
+/** represents the examples, tests, and initial state of the Yeezus game 
  * 
  * @author Austin Colcord
  *
@@ -69,16 +69,16 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     // 2.1 - Test Objects /////////////////////////////////////////////////////
     // initialize test objects. 
 
-    // FROGS
+    // YEEZUS
     Yeezus y1; //2.1.1
 
     // CARS
     Car c1;  //2.1.2
 
-    // LOGS
+    // RICKROSS
     RickRoss rr1;  //2.1.3
 
-    // LILYPADS
+    // MACMILLER
     MacMiller mm1;  //2.1.4
 
     // ARRAYLISTS
@@ -152,7 +152,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
         // call the method
         this.y1.moveDown();
         // check the moved position, which won't be moved because
-        // the frog is close to the bottom border
+        // the yeezus is close to the bottom border
         t.checkExpect(this.y1.posn.y, 475);
         // setting to a higher position to test again
         this.y1.posn.y = canvasHeight;
@@ -187,7 +187,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     public void testMoveRight(Tester t) {
         reset();
         //check the original position
-        t.checkExpect(this.y1.posn.x,500);
+        t.checkExpect(this.y1.posn.x, 500);
         //move the player right
         this.y1.moveRight();
         //check that it was moved right
@@ -640,7 +640,7 @@ public class ExamplesYeezusWorld implements YeezusWorldConstants {
     // 2.3 - Game Running Objects /////////////////////////////////////////////
     // These are actually used in the game. 
 
-    // FROG ///////////////////////////
+    // YEEZUS ///////////////////////////
     Yeezus f1 = new Yeezus();
 
     // CARS ///////////////////////////

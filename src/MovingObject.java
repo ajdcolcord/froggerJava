@@ -95,7 +95,7 @@ public abstract class MovingObject implements YeezusWorldConstants {
      * @author Austin Colcord
      */
     public boolean collide(Yeezus f) {
-        // setting the left and right edges of this object and the frog
+        // setting the left and right edges of this object and the yeezus
         int thisLeftEdge = (this.posn.x - (this.width / 2));
         int thisRightEdge = (this.posn.x + (this.width / 2));
         int fLeftEdge = (f.posn.x - (f.width / 2));

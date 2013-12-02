@@ -1,7 +1,7 @@
 /******************************************************************************
  * TABLE OF CONTENTS
  *   1. Libraries
- *   2. FroggerWorld
+ *   2. YeezusWorld
  *     2.1 FIELDS
  *       2.1.1 player                              -- Yeezus
  *       2.1.2 cars                                -- ArrayList<Car>
@@ -48,7 +48,7 @@ import javalib.worldimages.WorldImage;
 
 
 // 2 - YeezusWorld ///////////////////////////////////////////////////////////
-/** The world state. Consists of a frog, cars, logs, and lilypads. 
+/** The world state. Consists of a player, cars, RickRoss', and MacMillers. 
  * @author Austin Colcord
  * @author Nick Alekhine 
  * 
@@ -93,7 +93,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
     ///////////////////////////////////////////////////////////////////////////
     // 2.3 - Methods //////////////////////////////////////////////////////////
     // 2.3.1 - onTick() /////////////////////////////////////////////////TESTED
-    /** Move the player around the scene. Move logs, lilypads, and cars.
+    /** Move the player around the scene. Move RickRoss', MacMillers, and cars.
      * @author Nick Alekhine
      * 
      *  */
@@ -109,18 +109,18 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
      * */
     public void moveWhenOnRickRossorMacMiller() {
 
-        // go through list of logs and see if player has collided with any
+        // go through list of RickRoss' and see if player has collided with any
         for (RickRoss l : this.ricks) {
-            // if player has collided with the log
+            // if player has collided with the RickRoss
             if (l.collide(this.player)) {
                 this.player.move(l.facingLeft, l.speed);
                 return; // breaks out of method. 
             }
         }
 
-        // go through list of lilypads and see if player has collided with any
+        // go through list of MacMiller and see if player has collided with any
         for (MacMiller lp : this.macs) {
-            // if player has collided with the lilypad
+            // if player has collided with the MacMiller
             if (lp.collide(this.player)) {
                 this.player.move(lp.facingLeft, lp.speed);
                 break;
@@ -130,7 +130,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
 
 
     // 2.3.1.2 - moveObjects() //////////////////////////////////////////TESTED
-    /** Move the list of cars, logs, and lilypads
+    /** Move the list of cars, RickRoss', and MacMillers
      * @author Nick Alekhine
      * @author Austin Colcord
      * 
@@ -146,7 +146,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
             }
         }
 
-        // go through list of logs and move them
+        // go through list of RickRoss' and move them
         for (RickRoss l : this.ricks) {
             if (l.facingLeft) {
                 l.moveObjectLeft();
@@ -156,7 +156,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
             }
         }
 
-        // go through list of lilypads and move them
+        // go through list of MacMillers and move them
         for (MacMiller lp : this.macs) {
             if (lp.facingLeft) {
                 lp.moveObjectLeft();
@@ -309,7 +309,7 @@ public class YeezusWorld extends World implements YeezusWorldConstants {
                 30, 3, new Black());
 
 
-        // overlay all logs onto the scene
+        // overlay all RickRoss' onto the scene
         for (RickRoss l : this.ricks) {
             stack = new OverlayImages(stack, l.makeImage());
         }

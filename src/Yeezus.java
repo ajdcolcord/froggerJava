@@ -85,7 +85,7 @@ public class Yeezus implements YeezusWorldConstants {
         if (this.posn.y > 50) {
             // set new x coordinate
             this.posn.y = this.posn.y - (canvasHeight / 10);
-            // set image to frog in up position
+            // set image to yeezus in up position
             this.image = yeUp;
         }
     }
@@ -105,7 +105,7 @@ public class Yeezus implements YeezusWorldConstants {
         if (this.posn.y < (canvasHeight) - 50) {
             // set new y coordinate
             this.posn.y = this.posn.y + (canvasHeight / 10);
-            // set image to frog in down position
+            // set image to yeezus in down position
             this.image = yeDown;
         }
     }
@@ -125,7 +125,7 @@ public class Yeezus implements YeezusWorldConstants {
         if (this.posn.x > (canvasWidth / 20)) {
             // set new x coordinate
             this.posn.x = this.posn.x - (canvasWidth / 20);
-            // set image to frog in left position.
+            // set image to yeezus in left position.
             this.image = yeLeft;
         }
     }
@@ -145,7 +145,7 @@ public class Yeezus implements YeezusWorldConstants {
         if (this.posn.x < (canvasWidth - (canvasWidth / 20))) {
             // set new x coordinate
             this.posn.x = this.posn.x + (canvasWidth / 20);
-            // set image to frog in right position
+            // set image to yeezus in right position
             this.image = yeRight;
         }
     }
